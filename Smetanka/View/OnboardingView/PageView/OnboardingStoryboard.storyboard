@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Container Page View Controller-->
+        <scene sceneID="wbA-cI-R48">
+            <objects>
+                <viewController storyboardIdentifier="ContainerStoryboard" id="P3a-5A-gOZ" customClass="ContainerPageViewController" customModule="Smetanka" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IL2-J1-2V2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efn-eH-NEW">
+                                <rect key="frame" x="0.0" y="99" width="393" height="614"/>
+                                <connections>
+                                    <segue destination="bka-Ot-9EL" kind="embed" id="5DR-7O-wuq"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52U-SW-YHf">
+                                <rect key="frame" x="25" y="723" width="343" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="ezD-8n-MRG"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Далее">
+                                    <backgroundConfiguration key="background" cornerRadius="15">
+                                        <color key="backgroundColor" name="Main"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextPageAction" destination="P3a-5A-gOZ" eventType="touchUpInside" id="h2f-ZT-KLf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsQ-q3-Id3">
+                                <rect key="frame" x="250" y="59" width="128" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wbq-7l-v3L"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Пропустить">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="skipOnboardingAction" destination="P3a-5A-gOZ" eventType="touchUpInside" id="1wa-tr-McZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rOe-S7-EMb"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" secondItem="52U-SW-YHf" secondAttribute="trailing" constant="25" id="19d-g8-QbL"/>
+                            <constraint firstItem="HsQ-q3-Id3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="rOe-S7-EMb" secondAttribute="leading" constant="250" id="1zT-kp-YMf"/>
+                            <constraint firstItem="Efn-eH-NEW" firstAttribute="leading" secondItem="rOe-S7-EMb" secondAttribute="leading" id="3VO-eC-4Zx"/>
+                            <constraint firstItem="52U-SW-YHf" firstAttribute="top" secondItem="Efn-eH-NEW" secondAttribute="bottom" constant="10" id="5KW-GR-1vt"/>
+                            <constraint firstItem="52U-SW-YHf" firstAttribute="leading" secondItem="rOe-S7-EMb" secondAttribute="leading" constant="25" id="Asa-zr-X9O"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" secondItem="Efn-eH-NEW" secondAttribute="trailing" id="K9S-gI-ABM"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="bottom" secondItem="52U-SW-YHf" secondAttribute="bottom" constant="40" id="dTx-cH-Lqi"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" secondItem="HsQ-q3-Id3" secondAttribute="trailing" constant="15" id="jEL-pN-B18"/>
+                            <constraint firstItem="HsQ-q3-Id3" firstAttribute="top" secondItem="rOe-S7-EMb" secondAttribute="top" id="u8q-cJ-w0g"/>
+                            <constraint firstItem="Efn-eH-NEW" firstAttribute="top" secondItem="HsQ-q3-Id3" secondAttribute="bottom" constant="10" id="und-JJ-AZh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66m-p1-PXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="597.70992366412213" y="-884.50704225352115"/>
+        </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="mUQ-oP-30f">
+            <objects>
+                <pageViewController storyboardIdentifier="OnboardingStoryboard" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="bka-Ot-9EL" customClass="OnboardingViewController" customModule="Smetanka" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yyx-kA-SrQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="-884"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Main">
+            <color red="0.20000000298023224" green="0.88200002908706665" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
