@@ -38,33 +38,35 @@ extension UIViewController {
     }
     
     /// MARK: - Необходимо, чтобы название Storyboard и Identifier ViewController'a были одинаковыми
-    func setViewController(_ identifier: String) {
+    func setViewController(_ identifier: String,
+                           animated: Bool = false) {
         let controller = getViewController(UIViewController.self,
                                            identifier)
         
-        setViewController(controller)
+        setViewController(controller, animated: animated)
     }
     
     /// MARK: - Для случаев, когда необходимо сделать
     /// идентификатор storyboard и название файла storyboard с разными названиями
     func setViewController(_ storyboardFileName: String,
-                           _ storyboardIdentifier: String) {
+                           _ storyboardIdentifier: String,
+                           animated: Bool = false) {
         let controller = getViewController(UIViewController.self,
                                            storyboardFileName,
                                            storyboardIdentifier)
         
-        setViewController(controller)
+        setViewController(controller, animated: animated)
     }
     
     /// MARK: - Необходимо, чтобы название Storyboard и Identifier ViewController'a были одинаковыми
-    func push(_ identifier: String) {
+    func push(to identifier: String) {
         let storyboard = UIStoryboard(name: String(describing: identifier), bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: String(describing: identifier))
         
-        push(controller)
+        push(of: controller)
     }
     
-    func push(_ viewController: UIViewController, animated: Bool = true) {
+    func push(of viewController: UIViewController, animated: Bool = true) {
         navigationController?.pushViewController(viewController, animated: animated)
     }
     
@@ -76,7 +78,21 @@ extension UIViewController {
         navigationController?.popToRootViewController(animated: animated)
     }
     
+    func present(to controller: UIViewController, animated: Bool = true) {
+        present(controller, animated: animated)
+    }
+    
     private func setViewController(_ viewController: UIViewController, animated: Bool = false) {
         navigationController?.setViewControllers([viewController], animated: animated)
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: localized(of: .errorAlertTitle), message: localized(of: .somethingWrong), preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: localized(of: .errorAlertCancelActionTitle), style: .destructive)
+        
+        alert.addAction(cancelAction)
+        
+        present(to: alert)
     }
 }

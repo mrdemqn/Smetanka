@@ -14,15 +14,17 @@ protocol AnimationsProtocol {
 
 final class Animations: AnimationsProtocol {
     
-    private let layer = CAShapeLayer()
+    static let shared: AnimationsProtocol = Animations()
     
     func bezierHoleIntoView(_ view: UIView?) {
         guard let view = view else { return }
         
+        let layer = CAShapeLayer()
+        
         let center = view.convert(view.center, from: view)
         let globalSize = view.frame.size
         
-        let size1 = CGSize(width: 0.1, height: 0.1)
+        let size1 = CGSize(width: globalSize.width, height: 0.1)
         let size2 = CGSize(width: globalSize.width, height: globalSize.height)
         
         let x1 = center.x - (size1.width / 2)

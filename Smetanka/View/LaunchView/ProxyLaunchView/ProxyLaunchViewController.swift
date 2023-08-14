@@ -9,15 +9,20 @@ import UIKit
 
 final class ProxyLaunchViewController: UIViewController {
     
-    private var userDefaultsService: UserDefaultsServiceProtocol!
+    private var viewModel: ProxyLaunchViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userDefaultsService = UserDefaultsService()
+        viewModel = ProxyLaunchViewModel()
         
-        let onboardingShowed = userDefaultsService.getBool(UserDefaultKeys.onboardingShowed)
+        chooseAppDestination()
+    }
+}
 
-        let identifier = onboardingShowed ? Navigation.generalLaunch : Navigation.onboardingLaunch
+extension ProxyLaunchViewController {
+    
+    private func chooseAppDestination() {
+        let identifier = viewModel.isAuthenticate ? Navigation.mainLaunch : Navigation.onboardingLaunch
         
         setViewController(identifier)
     }

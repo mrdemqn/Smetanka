@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum Result<T> {
+enum AppResult<T, E> {
     
-    case success(T)
+    case success(result: T)
     
-    case failure(CustomError, Error? = nil)
+    case failure(custom: E, Error? = nil)
 }

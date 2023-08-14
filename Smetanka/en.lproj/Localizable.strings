@@ -6,4 +6,23 @@
   
 */
 
+/// MARK: App Name
+"app_name" = "Smetanka";
+
+/// MARK: Errors
 "something_wrong" = "Something went wrong.";
+
+"skip" = "Skip";
+"next" = "Next";
+"registration" = "Registration";
+"login" = "Login";
+"authentication_title" = "Authentication";
+"email_placeholder" = "Enter email";
+"password_placeholder" = "Password";
+"confirm_password_placeholder" = "Confirm password";
+"error_alert_title" = "Some Error.";
+"error_alert_cancel_action_title" = "Try again.";
+"recipes_tab_bar_title" = "Recipes";
+"favourites_tab_bar_title" = "Favourites";
+"my_recipes_tab_bar_title" = "My Recipes";
+"profile_tab_bar_title" = "Profile";

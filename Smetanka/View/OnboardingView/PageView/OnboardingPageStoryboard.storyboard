@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Container Page View Controller-->
+        <scene sceneID="wbA-cI-R48">
+            <objects>
+                <viewController storyboardIdentifier="ContainerStoryboard" id="P3a-5A-gOZ" customClass="ContainerPageViewController" customModule="Smetanka" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IL2-J1-2V2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52U-SW-YHf">
+                                <rect key="frame" x="105" y="723" width="263" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="ezD-8n-MRG"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Далее">
+                                    <backgroundConfiguration key="background" cornerRadius="15">
+                                        <color key="backgroundColor" name="Main"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextPageAction" destination="P3a-5A-gOZ" eventType="touchUpInside" id="h2f-ZT-KLf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAo-Sz-cfJ">
+                                <rect key="frame" x="25" y="723" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="6IJ-k1-yKB"/>
+                                    <constraint firstAttribute="width" constant="55" id="rR1-6q-yFi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrow.backward" catalog="system" variableValue="5.5511151231257827e-17"/>
+                                    <backgroundConfiguration key="background" cornerRadius="15">
+                                        <color key="backgroundColor" name="Main"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backAction" destination="P3a-5A-gOZ" eventType="touchUpInside" id="CiE-PF-GJb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaO-GH-4ah">
+                                <rect key="frame" x="25" y="648" width="343" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="e8M-TM-gRD"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Зарегистрироваться">
+                                    <backgroundConfiguration key="background" cornerRadius="15">
+                                        <color key="backgroundColor" name="Main"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="registrationAction" destination="P3a-5A-gOZ" eventType="touchUpInside" id="DFF-yC-n4d"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efn-eH-NEW">
+                                <rect key="frame" x="0.0" y="105" width="393" height="533"/>
+                                <connections>
+                                    <segue destination="bka-Ot-9EL" kind="embed" id="5DR-7O-wuq"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-O2-0wK">
+                                <rect key="frame" x="250" y="65" width="128" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hQC-I7-OF6"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Пропустить">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="skipOnboardingAction" destination="P3a-5A-gOZ" eventType="touchUpInside" id="cXd-eZ-RnW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rOe-S7-EMb"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" secondItem="52U-SW-YHf" secondAttribute="trailing" constant="25" id="19d-g8-QbL"/>
+                            <constraint firstItem="Efn-eH-NEW" firstAttribute="leading" secondItem="rOe-S7-EMb" secondAttribute="leading" id="3VO-eC-4Zx"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="bottom" secondItem="NAo-Sz-cfJ" secondAttribute="bottom" constant="40" id="8l0-7T-P1o"/>
+                            <constraint firstItem="52U-SW-YHf" firstAttribute="top" secondItem="zaO-GH-4ah" secondAttribute="bottom" constant="20" id="Ak5-ZV-OT8"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zaO-GH-4ah" secondAttribute="trailing" constant="25" id="FrS-8x-Xpa"/>
+                            <constraint firstItem="zaO-GH-4ah" firstAttribute="leading" secondItem="rOe-S7-EMb" secondAttribute="leading" constant="25" id="FzY-6k-Khf"/>
+                            <constraint firstItem="Kbv-O2-0wK" firstAttribute="leading" relation="lessThanOrEqual" secondItem="rOe-S7-EMb" secondAttribute="leading" constant="250" id="JWC-gj-IHs"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" secondItem="Efn-eH-NEW" secondAttribute="trailing" id="K9S-gI-ABM"/>
+                            <constraint firstItem="zaO-GH-4ah" firstAttribute="top" secondItem="Efn-eH-NEW" secondAttribute="bottom" constant="10" id="OxB-7k-7nd"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="trailing" secondItem="Kbv-O2-0wK" secondAttribute="trailing" constant="15" id="QaR-FB-l2U"/>
+                            <constraint firstItem="Kbv-O2-0wK" firstAttribute="top" secondItem="IL2-J1-2V2" secondAttribute="top" constant="65" id="VIi-RW-mo2"/>
+                            <constraint firstItem="Efn-eH-NEW" firstAttribute="top" secondItem="Kbv-O2-0wK" secondAttribute="bottom" constant="10" id="aQJ-tj-9Gr"/>
+                            <constraint firstItem="rOe-S7-EMb" firstAttribute="bottom" secondItem="52U-SW-YHf" secondAttribute="bottom" constant="40" id="dTx-cH-Lqi"/>
+                            <constraint firstItem="52U-SW-YHf" firstAttribute="leading" secondItem="NAo-Sz-cfJ" secondAttribute="trailing" constant="25" id="kYD-sw-B9C"/>
+                            <constraint firstItem="NAo-Sz-cfJ" firstAttribute="leading" secondItem="rOe-S7-EMb" secondAttribute="leading" constant="25" id="sB1-kd-dG1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="NAo-Sz-cfJ" id="aDT-nU-H0d"/>
+                        <outlet property="backButtonLeadingConstraint" destination="sB1-kd-dG1" id="BeJ-8d-w6q"/>
+                        <outlet property="nextButton" destination="52U-SW-YHf" id="VEq-9w-1SS"/>
+                        <outlet property="nextButtonLeadingConstraint" destination="kYD-sw-B9C" id="sfW-2Y-NkS"/>
+                        <outlet property="registrationButton" destination="zaO-GH-4ah" id="8L1-gK-6tf"/>
+                        <outlet property="registrationButtonLeadingConstraints" destination="FzY-6k-Khf" id="iif-hX-fKt"/>
+                        <outlet property="registrationButtonTrailingConstraint" destination="FrS-8x-Xpa" id="PA8-QK-ABP"/>
+                        <outlet property="skipButton" destination="Kbv-O2-0wK" id="B2r-ca-A4K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66m-p1-PXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="597.70992366412213" y="-884.50704225352115"/>
+        </scene>
+        <!--Onboarding Page View Controller-->
+        <scene sceneID="mUQ-oP-30f">
+            <objects>
+                <pageViewController storyboardIdentifier="OnboardingPageStoryboard" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="bka-Ot-9EL" customClass="OnboardingPageViewController" customModule="Smetanka" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="u6s-n1-Ioh"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yyx-kA-SrQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1436" y="-885"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Main">
+            <color red="0.20000000298023224" green="0.88200002908706665" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

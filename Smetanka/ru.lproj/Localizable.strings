@@ -6,4 +6,23 @@
   
 */
 
+/// MARK: App Name
+"app_name" = "Сметанка";
+
+/// MARK: Errors
 "something_wrong" = "Что-то пошло не так.";
+
+"skip" = "Пропустить";
+"next" = "Далее";
+"registration" = "Зарегистрироваться";
+"login" = "Войти";
+"authentication_title" = "Аутентификация";
+"email_placeholder" = "Введите почту";
+"password_placeholder" = "Пароль";
+"confirm_password_placeholder" = "Подтвердите пароль";
+"error_alert_title" = "Произвошла ошибка.";
+"error_alert_cancel_action_title" = "Попробовать ещё.";
+"recipes_tab_bar_title" = "Рецепты";
+"favourites_tab_bar_title" = "Избранное";
+"my_recipes_tab_bar_title" = "Мои Рецепты";
+"profile_tab_bar_title" = "Профиль";
