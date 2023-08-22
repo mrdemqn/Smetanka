@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Alamofire
 
 final class RecipesViewController: UIViewController {
     
@@ -37,6 +38,7 @@ final class RecipesViewController: UIViewController {
         
         Task {
             await viewModel.fetchRecipes()
+//            await viewModel.translate()
         }
     }
     
@@ -85,6 +87,26 @@ extension RecipesViewController {
             }
         }.disposed(by: disposeBag)
     }
+    
+    private func translate() async {
+        let session: Session = {
+            let configuration = URLSessionConfiguration.af.default
+            configuration.requestCachePolicy = .returnCacheDataElseLoad
+            
+            let interceptor = TranslateInterceptor()
+            
+            return Session(configuration: configuration,
+                           interceptor: interceptor)
+        }()
+        
+        let _ = await session
+            .request("https://api.modernmt.com/translate",
+                     parameters: ["source": "en",
+                                  "target": "ru",
+                                  "q": "Hello"])
+            .serializingDecodable(Translation.self)
+            .response
+    }
 }
 
 extension RecipesViewController: UITableViewDataSource {
@@ -94,20 +116,65 @@ extension RecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as? RecipeTableViewCell else { return UITableViewCell() }
-        
-        let recipe = viewModel.recipes[indexPath.item]
-        
-        cell.configure(title: recipe.title,
-                       difficulty: recipe.difficulty,
-                       imageUrl: recipe.image)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         return cell
     }
 }
 
 extension RecipesViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? RecipeTableViewCell else { return }
+        
+        let recipe = viewModel.recipes[indexPath.item]
+        
+        cell.configure(title: recipe.title,
+                       difficulty: recipe.difficulty,
+                       imageUrl: recipe.image)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        push(to: Navigation.detailsRecipe)
+        let controller = getViewController(DetailsRecipeViewController.self,
+                                           Navigation.detailsRecipe)
+        let recipe = viewModel.recipes[indexPath.item]
+        controller.recipe = recipe
+        push(of: controller)
+    }
+}
+
+final class TranslateInterceptor: RequestInterceptor {
+    
+    private let retryLimit: Int = 5
+    private let retryDelay: TimeInterval = 10
+    
+    func adapt(_ urlRequest: URLRequest,
+               for session: Session,
+               completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        var urlRequest = urlRequest
+        urlRequest.setValue("EB81AD9F-3184-CFE4-5033-D3FCE339B411", forHTTPHeaderField: "MMT-ApiKey")
+        
+        completion(.success(urlRequest))
+    }
+    
+    func retry(_ request: Request,
+               for session: Session,
+               dueTo error: Error,
+               completion: @escaping (RetryResult) -> Void) {
+        let response = request.task?.response as? HTTPURLResponse
+        
+        guard let statusCode = response?.statusCode, (500...599).contains(statusCode) else {
+            return completion(.doNotRetry)
+        }
+        
+        completion(.retryWithDelay(retryDelay))
+    }
+}
+
+struct Translation: Decodable {
+    let status: Int
+    let data: TranslationData
+    
+    struct TranslationData: Decodable {
+        let translation: String
     }
 }

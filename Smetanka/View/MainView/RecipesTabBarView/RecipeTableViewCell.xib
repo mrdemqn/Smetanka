@@ -20,8 +20,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fht-VD-sGm" userLabel="BackgroundTableViewCell">
                         <rect key="frame" x="10" y="5" width="373" height="130"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rU1-xF-hBg" customClass="LazyImageView" customModule="Smetanka" customModuleProvider="target">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rU1-xF-hBg">
                                 <rect key="frame" x="15" y="10" width="110" height="110"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="NK6-d7-8mf"/>
                                     <constraint firstAttribute="height" constant="110" id="mma-ry-vZg"/>

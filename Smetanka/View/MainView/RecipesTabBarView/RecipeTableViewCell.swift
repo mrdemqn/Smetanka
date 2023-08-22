@@ -12,11 +12,15 @@ final class RecipeTableViewCell: UITableViewCell {
     @IBOutlet private weak var backgroundCellView: UIView!
     @IBOutlet private weak var recipeTitleLabel: UILabel!
     @IBOutlet private weak var recipeDifficultyLabel: UILabel!
-    @IBOutlet private weak var recipeImageView: LazyImageView!
+    @IBOutlet private weak var recipeImageView: UIImageView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setupUI()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
 }
 
@@ -26,7 +30,7 @@ extension RecipeTableViewCell {
         recipeTitleLabel.text = title
         recipeDifficultyLabel.text = "Difficulty: \(difficulty)"
         
-        recipeImageView.loadImage(fromURL: imageUrl)
+        recipeImageView.load(from: imageUrl)
     }
 }
 

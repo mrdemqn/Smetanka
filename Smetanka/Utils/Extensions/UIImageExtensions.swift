@@ -7,49 +7,31 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import UIKit
 
 extension UIImageView {
     
-    func imageFormUrl(_ url: String) {
-        image = UIImage(named: "fork.knife.circle.fill")
-        AF.request(url).response { [weak self] response in
-            guard let data = response.data else { return }
-            DispatchQueue.main.async {
-                self?.image = UIImage(data: data)
-            }
-        }
-    }
-}
-
-final class LazyImageView: UIImageView {
-    
-    private let imageCache = NSCache<AnyObject, UIImage>()
-    
-    func loadImage(fromURL imageURL: String)
-    {
-        self.image = UIImage(named: "fork.knife.circle.fill")
-
-        guard let imageURL = URL(string: imageURL) else { return }
+    func load(from url: String) {
+        image = UIImage(systemName: "fork.knife.circle.fill")
         
-        if let cachedImage = self.imageCache.object(forKey: imageURL as AnyObject)
-        {
+        guard let url = URL(string: url) else { return }
+        
+        let request = URLRequest(url: url)
+        
+        let imageDownloader = ImageDownloader()
+        
+        imageDownloader.download(request, completion:  { [weak self] response in
             
-            debugPrint("image loaded from cache for =\(imageURL)")
-            self.image = cachedImage
-            return
-        }
-
-        DispatchQueue.global().async { [weak self] in
-            if let imageData = try? Data(contentsOf: imageURL) {
-                debugPrint("image downloaded from server...")
-                if let image = UIImage(data: imageData) {
-                    DispatchQueue.main.async {
-                        self?.imageCache.setObject(image, forKey: imageURL as AnyObject)
-                        self?.image = image
-                    }
-                }
+            guard response.error == nil else { return }
+            
+            let result = response.result
+            
+            switch result {
+                case .success(let image):
+                    self?.image = image
+                default: return
             }
-        }
+        })
     }
 }

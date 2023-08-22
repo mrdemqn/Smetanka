@@ -8,6 +8,8 @@
 import UIKit
 
 class DetailsRecipeViewController: UIViewController {
+    
+    var recipe: Food?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +17,7 @@ class DetailsRecipeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Название рецепта"
+        navigationItem.title = recipe?.title ?? "Название рецепта"
         navigationItem.largeTitleDisplayMode = .never
     }
 }

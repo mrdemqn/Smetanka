@@ -13,13 +13,16 @@ final class RegistrationViewController: UIViewController {
     private var viewModel: RegistrationViewModelProtocol!
     
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet private weak var loadingView: UIView!
+    @IBOutlet private weak var contentView: UIView!
     
     @IBOutlet private weak var emailTextField: RegistrationTextField!
     @IBOutlet private weak var passwordTextField: RegistrationTextField!
     @IBOutlet private weak var confirmPasswordTextField: RegistrationTextField!
     
     private let disposeBag = DisposeBag()
+    
+    private var confirmPasswordTextFieldY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +35,12 @@ final class RegistrationViewController: UIViewController {
         setupKeyboardObservable()
         
         bindViewModel()
+        
+        confirmPasswordTextFieldY = confirmPasswordTextField.frame.origin.y
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillShowNotification,
-                                                  object: nil)
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillHideNotification,
-                                                  object: nil)
+    deinit {
+        removeKeyboardObservers()
     }
     
     @IBAction func registerAction() {
@@ -85,6 +85,15 @@ extension RegistrationViewController {
                                                object: nil)
     }
     
+    private func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
     private func bindViewModel() {
         /// MARK: Subscribe loading view
         viewModel.isLoading.subscribe { [weak self] isLoading in
@@ -116,49 +125,18 @@ extension RegistrationViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        scrollView.isScrollEnabled = true
-        guard let userInfo = notification.userInfo else { return }
-        let keyboardEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        guard let userInfo = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let frame = userInfo.cgRectValue
         
-        scrollView.verticalScrollIndicatorInsets.bottom = keyboardEndFrame.height - view.layoutMargins.bottom
-        scrollView.contentInset.bottom = keyboardEndFrame.height - view.layoutMargins.bottom
-        
-        var frame = CGRect.zero
-        
-        if emailTextField.isFirstResponder {
-            frame = CGRect(x: emailTextField.frame.origin.x,
-                           y: emailTextField.frame.origin.y + 50,
-                           width: emailTextField.frame.size.width,
-                           height: emailTextField.frame.size.height)
-        }
-        
-        if passwordTextField.isFirstResponder {
-            frame = CGRect(x: passwordTextField.frame.origin.x,
-                           y: passwordTextField.frame.origin.y + 50,
-                           width: passwordTextField.frame.size.width,
-                           height: passwordTextField.frame.size.height)
-        }
-        
-        if confirmPasswordTextField.isFirstResponder {
-            frame = CGRect(x: confirmPasswordTextField.frame.origin.x,
-                           y: confirmPasswordTextField.frame.origin.y + 50,
-                           width: confirmPasswordTextField.frame.size.width,
-                           height: confirmPasswordTextField.frame.size.height)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.scrollView.scrollRectToVisible(frame, animated: true)
+        if frame.origin.y >= confirmPasswordTextFieldY {
+            let difference = frame.origin.y - confirmPasswordTextFieldY
+            scrollView.contentOffset = CGPoint(x: 0, y: difference)
         }
     }
     
     @objc private func keyboardWillHide() {
-        scrollView.isScrollEnabled = false
-        let offset = CGPoint(x: 0, y: scrollView.contentInset.top)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            print("Scroll")
-            self?.scrollView.setContentOffset(offset, animated: true)
-        }
+        let offset = CGPoint(x: 0, y: -60)
+        scrollView.contentOffset = offset
     }
 }
 
