@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -89,7 +90,10 @@
         <scene sceneID="4pc-lg-apA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3o7-ji-nPh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AZq-op-AlU"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="AZq-op-AlU">
+                        <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="medium"/>
+                        <imageReference key="selectedImage" image="magnifyingglass" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CTs-yD-ESe">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -118,7 +122,10 @@
         <scene sceneID="fpo-fL-GtP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rzu-MI-Dpb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qSg-wi-hnz"/>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="qSg-wi-hnz">
+                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
+                        <imageReference key="selectedImage" image="star.fill" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zq9-9Q-hcD">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -137,7 +144,10 @@
         <scene sceneID="4Kq-SW-MuO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PpM-Dm-0Wi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="1hs-lp-8rr"/>
+                    <tabBarItem key="tabBarItem" title="Item 3" id="1hs-lp-8rr">
+                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="medium"/>
+                        <imageReference key="selectedImage" image="bookmark.fill" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gaz-1N-oXy">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -172,7 +182,10 @@
         <scene sceneID="xCv-1p-ZNQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E6o-x6-Ngk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="fFy-Qp-zHC"/>
+                    <tabBarItem key="tabBarItem" title="Item 3" id="fFy-Qp-zHC">
+                        <imageReference key="image" image="person.crop.circle" catalog="system" symbolScale="medium"/>
+                        <imageReference key="selectedImage" image="person.crop.circle" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5hq-ke-SiJ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -189,6 +202,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark" catalog="system" width="110" height="128"/>
+        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

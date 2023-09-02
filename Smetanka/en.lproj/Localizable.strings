@@ -22,7 +22,13 @@
 "confirm_password_placeholder" = "Confirm password";
 "error_alert_title" = "Some Error.";
 "error_alert_cancel_action_title" = "Try again.";
-"recipes_tab_bar_title" = "Recipes";
+"recipes" = "Recipes";
+"recipe" = "Recipe";
 "favourites_tab_bar_title" = "Favourites";
 "my_recipes_tab_bar_title" = "My Recipes";
 "profile_tab_bar_title" = "Profile";
+"difficulty" = "Difficulty";
+"portion" = "Portion";
+"time" = "Time";
+"descriptionTitle" = "Description";
+"stepsTitle" = "Steps";

@@ -27,7 +27,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     private let auth = Auth.auth()
     
     var isAuthenticate: Bool {
-        return auth.currentUser != nil
+        return auth.currentUser == nil
     }
     
     func createUser(_ email: String,

@@ -28,7 +28,7 @@ extension RecipeTableViewCell {
     
     func configure(title: String, difficulty: String, imageUrl: String) {
         recipeTitleLabel.text = title
-        recipeDifficultyLabel.text = "Difficulty: \(difficulty)"
+        recipeDifficultyLabel.text = "\(localized(of: .difficulty)): \(difficulty)"
         
         recipeImageView.load(from: imageUrl)
     }

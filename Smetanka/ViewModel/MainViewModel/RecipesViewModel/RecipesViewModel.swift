@@ -52,11 +52,11 @@ final class RecipesViewModel: RecipesViewModelProtocol {
     
     func fetchRecipes() async {
         loadingSubject.onNext(true)
-        let hasLocalData = fetchRecipesLocal()
+//        let hasLocalData = fetchRecipesLocal()
         
-        if !hasLocalData {
+//        if !hasLocalData {
             await fetchRecipesNetwork()
-        }
+//        }
         loadingSubject.onNext(false)
     }
     
@@ -64,21 +64,21 @@ final class RecipesViewModel: RecipesViewModelProtocol {
         do {
             let foods = try await foodService.fetchAllRecipes()
             recipes = foods
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                self?.localStorage.save(FoodCore.self) { context in
-                    guard let self = self else { return }
-                    self.mapper.mapFoodToFoodCore(self.recipes,
-                                             context: context,
-                                             foodCore: &self.recipesCore)
+//            DispatchQueue.global(qos: .background).async { [weak self] in
+//                self?.localStorage.save(FoodCore.self) { context in
+//                    guard let self = self else { return }
+//                    self.mapper.mapFoodToFoodCore(self.recipes,
+//                                             context: context,
+//                                             foodCore: &self.recipesCore)
 //                    let foodsCore = FoodsCore(context: context)
 //                    foodsCore.foods = NSSet(object: self.recipesCore)
-                }
+//                }
 //                self?.localStorage.save(FoodsCore.self) { context in
 //                    guard let self = self else { return }
 //                    let foodsCore = FoodsCore(context: context)
 //                    foodsCore.foods = NSSet(object: self.recipesCore)
 //                }
-            }
+//            }
         } catch {
             print("Has Error: \(error)")
         }

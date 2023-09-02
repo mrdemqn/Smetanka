@@ -21,7 +21,7 @@ final class RecipesViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     private lazy var tabBarTitles: [String] = {
-        return [localized(of: .recipesTabBarTitle),
+        return [localized(of: .recipes),
                 localized(of: .favouritesTabBarTitle),
                 localized(of: .myRecipesTabBarTitle),
                 localized(of: .profileTabBarTitle)]
@@ -51,7 +51,7 @@ final class RecipesViewController: UIViewController {
 extension RecipesViewController {
     
     private func setupNavigationBar() {
-        navigationItem.title = "Рецепты"
+        navigationItem.title = localized(of: .recipes)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -71,7 +71,7 @@ extension RecipesViewController {
         tableView.dataSource = self
         
         let nib = UINib(nibName: "\(RecipeTableViewCell.self)", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "RecipeCell")
+        tableView.register(nib, forCellReuseIdentifier: Xibs.recipeCell)
         
         tableView.separatorStyle = .none
     }
@@ -116,7 +116,7 @@ extension RecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Xibs.recipeCell, for: indexPath)
         return cell
     }
 }
@@ -134,10 +134,11 @@ extension RecipesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = getViewController(DetailsRecipeViewController.self,
-                                           Navigation.detailsRecipe)
+//        let controller = getViewController(DetailsRecipeViewController.self,
+//                                           Navigation.detailsRecipe)
+        let controller = DetailsRecipeViewController()
         let recipe = viewModel.recipes[indexPath.item]
-        controller.recipe = recipe
+        controller.recipeId = recipe.id
         push(of: controller)
     }
 }

@@ -16,9 +16,9 @@ final class RegistrationViewController: UIViewController {
     @IBOutlet private weak var loadingView: UIView!
     @IBOutlet private weak var contentView: UIView!
     
-    @IBOutlet private weak var emailTextField: RegistrationTextField!
-    @IBOutlet private weak var passwordTextField: RegistrationTextField!
-    @IBOutlet private weak var confirmPasswordTextField: RegistrationTextField!
+    @IBOutlet private weak var emailTextField: AuthField!
+    @IBOutlet private weak var passwordTextField: AuthField!
+    @IBOutlet private weak var confirmPasswordTextField: AuthField!
     
     private let disposeBag = DisposeBag()
     
@@ -183,7 +183,7 @@ final class RegistrationTextField: UITextField {
     }
     
     private func setupTextField() {
-        textColor = UIColor(named: "FieldText")
+        textColor = .fieldText
         
         layer.cornerRadius = 10
         layer.backgroundColor = UIColor.red.cgColor

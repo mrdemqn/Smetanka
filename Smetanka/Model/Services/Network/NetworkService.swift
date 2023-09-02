@@ -47,7 +47,8 @@ final class NetworkService: NetworkServiceProtocol {
                          headers: HTTPHeaders? = nil) async throws -> T {
         
         let response = await session
-            .request(link, headers: headers)
+            .request(link,
+                     headers: headers)
             .serializingDecodable(type, emptyRequestMethods: [.get])
             .response
         

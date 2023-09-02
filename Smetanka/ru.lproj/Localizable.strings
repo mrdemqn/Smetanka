@@ -22,7 +22,13 @@
 "confirm_password_placeholder" = "Подтвердите пароль";
 "error_alert_title" = "Произвошла ошибка.";
 "error_alert_cancel_action_title" = "Попробовать ещё.";
-"recipes_tab_bar_title" = "Рецепты";
+"recipes" = "Рецепты";
+"recipe" = "Рецепт";
 "favourites_tab_bar_title" = "Избранное";
 "my_recipes_tab_bar_title" = "Мои Рецепты";
 "profile_tab_bar_title" = "Профиль";
+"difficulty" = "Сложность";
+"portion" = "Порция";
+"time" = "Время приготовления";
+"descriptionTitle" = "Описание";
+"stepsTitle" = "Шаги";

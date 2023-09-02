@@ -86,6 +86,9 @@
 		E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */; };
 		E5BCCEC22A823ED300001EEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */; };
 		E5BCCEC62A828B3300001EEE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEC52A828B3300001EEE /* Font.swift */; };
+		E5D43E022AA0F416004618CD /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E012AA0F416004618CD /* UIColorExtensions.swift */; };
+		E5D43E052AA0F625004618CD /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E042AA0F625004618CD /* AuthField.swift */; };
+		E5D43E072AA0F7D2004618CD /* Xibs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E062AA0F7D2004618CD /* Xibs.swift */; };
 		E5DD531F2A7AF3FB0039AFA9 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DD531E2A7AF3FB0039AFA9 /* SecondPageViewController.swift */; };
 		E5DD53212A7AF40E0039AFA9 /* SecondPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DD53202A7AF40E0039AFA9 /* SecondPageStoryboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -163,6 +166,9 @@
 		E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5BCCEC52A828B3300001EEE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		E5D43E012AA0F416004618CD /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		E5D43E042AA0F625004618CD /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
+		E5D43E062AA0F7D2004618CD /* Xibs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xibs.swift; sourceTree = "<group>"; };
 		E5DD531E2A7AF3FB0039AFA9 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		E5DD53202A7AF40E0039AFA9 /* SecondPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondPageStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -417,6 +423,7 @@
 		E590DC292A7A5E77000F14A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E5D43E032AA0F60B004618CD /* Views */,
 				E53A1F342A82B21B0057E813 /* Theme */,
 				E590DC6D2A7ADD52000F14A5 /* Constants */,
 				E590DC5B2A7A7100000F14A5 /* Animations */,
@@ -483,6 +490,7 @@
 				E590DC4D2A7A6EC2000F14A5 /* StringExtensions.swift */,
 				E58E2C6A2A85524E0038262A /* URLRequestExtensions.swift */,
 				E58D2B402A88F67B003EF4BF /* UIImageExtensions.swift */,
+				E5D43E012AA0F416004618CD /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -540,6 +548,7 @@
 				E56A710E2A8235F10062D763 /* MultiThreading.swift */,
 				E5BCCEC52A828B3300001EEE /* Font.swift */,
 				E58E2C632A854EC60038262A /* ApiConstants.swift */,
+				E5D43E062AA0F7D2004618CD /* Xibs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -609,6 +618,14 @@
 				E53A1F322A82A2E10057E813 /* LogInViewModel.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		E5D43E032AA0F60B004618CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5D43E042AA0F625004618CD /* AuthField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -730,6 +747,7 @@
 				E590DC4C2A7A6E0D000F14A5 /* UIViewControllerExtensions.swift in Sources */,
 				E590DC6A2A7ADBA6000F14A5 /* OnboardingPageViewController.swift in Sources */,
 				E56A71002A821CC10062D763 /* AuthenticationService.swift in Sources */,
+				E5D43E022AA0F416004618CD /* UIColorExtensions.swift in Sources */,
 				E58E2C742A867FC30038262A /* NetworkLogger.swift in Sources */,
 				E58E2C602A854C850038262A /* RecipesViewModel.swift in Sources */,
 				E58E2C592A851CE70038262A /* RecipeTableViewCell.swift in Sources */,
@@ -755,6 +773,7 @@
 				E58E2C6B2A85524E0038262A /* URLRequestExtensions.swift in Sources */,
 				E58E2C722A867AF40038262A /* NetworkInterceptor.swift in Sources */,
 				E590DC432A7A67E1000F14A5 /* AppResult.swift in Sources */,
+				E5D43E072AA0F7D2004618CD /* Xibs.swift in Sources */,
 				E590DC3E2A7A623C000F14A5 /* Localization.swift in Sources */,
 				E588C8192A8BE23A003F4803 /* FoodsCore+CoreDataClass.swift in Sources */,
 				E588C8202A8BE8AA003F4803 /* DetailsRecipeViewModel.swift in Sources */,
@@ -765,6 +784,7 @@
 				E590DC4E2A7A6EC2000F14A5 /* StringExtensions.swift in Sources */,
 				E56A70FC2A818CE00062D763 /* OnboardingViewModel.swift in Sources */,
 				E590DC402A7A64CE000F14A5 /* LocalizationExtensions.swift in Sources */,
+				E5D43E052AA0F625004618CD /* AuthField.swift in Sources */,
 				E590DC3B2A7A6208000F14A5 /* CustomError.swift in Sources */,
 				E590DC5A2A7A7061000F14A5 /* MainLaunchViewController.swift in Sources */,
 				E588C80E2A8BD1AA003F4803 /* RecipesViewMapper.swift in Sources */,
