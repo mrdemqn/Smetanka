@@ -28,17 +28,6 @@ class DetailsRecipeViewController: UIViewController {
     private var programRecipeStepsTitleLabel = UILabel()
     private var programRecipeStepsLabel = UILabel()
     
-    @IBOutlet private weak var recipeImageView: UIImageView!
-    
-    @IBOutlet private weak var recipeTitleLabel: UILabel!
-    @IBOutlet private weak var recipeDifficultyLabel: UILabel!
-    @IBOutlet private weak var recipePortionLabel: UILabel!
-    @IBOutlet private weak var recipeTimeLabel: UILabel!
-    @IBOutlet private weak var recipeDescriptionTitleLabel: UILabel!
-    @IBOutlet private weak var recipeDescriptionLabel: UILabel!
-    @IBOutlet private weak var recipeStepsTitleLabel: UILabel!
-    @IBOutlet private weak var recipeStepsLabel: UILabel!
-    
     private let disposeBag = DisposeBag()
     
     var recipeId: String?

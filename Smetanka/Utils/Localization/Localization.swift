@@ -31,4 +31,9 @@ enum Localization: String {
     case time = "time"
     case descriptionTitle = "descriptionTitle"
     case stepsTitle = "stepsTitle"
+    case profileHeader = "profile_header"
+    case themeButton = "theme_button"
+    case defaultThemeButton = "default_theme_button"
+    case darkThemeButton = "dark_theme_button"
+    case lightThemeButton = "light_theme_button"
 }

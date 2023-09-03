@@ -32,3 +32,8 @@
 "time" = "Время приготовления";
 "descriptionTitle" = "Описание";
 "stepsTitle" = "Шаги";
+"profile_header" = "Профиль";
+"theme_button" = "Тема оформления";
+"default_theme_button" = "Тема по умолчанию";
+"dark_theme_button" = "Тёмная тема";
+"light_theme_button" = "Светлая тема";

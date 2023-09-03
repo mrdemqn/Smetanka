@@ -32,3 +32,8 @@
 "time" = "Time";
 "descriptionTitle" = "Description";
 "stepsTitle" = "Steps";
+"profile_header" = "Profile";
+"theme_button" = "App Theme";
+"default_theme_button" = "Default Theme";
+"dark_theme_button" = "Dark Theme";
+"light_theme_button" = "Light Theme";

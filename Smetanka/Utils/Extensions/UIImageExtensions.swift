@@ -35,3 +35,9 @@ extension UIImageView {
         })
     }
 }
+
+extension UIImage {
+    
+    static let radioSelected = UIImage(imageLiteralResourceName: "radio_selected")
+    static let radioUnselected = UIImage(imageLiteralResourceName: "radio_unselected")
+}

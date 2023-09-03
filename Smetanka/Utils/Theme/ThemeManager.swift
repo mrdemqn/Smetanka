@@ -20,4 +20,6 @@ final class ThemeManager {
             }
         }
     }
+    
+    static let currentStyle: UIUserInterfaceStyle = UIScreen.main.traitCollection.userInterfaceStyle
 }

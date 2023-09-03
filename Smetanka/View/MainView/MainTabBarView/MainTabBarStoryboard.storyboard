@@ -162,22 +162,6 @@
             </objects>
             <point key="canvasLocation" x="-170" y="-187"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="O1k-Xm-LcN">
-            <objects>
-                <viewController id="aCe-iz-EJS" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sHs-eo-1mY">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="G7u-Jf-9Ko"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="gpZ-IH-whh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1os-Uj-yLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="683" y="508"/>
-        </scene>
         <!--Item 3-->
         <scene sceneID="xCv-1p-ZNQ">
             <objects>
@@ -192,9 +176,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="aCe-iz-EJS" kind="relationship" relationship="rootViewController" id="Ghb-Ps-cbU"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OgW-SV-rOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -216,9 +197,6 @@
         </namedColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

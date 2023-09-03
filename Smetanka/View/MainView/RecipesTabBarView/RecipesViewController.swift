@@ -37,7 +37,7 @@ final class RecipesViewController: UIViewController {
         setupTableView()
         
         Task {
-            await viewModel.fetchRecipes()
+//            await viewModel.fetchRecipes()
 //            await viewModel.translate()
         }
     }
@@ -134,8 +134,6 @@ extension RecipesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let controller = getViewController(DetailsRecipeViewController.self,
-//                                           Navigation.detailsRecipe)
         let controller = DetailsRecipeViewController()
         let recipe = viewModel.recipes[indexPath.item]
         controller.recipeId = recipe.id

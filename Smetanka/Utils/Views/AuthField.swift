@@ -45,7 +45,7 @@ final class AuthField: UITextField {
         layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width: 10, height: 10)
         
-        font = UIFont(name: Font.helveticaNeue, size: 14)
+        font = .helveticaNeueFont(14)
         
         heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
