@@ -23,6 +23,7 @@ enum Localization: String {
     case errorAlertCancelActionTitle = "error_alert_cancel_action_title"
     case recipes = "recipes"
     case recipe = "recipe"
+    case favourites = "favourites"
     case favouritesTabBarTitle = "favourites_tab_bar_title"
     case myRecipesTabBarTitle = "my_recipes_tab_bar_title"
     case profileTabBarTitle = "profile_tab_bar_title"

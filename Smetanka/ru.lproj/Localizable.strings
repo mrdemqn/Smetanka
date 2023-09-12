@@ -24,6 +24,7 @@
 "error_alert_cancel_action_title" = "Попробовать ещё.";
 "recipes" = "Рецепты";
 "recipe" = "Рецепт";
+"favourites" = "Избранное";
 "favourites_tab_bar_title" = "Избранное";
 "my_recipes_tab_bar_title" = "Мои Рецепты";
 "profile_tab_bar_title" = "Профиль";

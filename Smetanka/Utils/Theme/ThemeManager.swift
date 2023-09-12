@@ -9,13 +9,14 @@ import UIKit
 
 final class ThemeManager {
     
-    static func switchTheme() {
-        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+    static func switchTheme(_ theme: UIUserInterfaceStyle) {
+        let application = UIApplication.shared
+        guard let scene = application.connectedScenes.first as? UIWindowScene else { return }
 
         DispatchQueue.main.async {
             UIView.transition(with: UIView(), duration: 0.3, options: .transitionCrossDissolve) {
                 scene.windows.forEach { window in
-                    window.overrideUserInterfaceStyle = .light
+                    window.overrideUserInterfaceStyle = theme
                 }
             }
         }

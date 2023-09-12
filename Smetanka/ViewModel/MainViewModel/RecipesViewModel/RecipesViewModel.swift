@@ -18,6 +18,10 @@ protocol RecipesViewModelProtocol {
     
     func fetchRecipes() async
     
+    func addFavourite(_ food: Food)
+    
+    func removeFavourite(_ food: Food)
+    
     func translate() async
 }
 
@@ -27,7 +31,7 @@ final class RecipesViewModel: RecipesViewModelProtocol {
     
     private let localStorage: LocalStorageServiceProtocol
     
-    private let mapper: RecipesViewMapperProtocol
+//    private let mapper: RecipesViewMapperProtocol
     
     private let networkService: NetworkServiceProtocol
     
@@ -37,7 +41,7 @@ final class RecipesViewModel: RecipesViewModelProtocol {
         }
     }
     
-    var recipesCore: Set<FoodCore> = []
+//    var recipesCore: Set<FoodCore> = []
     
     var loadingSubject: BehaviorSubject<Bool> = BehaviorSubject(value: true)
     
@@ -46,7 +50,7 @@ final class RecipesViewModel: RecipesViewModelProtocol {
     init() {
         foodService = FoodService()
         localStorage = LocalStorageService()
-        mapper = RecipesViewMapper()
+//        mapper = RecipesViewMapper()
         networkService = NetworkService()
     }
     
@@ -84,24 +88,32 @@ final class RecipesViewModel: RecipesViewModelProtocol {
         }
     }
     
-    private func fetchRecipesLocal() -> Bool {
-        let foodsCore = localStorage.fetch(FoodsCore.self)
-        
-        if foodsCore.isEmpty { return false }
-        
-        guard let foodsCoreLocal = foodsCore.first!.foods else { return false }
-        
-        mapper.mapFoodCoreToFood(foodsCoreLocal,
-                                 recipes: &recipes)
-        recipes.forEach { recipe in
-            print("Recipes: \(recipe.title)")
-        }
-        return true
-    }
+//    private func fetchRecipesLocal() -> Bool {
+//        let foodsCore = localStorage.fetch(FoodsCore.self)
+//
+//        if foodsCore.isEmpty { return false }
+//
+//        guard let foodsCoreLocal = foodsCore.first!.foods else { return false }
+//
+//        mapper.mapFoodCoreToFood(foodsCoreLocal,
+//                                 recipes: &recipes)
+//        recipes.forEach { recipe in
+//            print("Recipes: \(recipe.title)")
+//        }
+//        return true
+//    }
     
     func translate() async {
         
         let text = await networkService.translate(text: "Could you lie down?")
         print("TranslatedText: \(text)")
+    }
+    
+    func addFavourite(_ food: Food) {
+        
+    }
+    
+    func removeFavourite(_ food: Food) {
+        
     }
 }

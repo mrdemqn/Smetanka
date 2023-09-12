@@ -6,8 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,38 +32,6 @@
             </objects>
             <point key="canvasLocation" x="-1863" y="508"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="JDZ-aT-ooa">
-            <objects>
-                <viewController id="OrT-Vl-NA4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E0r-Z5-RQV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="tIp-vU-hhc"/>
-                        <color key="backgroundColor" name="AccentColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Xt8-jD-vjU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eoE-IF-sBE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1030" y="508"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="wVp-ZF-grZ">
-            <objects>
-                <viewController id="RXn-od-eLl" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="s9X-JQ-QGo">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dOF-0E-mtK"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="8Vz-h4-AUQ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3VZ-G6-qvl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-170" y="508"/>
-        </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="ref-ta-MOV">
             <objects>
@@ -77,9 +43,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="3o7-ji-nPh" kind="relationship" relationship="viewControllers" id="Z2A-3p-Sfh"/>
-                        <segue destination="Rzu-MI-Dpb" kind="relationship" relationship="viewControllers" id="jzg-Dl-nxl"/>
-                        <segue destination="PpM-Dm-0Wi" kind="relationship" relationship="viewControllers" id="DYp-4z-adC"/>
-                        <segue destination="E6o-x6-Ngk" kind="relationship" relationship="viewControllers" id="FJQ-OZ-StI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHX-Lb-FLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -118,85 +81,11 @@
             </objects>
             <point key="canvasLocation" x="-1862" y="-187"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="fpo-fL-GtP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rzu-MI-Dpb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qSg-wi-hnz">
-                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
-                        <imageReference key="selectedImage" image="star.fill" catalog="system" symbolScale="medium"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zq9-9Q-hcD">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="OrT-Vl-NA4" kind="relationship" relationship="rootViewController" id="3ep-YC-lX8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7vC-Oc-8ws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1030" y="-187"/>
-        </scene>
-        <!--Item 3-->
-        <scene sceneID="4Kq-SW-MuO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PpM-Dm-0Wi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="1hs-lp-8rr">
-                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="medium"/>
-                        <imageReference key="selectedImage" image="bookmark.fill" catalog="system" symbolScale="medium"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gaz-1N-oXy">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="RXn-od-eLl" kind="relationship" relationship="rootViewController" id="Rgk-4f-jve"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vVp-DJ-tpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-170" y="-187"/>
-        </scene>
-        <!--Item 3-->
-        <scene sceneID="xCv-1p-ZNQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E6o-x6-Ngk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="fFy-Qp-zHC">
-                        <imageReference key="image" image="person.crop.circle" catalog="system" symbolScale="medium"/>
-                        <imageReference key="selectedImage" image="person.crop.circle" catalog="system" symbolScale="medium"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5hq-ke-SiJ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OgW-SV-rOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="683" y="-187"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="bookmark" catalog="system" width="110" height="128"/>
-        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
-        <image name="star" catalog="system" width="128" height="116"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
-        <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

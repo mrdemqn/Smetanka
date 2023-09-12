@@ -20,7 +20,7 @@ class ChangeThemeViewController: UIViewController {
             selection()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .sheetBackground
@@ -67,26 +67,22 @@ private extension ChangeThemeViewController {
     
     func configureGeneralThemeButton(title: String, tag: Int) -> AppButton {
         var configuration = UIButton.Configuration.plain()
-        var container = AttributeContainer()
-        container.font = .helveticaNeueFont(18)
-        container.foregroundColor = .generalText
         
-        configuration.attributedTitle = AttributedString(title, attributes: container)
-        
-        configuration.titleAlignment = .leading
-        
-        configuration.image = .radioSelected
         configuration.imagePlacement = .trailing
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 30)
-        configuration.imagePadding = 10
         
         let button = AppButton(configuration: configuration)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         
-//        button.contentHorizontalAlignment = .fill
-//        button.contentMode = .scaleAspectFit
-//        button.layer.cornerRadius = 20
+        button.setImage(.radioSelected.withTintColor(.green,
+                                                     renderingMode: .alwaysOriginal), for: [])
+        
+        button.setTitleColor(.generalText, for: .normal)
+        button.titleLabel?.font = .helveticaNeueFont(18)
+        button.contentHorizontalAlignment = .fill
+        button.setTitle(localized(of: .themeButton), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.layer.cornerRadius = 16
         button.tag = tag
         
         return button
@@ -139,7 +135,6 @@ private extension ChangeThemeViewController {
     }
     
     @objc func changeThemeAction(_ sender: AppButton) {
-        print("Hello Sender: \(sender.tag)")
         switch sender.tag {
             case 1: setDefaultTheme()
             case 2: setDarkTheme()
@@ -149,15 +144,18 @@ private extension ChangeThemeViewController {
     }
     
     func setDefaultTheme() {
-        print("Case One")
+        currentTheme = .unspecified
+        ThemeManager.switchTheme(.unspecified)
     }
     
     func setDarkTheme() {
-        print("Case Two")
+        currentTheme = .dark
+        ThemeManager.switchTheme(.dark)
     }
     
     func setLightTheme() {
-        print("Case Three")
+        currentTheme = .light
+        ThemeManager.switchTheme(.light)
     }
 }
 
@@ -173,32 +171,53 @@ private extension ChangeThemeViewController {
     }
     
     func selectDefault() {
-        defaultThemeButton.configuration?.image = .radioSelected
-        darkThemeButton.configuration?.image = .radioUnselected
-        lightThemeButton.configuration?.image = .radioUnselected
+        defaultThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioSelected
+        }
         defaultThemeButton.setNeedsUpdateConfiguration()
-//        defaultThemeButton.setImage(.radioSelected, for: [.normal, .highlighted])
-//        darkThemeButton.setImage(.radioUnselected, for: [.normal, .highlighted])
-//        lightThemeButton.setImage(.radioUnselected, for: [.normal, .highlighted])
+        
+        darkThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioUnselected
+        }
+        darkThemeButton.setNeedsUpdateConfiguration()
+        
+        lightThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioUnselected
+        }
+        lightThemeButton.setNeedsUpdateConfiguration()
     }
     
     func selectDark() {
-        defaultThemeButton.configuration?.image = .radioUnselected
-        darkThemeButton.configuration?.image = .radioSelected
-        lightThemeButton.configuration?.image = .radioUnselected
+        defaultThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioUnselected
+        }
         defaultThemeButton.setNeedsUpdateConfiguration()
-//        defaultThemeButton.setImage(.radioUnselected, for: [.normal, .highlighted])
-//        darkThemeButton.setImage(.radioSelected, for: [.normal, .highlighted])
-//        lightThemeButton.setImage(.radioUnselected, for: [.normal, .highlighted])
+        
+        darkThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioSelected
+        }
+        darkThemeButton.setNeedsUpdateConfiguration()
+        
+        lightThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioUnselected
+        }
+        lightThemeButton.setNeedsUpdateConfiguration()
     }
     
     func selectLight() {
-        defaultThemeButton.configuration?.image = .radioUnselected
-        darkThemeButton.configuration?.image = .radioUnselected
-        lightThemeButton.configuration?.image = .radioSelected
+        defaultThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioUnselected
+        }
         defaultThemeButton.setNeedsUpdateConfiguration()
-//        defaultThemeButton.setImage(.radioUnselected, for: [.normal, .highlighted])
-//        darkThemeButton.setImage(.radioUnselected, for: [.normal, .highlighted])
-//        lightThemeButton.setImage(.radioSelected, for: [.normal, .highlighted])
+        
+        darkThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioUnselected
+        }
+        darkThemeButton.setNeedsUpdateConfiguration()
+        
+        lightThemeButton.configurationUpdateHandler = { button in
+            button.configuration?.image = .radioSelected
+        }
+        lightThemeButton.setNeedsUpdateConfiguration()
     }
 }

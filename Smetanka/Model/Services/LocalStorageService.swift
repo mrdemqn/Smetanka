@@ -13,9 +13,14 @@ protocol LocalStorageServiceProtocol {
     
     func save<T: NSManagedObject>(_ entity: T.Type,
                                   _ createEntityClosure: @escaping (NSManagedObjectContext) -> Void)
+    
+    func remove<T: NSManagedObject>(_ object: T.Type,
+                                    _ deleteEntityClosure: @escaping (NSManagedObjectContext) -> Void)
 }
 
 final class LocalStorageService: LocalStorageServiceProtocol {
+    
+    static var favourite: [Food] = []
     
     private var context: NSManagedObjectContext {
         persistentContainer.viewContext
@@ -60,6 +65,29 @@ final class LocalStorageService: LocalStorageServiceProtocol {
             let error = error as NSError
             print("Fetch Error: \(error.userInfo)")
             return []
+        }
+    }
+    
+    func remove<T: NSManagedObject>(_ object: T.Type,
+                                    _ deleteEntityClosure: @escaping (NSManagedObjectContext) -> Void) {
+        do {
+            deleteEntityClosure(context)
+            try context.save()
+        } catch {
+            print("Delete Error: \(error)")
+        }
+    }
+    
+    static func saveRecipe(_ recipe: Food) {
+        favourite.append(recipe)
+    }
+    
+    static func removeRecipe(_ recipe: Food) {
+        for food in favourite {
+            if food.id == recipe.id {
+                favourite.remove(at: 0)
+                break
+            }
         }
     }
 }

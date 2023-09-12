@@ -38,7 +38,6 @@ final class RecipesViewController: UIViewController {
         
         Task {
 //            await viewModel.fetchRecipes()
-//            await viewModel.translate()
         }
     }
     
@@ -137,7 +136,7 @@ extension RecipesViewController: UITableViewDelegate {
         let controller = DetailsRecipeViewController()
         let recipe = viewModel.recipes[indexPath.item]
         controller.recipeId = recipe.id
-        push(of: controller)
+        push(of: controller, hideBar: true)
     }
 }
 

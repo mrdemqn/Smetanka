@@ -38,6 +38,6 @@ extension UIImageView {
 
 extension UIImage {
     
-    static let radioSelected = UIImage(imageLiteralResourceName: "radio_selected")
-    static let radioUnselected = UIImage(imageLiteralResourceName: "radio_unselected")
+    static let radioSelected = UIImage(named: "radio_selected") ?? .add
+    static let radioUnselected = UIImage(named: "radio_unselected") ?? .add
 }

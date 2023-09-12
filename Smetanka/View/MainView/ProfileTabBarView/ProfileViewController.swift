@@ -68,7 +68,7 @@ private extension ProfileViewController {
         contentHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
         contentHeaderLabel.text = localized(of: .profileHeader)
         contentHeaderLabel.textColor = .generalText
-        contentHeaderLabel.font = .helveticaNeueFont(32)
+        contentHeaderLabel.font = .helveticaNeueFont(32, weight: .bold)
     }
     
     func configureChangeThemeButton() {
@@ -114,7 +114,7 @@ private extension ProfileViewController {
         contentView.addSubview(contentHeaderLabel)
         
         NSLayoutConstraint.activate([
-            contentHeaderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            contentHeaderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 35),
             contentHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             contentHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
         ])

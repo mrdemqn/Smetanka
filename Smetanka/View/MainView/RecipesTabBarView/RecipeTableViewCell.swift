@@ -19,8 +19,8 @@ final class RecipeTableViewCell: UITableViewCell {
         setupUI()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    @IBAction private func favouriteAction(_ sender: UIButton) {
+        
     }
 }
 

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavouriteRecipes" representedClassName="FavouriteRecipes" syncable="YES">
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodCore"/>
+    </entity>
     <entity name="FoodCore" representedClassName="FoodCore" syncable="YES">
         <attribute name="difficulty" optional="YES" attributeType="String" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="id" optional="YES" attributeType="String"/>

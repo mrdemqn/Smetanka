@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class DetailsRecipeViewController: UIViewController {
+final class DetailsRecipeViewController: UIViewController {
     
     private var viewModel: DetailsRecipeViewModelProtocol!
     
@@ -34,6 +34,7 @@ class DetailsRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupLoadingLayout()
         
         viewModel = DetailsRecipeViewModel()

@@ -66,7 +66,8 @@ extension UIViewController {
         push(of: controller)
     }
     
-    func push(of viewController: UIViewController, animated: Bool = true) {
+    func push(of viewController: UIViewController, hideBar hideWhenPushed: Bool = false, animated: Bool = true) {
+        viewController.hidesBottomBarWhenPushed = hideWhenPushed
         navigationController?.pushViewController(viewController, animated: animated)
     }
     

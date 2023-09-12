@@ -8,4 +8,5 @@
 final class Xibs {
     
     static let recipeCell = "RecipeCell"
+    static let recipeCollectionCell = "RecipeCollectionViewCell"
 }
