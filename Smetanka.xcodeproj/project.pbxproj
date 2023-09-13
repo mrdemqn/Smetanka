@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E529D8D62AB1E2B700B286AC /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = E529D8D52AB1E2B700B286AC /* Hero */; };
 		E52E8B632AB0CB5B00A1B10A /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E8B622AB0CB5B00A1B10A /* RecipeCollectionViewCell.swift */; };
 		E52F98112A8CB6390020D7BA /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = E52F98102A8CB6390020D7BA /* AlamofireImage */; };
 		E53A1F332A82A2E10057E813 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A1F322A82A2E10057E813 /* LogInViewModel.swift */; };
@@ -190,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E529D8D62AB1E2B700B286AC /* Hero in Frameworks */,
 				E58E2C6E2A8555140038262A /* Alamofire in Frameworks */,
 				E56A71092A821EC70062D763 /* FirebaseDatabase in Frameworks */,
 				E590DC662A7A78BA000F14A5 /* RxRelay in Frameworks */,
@@ -697,6 +699,7 @@
 				E56A710C2A821EC70062D763 /* FirebaseStorage */,
 				E58E2C6D2A8555140038262A /* Alamofire */,
 				E52F98102A8CB6390020D7BA /* AlamofireImage */,
+				E529D8D52AB1E2B700B286AC /* Hero */,
 			);
 			productName = Smetanka;
 			productReference = E590DC042A7A5A60000F14A5 /* Smetanka.app */;
@@ -733,6 +736,7 @@
 				E56A71052A821EC70062D763 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E58E2C6C2A8555140038262A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E52F980F2A8CB6390020D7BA /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				E529D8D42AB1E2B700B286AC /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = E590DC052A7A5A60000F14A5 /* Products */;
 			projectDirPath = "";
@@ -1062,6 +1066,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E529D8D42AB1E2B700B286AC /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.6.2;
+			};
+		};
 		E52F980F2A8CB6390020D7BA /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
@@ -1105,6 +1117,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E529D8D52AB1E2B700B286AC /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E529D8D42AB1E2B700B286AC /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
 		E52F98102A8CB6390020D7BA /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E52F980F2A8CB6390020D7BA /* XCRemoteSwiftPackageReference "AlamofireImage" */;

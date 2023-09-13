@@ -26,6 +26,7 @@ enum Localization: String {
     case favourites = "favourites"
     case favouritesTabBarTitle = "favourites_tab_bar_title"
     case myRecipesTabBarTitle = "my_recipes_tab_bar_title"
+    case myRecipes = "my_recipes"
     case profileTabBarTitle = "profile_tab_bar_title"
     case difficulty = "difficulty"
     case portion = "portion"

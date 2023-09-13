@@ -26,6 +26,7 @@
 "recipe" = "Рецепт";
 "favourites" = "Избранное";
 "favourites_tab_bar_title" = "Избранное";
+"my_recipes" = "Мои Рецепты";
 "my_recipes_tab_bar_title" = "Мои Рецепты";
 "profile_tab_bar_title" = "Профиль";
 "difficulty" = "Сложность";

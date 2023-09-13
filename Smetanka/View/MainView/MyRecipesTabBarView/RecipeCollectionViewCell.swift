@@ -17,24 +17,19 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print(#function)
         configureLayout()
+        prepareLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        prepareLayout()
-    }
-    
     func configureContent(title: String,
                           difficulty: String,
                           imageLink: String) {
         titleLabel.text = title
-        difficultyLabel.text = difficulty
+        difficultyLabel.text = "\(localized(of: .difficulty)): \(difficulty)"
         imageView.load(from: imageLink)
     }
 }
@@ -42,24 +37,48 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
 private extension RecipeCollectionViewCell {
     
     func configureLayout() {
-        print(#function)
+        configureSuperView()
         configureBackgroundCellView()
         configureImageView()
+        configureTitleLabel()
+        configureDifficultyLabel()
     }
     
     func prepareLayout() {
-        print(#function)
         prepareBackgroundCellView()
         prepareImageView()
+        prepareTitleLabel()
+        prepareDifficultyLabel()
+    }
+    
+    func configureSuperView() {
+        backgroundColor = .clear
     }
     
     func configureBackgroundCellView() {
         backgroundCellView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundCellView.backgroundColor = .red
+        backgroundCellView.backgroundColor = .backgroundTableViewCell
+        backgroundCellView.layer.cornerRadius = 20
     }
     
     func configureImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 20
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        imageView.layer.masksToBounds = true
+    }
+    
+    func configureTitleLabel() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = .helveticaNeueFont(12, weight: .medium)
+        titleLabel.lineBreakMode = .byTruncatingMiddle
+    }
+    
+    func configureDifficultyLabel() {
+        difficultyLabel.translatesAutoresizingMaskIntoConstraints = false
+        difficultyLabel.font = .helveticaNeueFont(10, weight: .medium)
+        difficultyLabel.lineBreakMode = .byTruncatingMiddle
     }
     
     func prepareBackgroundCellView() {
@@ -80,7 +99,28 @@ private extension RecipeCollectionViewCell {
             imageView.topAnchor.constraint(equalTo: backgroundCellView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: backgroundCellView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: backgroundCellView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: backgroundCellView.bottomAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: bounds.height * 0.7),
+        ])
+    }
+    
+    func prepareTitleLabel() {
+        backgroundCellView.addSubview(titleLabel)
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: backgroundCellView.leadingAnchor, constant: 5),
+            titleLabel.trailingAnchor.constraint(equalTo: backgroundCellView.trailingAnchor, constant: -5),
+        ])
+    }
+    
+    func prepareDifficultyLabel() {
+        backgroundCellView.addSubview(difficultyLabel)
+        
+        NSLayoutConstraint.activate([
+            difficultyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            difficultyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            difficultyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            difficultyLabel.bottomAnchor.constraint(equalTo: backgroundCellView.bottomAnchor, constant: -10),
         ])
     }
 }

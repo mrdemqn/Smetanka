@@ -17,7 +17,9 @@ final class MainTabBarViewController: UITabBarController {
         
         let myRecipesViewController = MyRecipesViewController()
         let myRecipesNavigation = UINavigationController(rootViewController: myRecipesViewController)
+        
         let profileViewController = ProfileViewController()
+        let profileNavigation = UINavigationController(rootViewController: profileViewController)
         
         myRecipesViewController.tabBarItem.image = .init(systemName: "bookmark")
         myRecipesViewController.tabBarItem.selectedImage = .init(systemName: "bookmark.fill")
@@ -29,6 +31,6 @@ final class MainTabBarViewController: UITabBarController {
         
         viewControllers?.append(favouriteNavigation)
         viewControllers?.append(myRecipesNavigation)
-        viewControllers?.append(profileViewController)
+        viewControllers?.append(profileNavigation)
     }
 }

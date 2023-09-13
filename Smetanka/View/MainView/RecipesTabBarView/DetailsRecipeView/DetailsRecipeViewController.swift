@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Hero
 
 final class DetailsRecipeViewController: UIViewController {
     
@@ -34,7 +35,8 @@ final class DetailsRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        isHeroEnabled = true
+        programRecipeImageView.heroID = "ImageID"
         setupLoadingLayout()
         
         viewModel = DetailsRecipeViewModel()
@@ -97,9 +99,9 @@ private extension DetailsRecipeViewController {
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),

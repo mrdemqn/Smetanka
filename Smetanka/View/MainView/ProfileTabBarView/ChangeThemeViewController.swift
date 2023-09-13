@@ -35,11 +35,6 @@ class ChangeThemeViewController: UIViewController {
         prepareDarkThemeButton()
         prepareLightThemeButton()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        prepareDidAppear()
-    }
 }
 
 private extension ChangeThemeViewController {
@@ -119,10 +114,6 @@ private extension ChangeThemeViewController {
             lightThemeButton.trailingAnchor.constraint(equalTo: darkThemeButton.trailingAnchor),
             lightThemeButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-    }
-    
-    func prepareDidAppear() {
-        
     }
 }
 

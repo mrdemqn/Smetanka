@@ -26,6 +26,7 @@
 "recipe" = "Recipe";
 "favourites" = "Favourites";
 "favourites_tab_bar_title" = "Favourites";
+"my_recipes" = "My Recipes";
 "my_recipes_tab_bar_title" = "My Recipes";
 "profile_tab_bar_title" = "Profile";
 "difficulty" = "Difficulty";

@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ProfileViewModel()
-        
+        setupNavigationBar()
         configureLayout()
         prepareViews()
     }
@@ -38,13 +38,11 @@ private extension ProfileViewController {
         configureSuperView()
         configureScrollView()
         configureContentView()
-        configureContentHeader()
         configureChangeThemeButton()
     }
     
     func prepareViews() {
         prepareScrollView()
-        prepareContentHeader()
         prepareChangeThemeButton()
     }
     
@@ -62,13 +60,6 @@ private extension ProfileViewController {
     func configureContentView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .background
-    }
-    
-    func configureContentHeader() {
-        contentHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentHeaderLabel.text = localized(of: .profileHeader)
-        contentHeaderLabel.textColor = .generalText
-        contentHeaderLabel.font = .helveticaNeueFont(32, weight: .bold)
     }
     
     func configureChangeThemeButton() {
@@ -100,7 +91,7 @@ private extension ProfileViewController {
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -110,29 +101,24 @@ private extension ProfileViewController {
         ])
     }
     
-    func prepareContentHeader() {
-        contentView.addSubview(contentHeaderLabel)
-        
-        NSLayoutConstraint.activate([
-            contentHeaderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 35),
-            contentHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            contentHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
-        ])
-    }
-    
     func prepareChangeThemeButton() {
         contentView.addSubview(changeThemeButton)
         
         NSLayoutConstraint.activate([
-            changeThemeButton.topAnchor.constraint(equalTo: contentHeaderLabel.bottomAnchor, constant: 50),
-            changeThemeButton.leadingAnchor.constraint(equalTo: contentHeaderLabel.leadingAnchor),
-            changeThemeButton.trailingAnchor.constraint(equalTo: contentHeaderLabel.trailingAnchor),
+            changeThemeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
+            changeThemeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            changeThemeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             changeThemeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     
     func prepareChangeButtonLayer() {
         changeThemeButton.addVerticalBorder(borderWidth: 1)
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.title = localized(of: .profileHeader)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
