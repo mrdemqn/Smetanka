@@ -29,10 +29,6 @@ final class MyRecipesViewController: UIViewController {
         
         collectionView.isHeroEnabled = true
         collectionView.heroModifiers = [.cascade]
-        
-        Task {
-            await viewModel.fetchMyRecipes()
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
