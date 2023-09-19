@@ -18,7 +18,6 @@
 		E56A70EC2A81036A0062D763 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A70EB2A81036A0062D763 /* RegistrationViewController.swift */; };
 		E56A70EE2A8103780062D763 /* RegistrationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56A70ED2A8103780062D763 /* RegistrationStoryboard.storyboard */; };
 		E56A70F02A8103D50062D763 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A70EF2A8103D50062D763 /* LogInViewController.swift */; };
-		E56A70F22A8103DF0062D763 /* LogInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56A70F12A8103DF0062D763 /* LogInStoryboard.storyboard */; };
 		E56A70F42A8104E90062D763 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A70F32A8104E90062D763 /* ThirdPageViewController.swift */; };
 		E56A70F62A8104F10062D763 /* ThirdPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56A70F52A8104F10062D763 /* ThirdPageStoryboard.storyboard */; };
 		E56A70F92A818ADF0062D763 /* ProxyLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A70F82A818ADF0062D763 /* ProxyLaunchViewModel.swift */; };
@@ -110,7 +109,6 @@
 		E56A70EB2A81036A0062D763 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		E56A70ED2A8103780062D763 /* RegistrationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationStoryboard.storyboard; sourceTree = "<group>"; };
 		E56A70EF2A8103D50062D763 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		E56A70F12A8103DF0062D763 /* LogInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogInStoryboard.storyboard; sourceTree = "<group>"; };
 		E56A70F32A8104E90062D763 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		E56A70F52A8104F10062D763 /* ThirdPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ThirdPageStoryboard.storyboard; sourceTree = "<group>"; };
 		E56A70F82A818ADF0062D763 /* ProxyLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyLaunchViewModel.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				E56A70EF2A8103D50062D763 /* LogInViewController.swift */,
-				E56A70F12A8103DF0062D763 /* LogInStoryboard.storyboard */,
 			);
 			path = LogInView;
 			sourceTree = "<group>";
@@ -713,7 +710,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					E590DC032A7A5A60000F14A5 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -752,7 +749,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E56A70F22A8103DF0062D763 /* LogInStoryboard.storyboard in Resources */,
 				E590DC142A7A5A63000F14A5 /* LaunchScreen.storyboard in Resources */,
 				E56A70EE2A8103780062D763 /* RegistrationStoryboard.storyboard in Resources */,
 				E590DC522A7A704D000F14A5 /* OnboardingLaunchStoryboard.storyboard in Resources */,
@@ -905,6 +901,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -966,6 +963,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -997,7 +995,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = ProxyLaunchStoryboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1026,7 +1024,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = ProxyLaunchStoryboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -15,7 +15,7 @@ protocol MyRecipeViewModelProtocol {
     
     var recipesSubject: PublishSubject<Void> { get }
     
-    func fetchMyRecipes() async
+    func fetchMyRecipes()
 }
 
 final class MyRecipeViewModel: MyRecipeViewModelProtocol {
@@ -24,7 +24,6 @@ final class MyRecipeViewModel: MyRecipeViewModelProtocol {
     
     var recipes: [Food] = [] {
         didSet {
-            print("DidSet")
             recipesSubject.on(.completed)
         }
     }
@@ -37,14 +36,9 @@ final class MyRecipeViewModel: MyRecipeViewModelProtocol {
     
     var recipesSubject: PublishSubject<Void> = PublishSubject()
     
-    func fetchMyRecipes() async {
+    func fetchMyRecipes() {
         loadingSubject.onNext(true)
-        do {
-            let foods = try await foodService.fetchAllRecipes()
-            recipes = foods
-        } catch {
-            print("Has Error: \(error)")
-        }
+        
         loadingSubject.onNext(false)
     }
 }

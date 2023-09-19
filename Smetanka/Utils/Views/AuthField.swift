@@ -12,6 +12,10 @@ final class AuthField: UITextField {
     
     private let padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupTextField()
