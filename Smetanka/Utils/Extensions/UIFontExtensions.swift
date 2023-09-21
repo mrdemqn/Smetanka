@@ -10,6 +10,9 @@ import UIKit
 extension UIFont {
     
     static func helveticaNeueFont(_ size: CGFloat, weight: Weight = .regular) -> UIFont {
-        return UIFont(name: Font.helveticaNeue, size: size) ?? .systemFont(ofSize: size, weight: weight)
+        let descriptor = UIFontDescriptor(name: Font.helveticaNeue, size: size)
+        descriptor.addingAttributes([.traits: [UIFontDescriptor.TraitKey.weight: weight]])
+        let font = UIFont(descriptor: descriptor, size: size)
+        return font
     }
 }

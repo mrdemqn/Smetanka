@@ -22,5 +22,12 @@ final class ThemeManager {
         }
     }
     
+    static func startTheme() -> UIUserInterfaceStyle {
+        let userDefaultsService: UserDefaultsServiceProtocol = UserDefaultsService()
+        let themKey = userDefaultsService.getInt(UserDefaultKeys.theme)
+        let theme = UIUserInterfaceStyle(rawValue: themKey) ?? .unspecified
+        return theme
+    }
+    
     static let currentStyle: UIUserInterfaceStyle = UIScreen.main.traitCollection.userInterfaceStyle
 }

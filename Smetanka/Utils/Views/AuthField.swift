@@ -14,6 +14,7 @@ final class AuthField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupTextField()
     }
     
     required init?(coder: NSCoder) {
@@ -40,14 +41,16 @@ final class AuthField: UITextField {
     private func setupTextField() {
         textColor = .fieldText
         
-        layer.cornerRadius = 10
-        layer.backgroundColor = UIColor.red.cgColor
-        
         layer.cornerRadius = 20
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowRadius = 10
         layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width: 10, height: 10)
+        
+        borderStyle = .none
+        
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.gray.cgColor
         
         font = .helveticaNeueFont(14)
         

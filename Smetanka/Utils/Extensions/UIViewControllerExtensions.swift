@@ -79,7 +79,10 @@ extension UIViewController {
         navigationController?.popToRootViewController(animated: animated)
     }
     
-    func present(to controller: UIViewController, animated: Bool = true) {
+    func present(to controller: UIViewController,
+                 style modalPresentationStyle: UIModalPresentationStyle = .automatic,
+                 animated: Bool = true) {
+        controller.modalPresentationStyle = modalPresentationStyle
         present(controller, animated: animated)
     }
     
@@ -87,13 +90,43 @@ extension UIViewController {
         navigationController?.setViewControllers([viewController], animated: animated)
     }
     
-    func showErrorAlert() {
-        let alert = UIAlertController(title: localized(of: .errorAlertTitle), message: localized(of: .somethingWrong), preferredStyle: .alert)
+    func showErrorAlert(_ title: String?, _ message: String?) {
+        let alertTitle = title ?? localized(of: .errorAlertTitle)
+        let alertMessage = message ?? localized(of: .somethingWrong)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: localized(of: .errorAlertCancelActionTitle), style: .destructive)
         
         alert.addAction(cancelAction)
         
         present(to: alert)
+    }
+    
+    func showRegistrationSuccessAlert() {
+        let alert = UIAlertController(title: localized(of: .registrationSuccessTitle), message: localized(of: .registrationSuccessMessage), preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: localized(of: .next), style: .default)
+        
+        alert.addAction(cancelAction)
+        
+        present(to: alert)
+    }
+    
+    @discardableResult
+    func showLoader(_ message: String) -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+        present(to: alert)
+        return alert
+    }
+    
+    func stopLoader(loader : UIAlertController) {
+        DispatchQueue.main.async {
+            loader.dismiss(animated: true)
+        }
     }
 }

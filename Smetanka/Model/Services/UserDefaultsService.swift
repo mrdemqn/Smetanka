@@ -12,6 +12,10 @@ protocol UserDefaultsServiceProtocol {
     func setBool(_ value: Bool, _ key: String)
     
     func getBool(_ key: String) -> Bool
+    
+    func setInt(_ value: Int, _ key: String)
+    
+    func getInt(_ key: String) -> Int
 }
 
 final class UserDefaultsService: UserDefaultsServiceProtocol {
@@ -25,5 +29,13 @@ final class UserDefaultsService: UserDefaultsServiceProtocol {
     
     func setBool(_ value: Bool, _ key: String) {
         userDefaults.set(value, forKey: key)
+    }
+    
+    func setInt(_ value: Int, _ key: String) {
+        userDefaults.set(value, forKey: key)
+    }
+    
+    func getInt(_ key: String) -> Int {
+        return userDefaults.integer(forKey: key)
     }
 }

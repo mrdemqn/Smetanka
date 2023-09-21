@@ -38,6 +38,8 @@
 		E588C80E2A8BD1AA003F4803 /* RecipesViewMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588C80D2A8BD1AA003F4803 /* RecipesViewMapper.swift */; };
 		E588C8202A8BE8AA003F4803 /* DetailsRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588C81F2A8BE8AA003F4803 /* DetailsRecipeViewModel.swift */; };
 		E58D2B412A88F67B003EF4BF /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D2B402A88F67B003EF4BF /* UIImageExtensions.swift */; };
+		E58D93F12ABB63FB002C7C04 /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D93F02ABB63FA002C7C04 /* ErrorMessages.swift */; };
+		E58D93F32ABB6CFB002C7C04 /* ConfirmEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D93F22ABB6CFB002C7C04 /* ConfirmEmailViewController.swift */; };
 		E58E2C532A851A340038262A /* DetailsRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C522A851A340038262A /* DetailsRecipeViewController.swift */; };
 		E58E2C572A851CB90038262A /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58E2C562A851CB90038262A /* RecipeTableViewCell.xib */; };
 		E58E2C592A851CE70038262A /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C582A851CE70038262A /* RecipeTableViewCell.swift */; };
@@ -83,6 +85,7 @@
 		E590DC772A7ADE80000F14A5 /* FirstPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E590DC762A7ADE80000F14A5 /* FirstPageStoryboard.storyboard */; };
 		E590DC792A7ADF3C000F14A5 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */; };
 		E5A700592A7C14B400B06A17 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A700582A7C14B400B06A17 /* Food.swift */; };
+		E5BA6A642ABC89B7000C304A /* ChangeThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */; };
 		E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */; };
 		E5BCCEC22A823ED300001EEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */; };
 		E5BCCEC62A828B3300001EEE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEC52A828B3300001EEE /* Font.swift */; };
@@ -125,6 +128,8 @@
 		E588C80D2A8BD1AA003F4803 /* RecipesViewMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewMapper.swift; sourceTree = "<group>"; };
 		E588C81F2A8BE8AA003F4803 /* DetailsRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRecipeViewModel.swift; sourceTree = "<group>"; };
 		E58D2B402A88F67B003EF4BF /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		E58D93F02ABB63FA002C7C04 /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
+		E58D93F22ABB6CFB002C7C04 /* ConfirmEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailViewController.swift; sourceTree = "<group>"; };
 		E58E2C522A851A340038262A /* DetailsRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRecipeViewController.swift; sourceTree = "<group>"; };
 		E58E2C562A851CB90038262A /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		E58E2C582A851CE70038262A /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -168,6 +173,7 @@
 		E590DC762A7ADE80000F14A5 /* FirstPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstPageStoryboard.storyboard; sourceTree = "<group>"; };
 		E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		E5A700582A7C14B400B06A17 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeThemeViewModel.swift; sourceTree = "<group>"; };
 		E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5BCCEC52A828B3300001EEE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -531,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				E590DC3A2A7A6208000F14A5 /* CustomError.swift */,
+				E58D93F02ABB63FA002C7C04 /* ErrorMessages.swift */,
 			);
 			path = CustomErrors;
 			sourceTree = "<group>";
@@ -630,6 +637,7 @@
 			children = (
 				E5A700612A7C283B00B06A17 /* RegistrationView */,
 				E56A70EA2A8103560062D763 /* LogInView */,
+				E58D93F22ABB6CFB002C7C04 /* ConfirmEmailViewController.swift */,
 			);
 			path = AuthenticationView;
 			sourceTree = "<group>";
@@ -665,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				E5FB31C62AA36F740077A28B /* ProfileViewModel.swift */,
+				E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */,
 			);
 			path = ProfileViewModel;
 			sourceTree = "<group>";
@@ -789,6 +798,7 @@
 				E5FB31CD2AA47FC10077A28B /* AppButton.swift in Sources */,
 				E590DC4C2A7A6E0D000F14A5 /* UIViewControllerExtensions.swift in Sources */,
 				E5FB31C42AA36ED90077A28B /* ProfileViewController.swift in Sources */,
+				E58D93F32ABB6CFB002C7C04 /* ConfirmEmailViewController.swift in Sources */,
 				E590DC6A2A7ADBA6000F14A5 /* OnboardingPageViewController.swift in Sources */,
 				E56A71002A821CC10062D763 /* AuthenticationService.swift in Sources */,
 				E5D43E022AA0F416004618CD /* UIColorExtensions.swift in Sources */,
@@ -802,6 +812,7 @@
 				E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */,
 				E58E2C622A854D330038262A /* FoodService.swift in Sources */,
 				E58E2C532A851A340038262A /* DetailsRecipeViewController.swift in Sources */,
+				E5BA6A642ABC89B7000C304A /* ChangeThemeViewModel.swift in Sources */,
 				E58367BD2AAA307600E424A4 /* FavouriteViewController.swift in Sources */,
 				E5A700592A7C14B400B06A17 /* Food.swift in Sources */,
 				E590DC4A2A7A6D23000F14A5 /* Injector.swift in Sources */,
@@ -823,6 +834,7 @@
 				E588C8202A8BE8AA003F4803 /* DetailsRecipeViewModel.swift in Sources */,
 				E5DD531F2A7AF3FB0039AFA9 /* SecondPageViewController.swift in Sources */,
 				E590DC5D2A7A7120000F14A5 /* Animations.swift in Sources */,
+				E58D93F12ABB63FB002C7C04 /* ErrorMessages.swift in Sources */,
 				E5FB31D02AA481BE0077A28B /* ChangeThemeViewController.swift in Sources */,
 				E5801FE72A7BB32800119F37 /* ContainerPageViewController.swift in Sources */,
 				E590DC792A7ADF3C000F14A5 /* UserDefaultKeys.swift in Sources */,
@@ -997,7 +1009,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ProxyLaunchStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1026,7 +1038,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ProxyLaunchStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

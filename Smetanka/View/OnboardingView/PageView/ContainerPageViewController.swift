@@ -101,6 +101,7 @@ extension ContainerPageViewController {
     private func textLocalization() {
         skipButton.setTitle(localized(of: .skip), for: .normal)
         nextButton.setTitle(localized(of: .next), for: .normal)
+        registrationButton.setTitle(localized(of: .registration), for: .normal)
     }
     
     private func changeNextButton() {

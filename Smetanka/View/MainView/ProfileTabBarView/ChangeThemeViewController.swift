@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ChangeThemeViewController: UIViewController {
+final class ChangeThemeViewController: UIViewController {
+    
+    private var viewModel: ChangeThemeViewModelProtocol!
     
     private let headerLabel = UILabel()
     
@@ -23,6 +25,8 @@ class ChangeThemeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = ChangeThemeViewModel()
+        
         view.backgroundColor = .sheetBackground
         
         configureLayout()
@@ -75,7 +79,7 @@ private extension ChangeThemeViewController {
         button.setTitleColor(.generalText, for: .normal)
         button.titleLabel?.font = .helveticaNeueFont(18)
         button.contentHorizontalAlignment = .fill
-        button.setTitle(localized(of: .themeButton), for: .normal)
+        button.setTitle(title, for: .normal)
         button.contentMode = .scaleAspectFit
         button.layer.cornerRadius = 16
         button.tag = tag
@@ -127,26 +131,17 @@ private extension ChangeThemeViewController {
     
     @objc func changeThemeAction(_ sender: AppButton) {
         switch sender.tag {
-            case 1: setDefaultTheme()
-            case 2: setDarkTheme()
-            case 3: setLightTheme()
+            case 1: setTheme(.unspecified)
+            case 2: setTheme(.dark)
+            case 3: setTheme(.light)
             default: print("No Action")
         }
     }
     
-    func setDefaultTheme() {
-        currentTheme = .unspecified
-        ThemeManager.switchTheme(.unspecified)
-    }
-    
-    func setDarkTheme() {
-        currentTheme = .dark
-        ThemeManager.switchTheme(.dark)
-    }
-    
-    func setLightTheme() {
-        currentTheme = .light
-        ThemeManager.switchTheme(.light)
+    func setTheme(_ style: UIUserInterfaceStyle) {
+        currentTheme = style
+        ThemeManager.switchTheme(style)
+        viewModel.saveTheme(style.rawValue)
     }
 }
 

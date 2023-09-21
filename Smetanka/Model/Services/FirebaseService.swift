@@ -42,7 +42,14 @@ final class FirebaseService: FirebaseServiceProtocol {
             
             guard let authResult = authResult else { return }
             
-            completion(.success(result: authResult.user))
+            authResult.user.sendEmailVerification { error in
+                guard error == nil else { 
+                    guard let e = error as? AuthErrorCode else { return }
+                    completion(.failure(custom: e, error))
+                    return
+                }
+                completion(.success(result: authResult.user))
+            }
         }
     }
     

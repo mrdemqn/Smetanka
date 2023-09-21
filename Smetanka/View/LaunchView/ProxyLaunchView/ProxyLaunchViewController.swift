@@ -13,6 +13,7 @@ final class ProxyLaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         viewModel = ProxyLaunchViewModel()
         
         chooseAppDestination()

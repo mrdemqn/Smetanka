@@ -84,7 +84,8 @@ extension OnboardingPageViewController {
     
     func pushLogInView() {
         viewModel.setOnboardingShowed()
-        push(to: Navigation.login)
+        let controller = LogInViewController()
+        push(of: controller)
     }
     
     func pushRegistrationView() {

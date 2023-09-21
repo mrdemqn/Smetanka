@@ -96,21 +96,28 @@ extension RegistrationViewController {
     
     private func bindViewModel() {
         /// MARK: Subscribe loading view
-        viewModel.isLoading.subscribe { [weak self] isLoading in
+        viewModel.isLoading.subscribe { [unowned self] isLoading in
             DispatchQueue.main.async {
-                self?.loadingView.isHidden = !isLoading
+                self.loadingView.isHidden = !isLoading
             }
         }.disposed(by: disposeBag)
         
         /// MARK: Subscribe success response
-        viewModel.successSubject.subscribe{ [weak self] user in
-            self?.push(to: Navigation.mainTabBar)
+        viewModel.successSubject.subscribe { [unowned self] event in
+            guard let user = event.element else { return }
+            if user.isEmailVerified {
+                setViewController(Navigation.mainTabBar)
+            } else {
+                let controller = ConfirmEmailViewController()
+                present(to: controller, style: .overFullScreen)
+            }
         }.disposed(by: disposeBag)
         
         /// MARK: Subscribe failure response
-        viewModel.failureSubject.subscribe { [weak self] authErrorCode in
-            DispatchQueue.main.async {
-                self?.showErrorAlert()
+        viewModel.failureSubject.subscribe { [unowned self] error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let message = ErrorMessages.describeFBCode(error.code)
+                self.showErrorAlert(message?.title, message?.message)
             }
         }.disposed(by: disposeBag)
     }
@@ -153,49 +160,5 @@ extension RegistrationViewController: UITextFieldDelegate {
         }
         
         return true
-    }
-}
-
-
-final class RegistrationTextField: UITextField {
-    
-    private let padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupTextField()
-    }
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        bounds.inset(by: padding)
-    }
-    
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        bounds.inset(by: padding)
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        bounds.inset(by: padding)
-    }
-    
-    func setupPlaceholder(_ placeholder: String) {
-        self.placeholder = placeholder
-    }
-    
-    private func setupTextField() {
-        textColor = .fieldText
-        
-        layer.cornerRadius = 10
-        layer.backgroundColor = UIColor.red.cgColor
-        
-        layer.cornerRadius = 20
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowRadius = 10
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 10, height: 10)
-        
-        font = .helveticaNeueFont(14)
-        
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

@@ -6,48 +6,44 @@
 //
 
 import FirebaseAuth
+import RxSwift
 
 protocol LogInViewModelProtocol {
     
-    func createUser(_ email: String,
-                    _ password: String,
-                    _ completion: @escaping (AppResult<User, AuthErrorCode>) -> Void)
+    var loadingSubject: BehaviorSubject<Bool> { get }
+    
+    var successSubject: PublishSubject<User> { get }
+    
+    var failureSubject: PublishSubject<AuthErrorCode> { get }
     
     func signInWithEmail(_ email: String,
-                    _ password: String,
-                    _ completion: @escaping (AppResult<User, AuthErrorCode>) -> Void)
+                    _ password: String)
 }
 
 final class LogInViewModel: LogInViewModelProtocol {
     
     private var authService: AuthenticationServiceProtocol!
     
+    var loadingSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+
+    var successSubject: PublishSubject<User> = PublishSubject()
+    
+    var failureSubject: PublishSubject<AuthErrorCode> = PublishSubject()
+    
     init() {
         authService = AuthenticationService()
     }
     
-    func createUser(_ email: String,
-                    _ password: String,
-                    _ completion: @escaping (AppResult<User, AuthErrorCode>) -> Void) {
-        authService.createUser(email, password) { result in
-            switch result {
-                case .success(let user):
-                    print("User: \(user.uid)")
-                case .failure(let custom, _):
-                    print("Error: \(custom.errorCode)")
-            }
-        }
-    }
-    
     func signInWithEmail(_ email: String,
-                         _ password: String,
-                         _ completion: @escaping (AppResult<User, AuthErrorCode>) -> Void) {
-        authService.signInWithEmail(email, password) { result in
+                         _ password: String) {
+        loadingSubject.onNext(true)
+        authService.signInWithEmail(email, password) { [weak self] result in
+            self?.loadingSubject.onNext(false)
             switch result {
                 case .success(let user):
-                    print("User: \(user.uid)")
+                    self?.successSubject.onNext(user)
                 case .failure(let custom, _):
-                    print("Error: \(custom.errorCode)")
+                    self?.failureSubject.onNext(custom)
             }
         }
     }

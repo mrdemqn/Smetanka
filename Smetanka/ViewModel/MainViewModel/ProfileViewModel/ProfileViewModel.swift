@@ -7,8 +7,22 @@
 
 protocol ProfileViewModelProtocol {
     
+    func logOut()
 }
 
 final class ProfileViewModel: ProfileViewModelProtocol {
     
+    private var authService: AuthenticationServiceProtocol!
+    
+    init() {
+        authService = AuthenticationService()
+    }
+    
+    func logOut() {
+        do {
+            try authService.logOut()
+        } catch {
+            print(error)
+        }
+    }
 }

@@ -16,6 +16,8 @@
 "next" = "Далее";
 "registration" = "Зарегистрироваться";
 "login" = "Войти";
+"log_out" = "Выйти";
+"check" = "Проверить";
 "authentication_title" = "Аутентификация";
 "email_placeholder" = "Введите почту";
 "password_placeholder" = "Пароль";
@@ -39,3 +41,12 @@
 "default_theme_button" = "Тема по умолчанию";
 "dark_theme_button" = "Тёмная тема";
 "light_theme_button" = "Светлая тема";
+"email_field_title" = "Адрес электронной почты";
+"password_field_title" = "Пароль";
+"login_header" = "Авторизация";
+"login_sub_header" = "Введите логин и пароль, чтобы пользоваться функциями приложения";
+"please_wait" = "Пожалуйста, подождите...";
+"registration_success_title" = "Регистрация успешна!";
+"registration_success_message" = "Пожалуйста, пройдите войдите в свою почту и пройдите по ссылке из письма, чтобы завершить регистрацию";
+"unverified_email_title" = "Завершите регистрацию";
+"unverified_email_message" = "Адрес электронной почты не подтверждён, пройдите, пожалуйста на почту и пройдите по ссылке из письма.";

@@ -9,4 +9,5 @@ final class UserDefaultKeys {
     
     static let onboardingShowed = "onboardingShowed"
     static let isAuthenticate = "isAuthenticate"
+    static let theme = "theme"
 }

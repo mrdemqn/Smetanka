@@ -16,6 +16,8 @@
 "next" = "Next";
 "registration" = "Registration";
 "login" = "Login";
+"log_out" = "Log Out";
+"check" = "Check";
 "authentication_title" = "Authentication";
 "email_placeholder" = "Enter email";
 "password_placeholder" = "Password";
@@ -39,3 +41,12 @@
 "default_theme_button" = "Default Theme";
 "dark_theme_button" = "Dark Theme";
 "light_theme_button" = "Light Theme";
+"email_field_title" = "Email address";
+"password_field_title" = "Password";
+"login_header" = "Authenticate";
+"login_sub_header" = "Enter login and password to use app features";
+"please_wait" = "Please wait...";
+"registration_success_title" = "Registration successful!";
+"registration_success_message" = "Please log in to your email and follow the link in the email to complete your registration.";
+"unverified_email_title" = "Complete registration";
+"unverified_email_message" = "The email address is not confirmed, please go to your email and follow the link from";

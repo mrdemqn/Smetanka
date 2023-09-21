@@ -8,5 +8,6 @@
 final class MultiThreading {
     
     static let authQueueLabel = "com.authorization"
+    static let timerQueueLabel = "com.timer"
     static let networkLoggerQueue = "com.network.logger"
 }

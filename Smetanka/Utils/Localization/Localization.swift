@@ -15,6 +15,8 @@ enum Localization: String {
     case next = "next"
     case registration = "registration"
     case login = "login"
+    case logOut = "log_out"
+    case check = "check"
     case authenticationTitle = "authentication_title"
     case emailPlaceholder = "email_placeholder"
     case passwordPlaceholder = "password_placeholder"
@@ -38,4 +40,15 @@ enum Localization: String {
     case defaultThemeButton = "default_theme_button"
     case darkThemeButton = "dark_theme_button"
     case lightThemeButton = "light_theme_button"
+    case emailFieldTitle = "email_field_title"
+    case passwordFieldTitle = "password_field_title"
+    case loginHeader = "login_header"
+    case loginSubHeader = "login_sub_header"
+    case pleaseWait = "please_wait"
+    case registrationSuccessTitle = "registration_success_title"
+    case registrationSuccessMessage = "registration_success_message"
+    
+    /// MARK - Firebase Error Messages
+    case unverifiedEmailTitle = "unverified_email_title"
+    case unverifiedEmailMessage = "unverified_email_message"
 }
