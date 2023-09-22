@@ -11,6 +11,8 @@ protocol AuthenticationServiceProtocol {
     
     var isAuthenticate: Bool { get }
     
+    var isEmailVerified: Bool { get }
+    
     func createUser(_ email: String,
                     _ password: String,
                     _ completion: @escaping (AppResult<User, AuthErrorCode>) -> Void)
@@ -30,6 +32,10 @@ final class AuthenticationService: AuthenticationServiceProtocol {
     
     var isAuthenticate: Bool {
         return firebaseService.isAuthenticate
+    }
+    
+    var isEmailVerified: Bool {
+        return firebaseService.isEmailVerified
     }
     
     init() {

@@ -6,10 +6,13 @@
 //
 
 import FirebaseAuth
+import FirebaseDatabase
 
 protocol FirebaseServiceProtocol {
     
     var isAuthenticate: Bool { get }
+    
+    var isEmailVerified: Bool { get }
     
     func createUser(_ email: String,
                     _ password: String,
@@ -20,14 +23,27 @@ protocol FirebaseServiceProtocol {
                 _ completion: @escaping (AppResult<User, AuthErrorCode>) -> Void)
     
     func signOut() throws
+    
+    func reloadUserData()
 }
 
 final class FirebaseService: FirebaseServiceProtocol {
     
     private let auth = Auth.auth()
     
+    private var ref: DatabaseReference!
+    
+    init() {
+        ref = Database.database().reference()
+    }
+    
     var isAuthenticate: Bool {
         return auth.currentUser != nil
+    }
+    
+    var isEmailVerified: Bool {
+        guard let user = auth.currentUser else { return false }
+        return user.isEmailVerified
     }
     
     func createUser(_ email: String,
@@ -75,5 +91,9 @@ final class FirebaseService: FirebaseServiceProtocol {
         } catch let signOutError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    func reloadUserData() {
+        auth.currentUser?.reload()
     }
 }

@@ -9,6 +9,8 @@
 protocol ProxyLaunchViewModelProtocol {
     
     var isAuthenticate: Bool { get }
+    
+    var isEmailVerified: Bool { get }
 }
 
 final class ProxyLaunchViewModel: ProxyLaunchViewModelProtocol {
@@ -17,6 +19,10 @@ final class ProxyLaunchViewModel: ProxyLaunchViewModelProtocol {
     
     var isAuthenticate: Bool {
         return authService.isAuthenticate
+    }
+    
+    var isEmailVerified: Bool {
+        return authService.isEmailVerified
     }
     
     init() {

@@ -21,6 +21,7 @@ final class MyRecipesViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isHeroEnabled = true
         navigationController?.heroNavigationAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+        
         viewModel = MyRecipeViewModel()
         bindViewModel()
         
@@ -83,6 +84,10 @@ private extension MyRecipesViewController {
     func setupNavigationBar() {
         navigationItem.title = localized(of: .myRecipes)
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(showCreateRecipe))
     }
 }
 
@@ -94,6 +99,11 @@ private extension MyRecipesViewController {
                 collectionView.reloadData()
             }
         }.disposed(by: disposeBag)
+    }
+    
+    @objc func showCreateRecipe() {
+        let controller = CreateRecipeViewController()
+        push(of: controller, hideBar: true)
     }
 }
 

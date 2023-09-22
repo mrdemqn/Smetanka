@@ -86,6 +86,7 @@
 		E590DC792A7ADF3C000F14A5 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */; };
 		E5A700592A7C14B400B06A17 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A700582A7C14B400B06A17 /* Food.swift */; };
 		E5BA6A642ABC89B7000C304A /* ChangeThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */; };
+		E5BA6A692ABCC4A6000C304A /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA6A682ABCC4A6000C304A /* CreateRecipeViewController.swift */; };
 		E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */; };
 		E5BCCEC22A823ED300001EEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */; };
 		E5BCCEC62A828B3300001EEE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEC52A828B3300001EEE /* Font.swift */; };
@@ -174,6 +175,7 @@
 		E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		E5A700582A7C14B400B06A17 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeThemeViewModel.swift; sourceTree = "<group>"; };
+		E5BA6A682ABCC4A6000C304A /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
 		E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5BCCEC52A828B3300001EEE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		E53A1F402A839EE30057E813 /* MyRecipesTabBarView */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA6A672ABCC489000C304A /* CreateRecipeView */,
 				E58367BE2AAA336300E424A4 /* MyRecipesViewController.swift */,
 				E52E8B622AB0CB5B00A1B10A /* RecipeCollectionViewCell.swift */,
 			);
@@ -651,6 +654,14 @@
 			path = RegistrationView;
 			sourceTree = "<group>";
 		};
+		E5BA6A672ABCC489000C304A /* CreateRecipeView */ = {
+			isa = PBXGroup;
+			children = (
+				E5BA6A682ABCC4A6000C304A /* CreateRecipeViewController.swift */,
+			);
+			path = CreateRecipeView;
+			sourceTree = "<group>";
+		};
 		E5BCCEBE2A82391800001EEE /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +831,7 @@
 				E5FB31CB2AA37BCA0077A28B /* UIButtonExtensions.swift in Sources */,
 				E56A710F2A8235F10062D763 /* MultiThreading.swift in Sources */,
 				E590DC452A7A6934000F14A5 /* HTTPMethod.swift in Sources */,
+				E5BA6A692ABCC4A6000C304A /* CreateRecipeViewController.swift in Sources */,
 				E56A70F92A818ADF0062D763 /* ProxyLaunchViewModel.swift in Sources */,
 				E56A70F02A8103D50062D763 /* LogInViewController.swift in Sources */,
 				E590DC082A7A5A60000F14A5 /* AppDelegate.swift in Sources */,

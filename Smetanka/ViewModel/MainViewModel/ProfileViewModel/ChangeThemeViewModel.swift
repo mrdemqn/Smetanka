@@ -7,6 +7,8 @@
 
 protocol ChangeThemeViewModelProtocol {
     
+    func getTheme() -> Int
+    
     func saveTheme(_ themeKey: Int)
 }
 
@@ -20,5 +22,9 @@ final class ChangeThemeViewModel: ChangeThemeViewModelProtocol {
     
     func saveTheme(_ themeKey: Int) {
         userDefaultsService.setInt(themeKey, UserDefaultKeys.theme)
+    }
+    
+    func getTheme() -> Int {
+        return userDefaultsService.getInt(UserDefaultKeys.theme)
     }
 }

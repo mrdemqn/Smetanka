@@ -58,6 +58,11 @@ extension UIViewController {
         setViewController(controller, animated: animated)
     }
     
+    func setViewControllers(of viewController: UIViewController,
+                           animated: Bool = false) {
+        setViewController(viewController, animated: animated)
+    }
+    
     /// MARK: - Необходимо, чтобы название Storyboard и Identifier ViewController'a были одинаковыми
     func push(to identifier: String) {
         let storyboard = UIStoryboard(name: String(describing: identifier), bundle: nil)

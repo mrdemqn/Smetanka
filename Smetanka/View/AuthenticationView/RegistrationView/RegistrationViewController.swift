@@ -13,7 +13,6 @@ final class RegistrationViewController: UIViewController {
     private var viewModel: RegistrationViewModelProtocol!
     
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var loadingView: UIView!
     @IBOutlet private weak var contentView: UIView!
     
     @IBOutlet private weak var emailTextField: AuthField!
@@ -96,9 +95,9 @@ extension RegistrationViewController {
     
     private func bindViewModel() {
         /// MARK: Subscribe loading view
-        viewModel.isLoading.subscribe { [unowned self] isLoading in
-            DispatchQueue.main.async {
-                self.loadingView.isHidden = !isLoading
+        viewModel.isLoading.subscribe { isLoading in
+            DispatchQueue.main.async { [unowned self] in
+                showLoader(localized(of: .pleaseWait))
             }
         }.disposed(by: disposeBag)
         
@@ -109,15 +108,15 @@ extension RegistrationViewController {
                 setViewController(Navigation.mainTabBar)
             } else {
                 let controller = ConfirmEmailViewController()
-                present(to: controller, style: .overFullScreen)
+                setViewControllers(of: controller, animated: true)
             }
         }.disposed(by: disposeBag)
         
         /// MARK: Subscribe failure response
-        viewModel.failureSubject.subscribe { [unowned self] error in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        viewModel.failureSubject.subscribe { error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [unowned self] in
                 let message = ErrorMessages.describeFBCode(error.code)
-                self.showErrorAlert(message?.title, message?.message)
+                showErrorAlert(message?.title, message?.message)
             }
         }.disposed(by: disposeBag)
     }

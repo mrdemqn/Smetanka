@@ -229,7 +229,7 @@ private extension LogInViewController {
                 self.setViewController(Navigation.mainTabBar, animated: true)
             } else {
                 let controller = ConfirmEmailViewController()
-                present(to: controller, style: .overFullScreen)
+                setViewControllers(of: controller, animated: true)
             }
         }).disposed(by: disposeBag)
         

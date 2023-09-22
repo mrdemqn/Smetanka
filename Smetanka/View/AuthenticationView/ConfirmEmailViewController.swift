@@ -29,19 +29,27 @@ final class ConfirmEmailViewController: UIViewController {
         timer.setEventHandler {
             guard let user = Auth.auth().currentUser else { return }
             if user.isEmailVerified {
-                print("Email Is Verified")
                 self.timer.cancel()
             } else {
-                print("Email Is Not Verified")
-                user.reload()
+                user.reload { error in
+                    print(error?.asAFError)
+                }
             }
         }
         
         timer.setCancelHandler {
-            print("CancelHandler")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let controller = self.getViewController(MainTabBarViewController.self,
+                                                        Navigation.mainTabBar)
+                self.setViewControllers(of: controller, animated: true)
+            }
         }
         
         timer.resume()
+    }
+    
+    deinit {
+        timer.cancel()
     }
 }
 

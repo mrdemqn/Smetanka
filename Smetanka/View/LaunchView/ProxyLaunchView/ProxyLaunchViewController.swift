@@ -13,7 +13,6 @@ final class ProxyLaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .dark
         viewModel = ProxyLaunchViewModel()
         
         chooseAppDestination()
@@ -25,6 +24,16 @@ extension ProxyLaunchViewController {
     private func chooseAppDestination() {
         let identifier = viewModel.isAuthenticate ? Navigation.mainLaunch : Navigation.onboardingLaunch
         
-        setViewController(identifier)
+        if viewModel.isAuthenticate {
+            
+            if viewModel.isEmailVerified {
+                setViewController(identifier)
+            } else {
+                let controller = ConfirmEmailViewController()
+                setViewControllers(of: controller, animated: true)
+            }
+        } else {
+            setViewController(identifier)
+        }
     }
 }

@@ -27,6 +27,9 @@ final class ChangeThemeViewController: UIViewController {
         super.viewDidLoad()
         viewModel = ChangeThemeViewModel()
         
+        let code = viewModel.getTheme()
+        currentTheme = UIUserInterfaceStyle(rawValue: code) ?? .unspecified
+        
         view.backgroundColor = .sheetBackground
         
         configureLayout()
