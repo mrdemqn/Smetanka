@@ -44,8 +44,8 @@ final class RegistrationViewModel: RegistrationViewModelProtocol {
                     self?.successSubject.onNext(user)
                 case .failure(let authErrorCode, _):
                     self?.failureSubject.onNext(authErrorCode)
+                    print("Failure: \(authErrorCode.code)")
             }
-            print("authService.isAuthenticate: \(String(describing: self?.authService.isAuthenticate))")
         }
     }
 }

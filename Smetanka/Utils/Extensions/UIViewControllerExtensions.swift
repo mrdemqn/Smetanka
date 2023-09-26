@@ -92,6 +92,7 @@ extension UIViewController {
     }
     
     private func setViewController(_ viewController: UIViewController, animated: Bool = false) {
+        navigationController?.isNavigationBarHidden = true
         navigationController?.setViewControllers([viewController], animated: animated)
     }
     

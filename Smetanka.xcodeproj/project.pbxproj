@@ -85,13 +85,22 @@
 		E590DC772A7ADE80000F14A5 /* FirstPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E590DC762A7ADE80000F14A5 /* FirstPageStoryboard.storyboard */; };
 		E590DC792A7ADF3C000F14A5 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */; };
 		E5A700592A7C14B400B06A17 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A700582A7C14B400B06A17 /* Food.swift */; };
+		E5AEE65E2AC1D22C005F5BE3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E593444A2AC15264007DE674 /* WidgetKit.framework */; };
+		E5AEE65F2AC1D22D005F5BE3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E593444C2AC15264007DE674 /* SwiftUI.framework */; };
+		E5AEE6622AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE6612AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift */; };
+		E5AEE6642AC1D22D005F5BE3 /* SmetankaWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE6632AC1D22D005F5BE3 /* SmetankaWidgetLiveActivity.swift */; };
+		E5AEE6662AC1D22D005F5BE3 /* SmetankaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE6652AC1D22D005F5BE3 /* SmetankaWidget.swift */; };
+		E5AEE6682AC1D22D005F5BE3 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE6672AC1D22D005F5BE3 /* AppIntent.swift */; };
+		E5AEE66A2AC1D22E005F5BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5AEE6692AC1D22E005F5BE3 /* Assets.xcassets */; };
+		E5AEE66E2AC1D22E005F5BE3 /* SmetankaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E5AEE65D2AC1D22C005F5BE3 /* SmetankaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E5AEE6752AC1D420005F5BE3 /* SmetankaWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE6742AC1D420005F5BE3 /* SmetankaWidgetView.swift */; };
 		E5BA6A642ABC89B7000C304A /* ChangeThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */; };
 		E5BA6A692ABCC4A6000C304A /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA6A682ABCC4A6000C304A /* CreateRecipeViewController.swift */; };
 		E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */; };
 		E5BCCEC22A823ED300001EEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */; };
 		E5BCCEC62A828B3300001EEE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEC52A828B3300001EEE /* Font.swift */; };
 		E5D43E022AA0F416004618CD /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E012AA0F416004618CD /* UIColorExtensions.swift */; };
-		E5D43E052AA0F625004618CD /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E042AA0F625004618CD /* AuthField.swift */; };
+		E5D43E052AA0F625004618CD /* AppField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E042AA0F625004618CD /* AppField.swift */; };
 		E5D43E072AA0F7D2004618CD /* Xibs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E062AA0F7D2004618CD /* Xibs.swift */; };
 		E5DD531F2A7AF3FB0039AFA9 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DD531E2A7AF3FB0039AFA9 /* SecondPageViewController.swift */; };
 		E5DD53212A7AF40E0039AFA9 /* SecondPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5DD53202A7AF40E0039AFA9 /* SecondPageStoryboard.storyboard */; };
@@ -102,6 +111,30 @@
 		E5FB31CD2AA47FC10077A28B /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB31CC2AA47FC10077A28B /* AppButton.swift */; };
 		E5FB31D02AA481BE0077A28B /* ChangeThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB31CF2AA481BE0077A28B /* ChangeThemeViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E5AEE66C2AC1D22E005F5BE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E590DBFC2A7A5A60000F14A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5AEE65C2AC1D22C005F5BE3;
+			remoteInfo = SmetankaWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E59344602AC15267007DE674 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E5AEE66E2AC1D22E005F5BE3 /* SmetankaWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E52E8B622AB0CB5B00A1B10A /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -173,14 +206,24 @@
 		E590DC742A7ADE6B000F14A5 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		E590DC762A7ADE80000F14A5 /* FirstPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstPageStoryboard.storyboard; sourceTree = "<group>"; };
 		E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		E593444A2AC15264007DE674 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E593444C2AC15264007DE674 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		E5A700582A7C14B400B06A17 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		E5AEE65D2AC1D22C005F5BE3 /* SmetankaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SmetankaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5AEE6612AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmetankaWidgetBundle.swift; sourceTree = "<group>"; };
+		E5AEE6632AC1D22D005F5BE3 /* SmetankaWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmetankaWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		E5AEE6652AC1D22D005F5BE3 /* SmetankaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmetankaWidget.swift; sourceTree = "<group>"; };
+		E5AEE6672AC1D22D005F5BE3 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		E5AEE6692AC1D22E005F5BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E5AEE66B2AC1D22E005F5BE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5AEE6742AC1D420005F5BE3 /* SmetankaWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmetankaWidgetView.swift; sourceTree = "<group>"; };
 		E5BA6A632ABC89B7000C304A /* ChangeThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeThemeViewModel.swift; sourceTree = "<group>"; };
 		E5BA6A682ABCC4A6000C304A /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
 		E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5BCCEC52A828B3300001EEE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E5D43E012AA0F416004618CD /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		E5D43E042AA0F625004618CD /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
+		E5D43E042AA0F625004618CD /* AppField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppField.swift; sourceTree = "<group>"; };
 		E5D43E062AA0F7D2004618CD /* Xibs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xibs.swift; sourceTree = "<group>"; };
 		E5DD531E2A7AF3FB0039AFA9 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		E5DD53202A7AF40E0039AFA9 /* SecondPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondPageStoryboard.storyboard; sourceTree = "<group>"; };
@@ -208,6 +251,15 @@
 				E52F98112A8CB6390020D7BA /* AlamofireImage in Frameworks */,
 				E590DC612A7A789F000F14A5 /* Swinject in Frameworks */,
 				E56A710B2A821EC70062D763 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5AEE65A2AC1D22C005F5BE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5AEE65F2AC1D22D005F5BE3 /* SwiftUI.framework in Frameworks */,
+				E5AEE65E2AC1D22C005F5BE3 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +412,8 @@
 			isa = PBXGroup;
 			children = (
 				E590DC062A7A5A60000F14A5 /* Smetanka */,
+				E5AEE6602AC1D22D005F5BE3 /* SmetankaWidget */,
+				E59344492AC15264007DE674 /* Frameworks */,
 				E590DC052A7A5A60000F14A5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -368,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				E590DC042A7A5A60000F14A5 /* Smetanka.app */,
+				E5AEE65D2AC1D22C005F5BE3 /* SmetankaWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -635,6 +690,15 @@
 			path = ThirdPageView;
 			sourceTree = "<group>";
 		};
+		E59344492AC15264007DE674 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E593444A2AC15264007DE674 /* WidgetKit.framework */,
+				E593444C2AC15264007DE674 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5A7005C2A7C1E8B00B06A17 /* AuthenticationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +716,20 @@
 				E56A70ED2A8103780062D763 /* RegistrationStoryboard.storyboard */,
 			);
 			path = RegistrationView;
+			sourceTree = "<group>";
+		};
+		E5AEE6602AC1D22D005F5BE3 /* SmetankaWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E5AEE6612AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift */,
+				E5AEE6632AC1D22D005F5BE3 /* SmetankaWidgetLiveActivity.swift */,
+				E5AEE6652AC1D22D005F5BE3 /* SmetankaWidget.swift */,
+				E5AEE6742AC1D420005F5BE3 /* SmetankaWidgetView.swift */,
+				E5AEE6672AC1D22D005F5BE3 /* AppIntent.swift */,
+				E5AEE6692AC1D22E005F5BE3 /* Assets.xcassets */,
+				E5AEE66B2AC1D22E005F5BE3 /* Info.plist */,
+			);
+			path = SmetankaWidget;
 			sourceTree = "<group>";
 		};
 		E5BA6A672ABCC489000C304A /* CreateRecipeView */ = {
@@ -674,7 +752,7 @@
 		E5D43E032AA0F60B004618CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E5D43E042AA0F625004618CD /* AuthField.swift */,
+				E5D43E042AA0F625004618CD /* AppField.swift */,
 				E5FB31CC2AA47FC10077A28B /* AppButton.swift */,
 			);
 			path = Views;
@@ -699,10 +777,12 @@
 				E590DC002A7A5A60000F14A5 /* Sources */,
 				E590DC012A7A5A60000F14A5 /* Frameworks */,
 				E590DC022A7A5A60000F14A5 /* Resources */,
+				E59344602AC15267007DE674 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E5AEE66D2AC1D22E005F5BE3 /* PBXTargetDependency */,
 			);
 			name = Smetanka;
 			packageProductDependencies = (
@@ -722,6 +802,23 @@
 			productReference = E590DC042A7A5A60000F14A5 /* Smetanka.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E5AEE65C2AC1D22C005F5BE3 /* SmetankaWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5AEE66F2AC1D22E005F5BE3 /* Build configuration list for PBXNativeTarget "SmetankaWidgetExtension" */;
+			buildPhases = (
+				E5AEE6592AC1D22C005F5BE3 /* Sources */,
+				E5AEE65A2AC1D22C005F5BE3 /* Frameworks */,
+				E5AEE65B2AC1D22C005F5BE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmetankaWidgetExtension;
+			productName = SmetankaWidgetExtension;
+			productReference = E5AEE65D2AC1D22C005F5BE3 /* SmetankaWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -729,11 +826,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					E590DC032A7A5A60000F14A5 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					E5AEE65C2AC1D22C005F5BE3 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -760,6 +860,7 @@
 			projectRoot = "";
 			targets = (
 				E590DC032A7A5A60000F14A5 /* Smetanka */,
+				E5AEE65C2AC1D22C005F5BE3 /* SmetankaWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -783,6 +884,14 @@
 				E56A70F62A8104F10062D763 /* ThirdPageStoryboard.storyboard in Resources */,
 				E590DC552A7A7056000F14A5 /* ProxyLaunchStoryboard.storyboard in Resources */,
 				E5BCCEC22A823ED300001EEE /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5AEE65B2AC1D22C005F5BE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5AEE66A2AC1D22E005F5BE3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +964,7 @@
 				E56A70FC2A818CE00062D763 /* OnboardingViewModel.swift in Sources */,
 				E590DC402A7A64CE000F14A5 /* LocalizationExtensions.swift in Sources */,
 				E52E8B632AB0CB5B00A1B10A /* RecipeCollectionViewCell.swift in Sources */,
-				E5D43E052AA0F625004618CD /* AuthField.swift in Sources */,
+				E5D43E052AA0F625004618CD /* AppField.swift in Sources */,
 				E5FB31C72AA36F740077A28B /* ProfileViewModel.swift in Sources */,
 				E590DC3B2A7A6208000F14A5 /* CustomError.swift in Sources */,
 				E590DC5A2A7A7061000F14A5 /* MainLaunchViewController.swift in Sources */,
@@ -865,7 +974,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5AEE6592AC1D22C005F5BE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5AEE6642AC1D22D005F5BE3 /* SmetankaWidgetLiveActivity.swift in Sources */,
+				E5AEE6682AC1D22D005F5BE3 /* AppIntent.swift in Sources */,
+				E5AEE6662AC1D22D005F5BE3 /* SmetankaWidget.swift in Sources */,
+				E5AEE6622AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift in Sources */,
+				E5AEE6752AC1D420005F5BE3 /* SmetankaWidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E5AEE66D2AC1D22E005F5BE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5AEE65C2AC1D22C005F5BE3 /* SmetankaWidgetExtension */;
+			targetProxy = E5AEE66C2AC1D22E005F5BE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E590DC122A7A5A63000F14A5 /* LaunchScreen.storyboard */ = {
@@ -1009,6 +1138,7 @@
 		E590DC192A7A5A63000F14A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1038,6 +1168,7 @@
 		E590DC1A2A7A5A63000F14A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1064,6 +1195,69 @@
 			};
 			name = Release;
 		};
+		E5AEE6702AC1D22E005F5BE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TCP97C389B;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmetankaWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SmetankaWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmitrykahanovski.FoodBy.SmetankaWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E5AEE6712AC1D22E005F5BE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TCP97C389B;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmetankaWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SmetankaWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmitrykahanovski.FoodBy.SmetankaWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1081,6 +1275,15 @@
 			buildConfigurations = (
 				E590DC192A7A5A63000F14A5 /* Debug */,
 				E590DC1A2A7A5A63000F14A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5AEE66F2AC1D22E005F5BE3 /* Build configuration list for PBXNativeTarget "SmetankaWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5AEE6702AC1D22E005F5BE3 /* Debug */,
+				E5AEE6712AC1D22E005F5BE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

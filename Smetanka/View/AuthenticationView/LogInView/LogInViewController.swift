@@ -15,8 +15,8 @@ final class LogInViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
-    private let emailTextField = AuthField()
-    private let passwordTextField = AuthField()
+    private let emailTextField = AppField()
+    private let passwordTextField = AppField()
     
     private let headerLabel = UILabel()
     private let subHeaderLabel = UILabel()
@@ -99,6 +99,9 @@ private extension LogInViewController {
         subHeaderLabel.font = .helveticaNeueFont(14, weight: .medium)
         emailFieldTitleLabel.font = .helveticaNeueFont(14, weight: .bold)
         passwordFieldTitleLabel.font = .helveticaNeueFont(14, weight: .bold)
+        
+        headerLabel.numberOfLines = 0
+        subHeaderLabel.numberOfLines = 0
     }
     
     func configureTextFileds() {
@@ -107,6 +110,10 @@ private extension LogInViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        print(emailTextField.clipsToBounds)
+        print(emailTextField.layer.masksToBounds)
+        print(emailTextField.layer.maskedCorners)
         
         emailTextField.setupPlaceholder(localized(of: .emailPlaceholder))
         passwordTextField.setupPlaceholder(localized(of: .passwordPlaceholder))
@@ -199,7 +206,6 @@ private extension LogInViewController {
             loginButton.topAnchor.constraint(greaterThanOrEqualTo: passwordTextField.bottomAnchor, constant: 10),
             loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            loginButton.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             loginButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
@@ -224,14 +230,15 @@ private extension LogInViewController {
             }
         }).disposed(by: disposeBag)
         
-        viewModel.successSubject.subscribe(onNext: { [unowned self] user in
+        viewModel.successSubject.subscribe { [unowned self] event in
+            guard let user = event.element else { return }
             if user.isEmailVerified {
                 self.setViewController(Navigation.mainTabBar, animated: true)
             } else {
                 let controller = ConfirmEmailViewController()
                 setViewControllers(of: controller, animated: true)
             }
-        }).disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
         
         viewModel.failureSubject.subscribe(onNext: { [unowned self] error in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

@@ -22,7 +22,7 @@
 "email_placeholder" = "Введите почту";
 "password_placeholder" = "Пароль";
 "confirm_password_placeholder" = "Подтвердите пароль";
-"error_alert_title" = "Произвошла ошибка.";
+"error_alert_title" = "Произошла ошибка.";
 "error_alert_cancel_action_title" = "Попробовать ещё.";
 "recipes" = "Рецепты";
 "recipe" = "Рецепт";
@@ -50,3 +50,9 @@
 "registration_success_message" = "Пожалуйста, пройдите войдите в свою почту и пройдите по ссылке из письма, чтобы завершить регистрацию";
 "unverified_email_title" = "Завершите регистрацию";
 "unverified_email_message" = "Адрес электронной почты не подтверждён, пройдите, пожалуйста на почту и пройдите по ссылке из письма.";
+"title_recipe_placeholder" = "Заголовок рецепта";
+"difficulty_recipe_placeholder" = "Сложность рецепта";
+"portion_recipe_placeholder" = "Количество порций";
+"time_recipe_placeholder" = "Время приготовления";
+"description_recipe_placeholder" = "Описание рецепта";
+"step_recipe_placeholder" = "Шаг";

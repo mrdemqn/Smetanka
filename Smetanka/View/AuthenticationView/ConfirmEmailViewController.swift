@@ -32,16 +32,14 @@ final class ConfirmEmailViewController: UIViewController {
                 self.timer.cancel()
             } else {
                 user.reload { error in
-                    print(error?.asAFError)
+                    print(error?.asAFError ?? "Nil")
                 }
             }
         }
         
         timer.setCancelHandler {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                let controller = self.getViewController(MainTabBarViewController.self,
-                                                        Navigation.mainTabBar)
-                self.setViewControllers(of: controller, animated: true)
+                self.setViewController(Navigation.mainTabBar, animated: true)
             }
         }
         

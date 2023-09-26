@@ -15,9 +15,9 @@ final class RegistrationViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var contentView: UIView!
     
-    @IBOutlet private weak var emailTextField: AuthField!
-    @IBOutlet private weak var passwordTextField: AuthField!
-    @IBOutlet private weak var confirmPasswordTextField: AuthField!
+    @IBOutlet private weak var emailTextField: AppField!
+    @IBOutlet private weak var passwordTextField: AppField!
+    @IBOutlet private weak var confirmPasswordTextField: AppField!
     
     private let disposeBag = DisposeBag()
     
@@ -94,10 +94,13 @@ extension RegistrationViewController {
     }
     
     private func bindViewModel() {
+        var loader = UIAlertController()
         /// MARK: Subscribe loading view
-        viewModel.isLoading.subscribe { isLoading in
-            DispatchQueue.main.async { [unowned self] in
-                showLoader(localized(of: .pleaseWait))
+        viewModel.isLoading.subscribe { [unowned self] isLoading in
+            if isLoading {
+                loader = showLoader(localized(of: .pleaseWait))
+            } else {
+                stopLoader(loader: loader)
             }
         }.disposed(by: disposeBag)
         
@@ -105,7 +108,7 @@ extension RegistrationViewController {
         viewModel.successSubject.subscribe { [unowned self] event in
             guard let user = event.element else { return }
             if user.isEmailVerified {
-                setViewController(Navigation.mainTabBar)
+                setViewController(Navigation.mainTabBar, animated: true)
             } else {
                 let controller = ConfirmEmailViewController()
                 setViewControllers(of: controller, animated: true)

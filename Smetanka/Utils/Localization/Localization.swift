@@ -51,4 +51,12 @@ enum Localization: String {
     /// MARK - Firebase Error Messages
     case unverifiedEmailTitle = "unverified_email_title"
     case unverifiedEmailMessage = "unverified_email_message"
+    
+    /// MARK - Создание рецепта
+    case titleRecipePlaceholder = "title_recipe_placeholder"
+    case difficultyRecipePlaceholder = "difficulty_recipe_placeholder"
+    case portionRecipePlaceholder = "portion_recipe_placeholder"
+    case timeRecipePlaceholder = "time_recipe_placeholder"
+    case descriptionRecipePlaceholder = "description_recipe_placeholder"
+    case stepRecipePlaceholder = "step_recipe_placeholder"
 }

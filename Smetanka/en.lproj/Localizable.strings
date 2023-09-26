@@ -50,3 +50,9 @@
 "registration_success_message" = "Please log in to your email and follow the link in the email to complete your registration.";
 "unverified_email_title" = "Complete registration";
 "unverified_email_message" = "The email address is not confirmed, please go to your email and follow the link from";
+"title_recipe_placeholder" = "Recipe title";
+"difficulty_recipe_placeholder" = "Recipe difficulty";
+"portion_recipe_placeholder" = "Portion";
+"time_recipe_placeholder" = "Cooking time";
+"description_recipe_placeholder" = "Recipe description";
+"step_recipe_placeholder" = "Step";

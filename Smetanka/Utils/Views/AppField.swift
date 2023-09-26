@@ -8,17 +8,22 @@
 import Foundation
 import UIKit
 
-final class AuthField: UITextField {
+final class AppField: UITextField {
     
     private let padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupTextField()
+//        setupTextField()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+//        setupTextField()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupTextField()
     }
     
@@ -39,20 +44,22 @@ final class AuthField: UITextField {
     }
     
     private func setupTextField() {
+        font = .helveticaNeueFont(14)
         textColor = .fieldText
-        
-        layer.cornerRadius = 20
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowRadius = 10
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 10, height: 10)
         
         borderStyle = .none
         
-        layer.borderWidth = 0.5
+        layer.backgroundColor = UIColor.clear.cgColor
+        
+        layer.cornerRadius = 20
+        
+        layer.borderWidth = 0.3
         layer.borderColor = UIColor.gray.cgColor
         
-        font = .helveticaNeueFont(14)
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 10
+        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowColor = UIColor.gray.cgColor
         
         heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
