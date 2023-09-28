@@ -17,6 +17,9 @@ final class MyRecipesViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    private let itemsPerRow: CGFloat = 2
+    private let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isHeroEnabled = true
@@ -30,6 +33,17 @@ final class MyRecipesViewController: UIViewController {
         
         collectionView.isHeroEnabled = true
         collectionView.heroModifiers = [.cascade]
+        
+        viewModel.fetchMyRecipes()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+            viewModel.observe()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -132,24 +146,26 @@ extension MyRecipesViewController: UICollectionViewDelegateFlowLayout {
         
         cell.configureContent(title: recipe.title,
                               difficulty: recipe.difficulty,
-                              imageLink: recipe.image)
+                              data: recipe.uiImage)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (collectionView.frame.width / 2) - 15
-        return CGSize(width: size, height: size)
+        let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 5, left: 10, bottom: 5, right: 10)
+        return sectionInserts
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return sectionInserts.left
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return sectionInserts.left
     }
 }
 
@@ -159,6 +175,7 @@ extension MyRecipesViewController: UICollectionViewDelegate {
         let controller = DetailsRecipeViewController()
         let recipe = viewModel.recipes[indexPath.item]
         controller.recipeId = recipe.id
+        controller.fromMyRecipe = true
         push(of: controller, hideBar: true)
     }
 }

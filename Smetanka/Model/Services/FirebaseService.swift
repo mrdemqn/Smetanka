@@ -31,12 +31,6 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     private let auth = Auth.auth()
     
-    private var ref: DatabaseReference!
-    
-    init() {
-        ref = Database.database().reference()
-    }
-    
     var isAuthenticate: Bool {
         return auth.currentUser != nil
     }

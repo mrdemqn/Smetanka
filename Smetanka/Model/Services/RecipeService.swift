@@ -6,14 +6,14 @@
 //
 
 
-protocol FoodServiceProtocol {
+protocol RecipeServiceProtocol {
     
-    func fetchAllRecipes() async throws -> [Food]
+    func fetchAllRecipes() async throws -> [LocalRecipe]
     
-    func fetchRecipe(_ id: String) async throws -> Food
+    func fetchRecipe(_ id: String) async throws -> LocalRecipe
 }
 
-final class FoodService: FoodServiceProtocol {
+final class RecipeService: RecipeServiceProtocol {
     
     private let networkService: NetworkServiceProtocol
     
@@ -21,20 +21,20 @@ final class FoodService: FoodServiceProtocol {
         networkService = NetworkService()
     }
     
-    func fetchAllRecipes() async throws -> [Food] {
+    func fetchAllRecipes() async throws -> [LocalRecipe] {
         do {
-            let foods = try await networkService.get([Food].self,
+            let recipes = try await networkService.get([LocalRecipe].self,
                                                      link: ApiConstants.allRecipes,
                                                      headers: nil)
-            return foods
+            return recipes
         } catch {
             throw error
         }
     }
     
-    func fetchRecipe(_ id: String) async throws -> Food {
+    func fetchRecipe(_ id: String) async throws -> LocalRecipe {
         do {
-            let recipe = try await networkService.get(Food.self,
+            let recipe = try await networkService.get(LocalRecipe.self,
                                                       link: "\(ApiConstants.recipe)/\(id)",
                                                       headers: nil)
             return recipe

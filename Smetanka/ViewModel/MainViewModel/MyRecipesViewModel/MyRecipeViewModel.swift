@@ -9,27 +9,29 @@ import RxSwift
 
 protocol MyRecipeViewModelProtocol {
     
-    var recipes: [Food] { get }
+    var recipes: [Recipe] { get }
     
     var loadingSubject: BehaviorSubject<Bool> { get }
     
     var recipesSubject: PublishSubject<Void> { get }
     
     func fetchMyRecipes()
+    
+    func observe()
 }
 
 final class MyRecipeViewModel: MyRecipeViewModelProtocol {
     
-    private let foodService: FoodServiceProtocol
+    private let storage: LocalStorageServiceProtocol!
     
-    var recipes: [Food] = [] {
+    var recipes: [Recipe] = [] {
         didSet {
             recipesSubject.on(.completed)
         }
     }
     
     init() {
-        foodService = FoodService()
+        storage = LocalStorageService()
     }
     
     var loadingSubject: BehaviorSubject<Bool> = BehaviorSubject(value: true)
@@ -38,7 +40,15 @@ final class MyRecipeViewModel: MyRecipeViewModelProtocol {
     
     func fetchMyRecipes() {
         loadingSubject.onNext(true)
-        
+        storage.fetchMyRecipes { recipes in
+            self.recipes = recipes
+        }
         loadingSubject.onNext(false)
+    }
+    
+    func observe() {
+        storage.observeMyRecipes { recipes in
+            self.recipes = recipes
+        }
     }
 }

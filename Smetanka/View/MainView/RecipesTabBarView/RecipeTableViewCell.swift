@@ -18,10 +18,6 @@ final class RecipeTableViewCell: UITableViewCell {
         super.layoutSubviews()
         setupUI()
     }
-    
-    @IBAction private func favouriteAction(_ sender: UIButton) {
-        
-    }
 }
 
 extension RecipeTableViewCell {

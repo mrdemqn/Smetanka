@@ -5,89 +5,191 @@
 //  Created by Димон on 2.08.23.
 //
 
-import CoreData
+import RealmSwift
+import Foundation
 
 protocol LocalStorageServiceProtocol {
     
-    func fetch<T: NSManagedObject>(_ type: T.Type) -> [T]
+    func fetch(completion: @escaping ([Recipe]) -> Void)
     
-    func save<T: NSManagedObject>(_ entity: T.Type,
-                                  _ createEntityClosure: @escaping (NSManagedObjectContext) -> Void)
+    func fetch(_ id: String) -> Recipe?
     
-    func remove<T: NSManagedObject>(_ object: T.Type,
-                                    _ deleteEntityClosure: @escaping (NSManagedObjectContext) -> Void)
+    func fetchFavourites(completion: @escaping ([Recipe]) -> Void)
+    
+    func save(recipe: Recipe)
+    
+    func updateIsFavourite(recipe: Recipe,
+                           isFavourite: Bool,
+                           completion: @escaping (Recipe) -> Void)
+    
+    func observeFavourites(_ update: @escaping ([Recipe]) -> Void)
+    
+    func fetchMyRecipes(completion: @escaping ([Recipe]) -> Void)
+    
+    func updateIsMyRecipes(recipe: Recipe,
+                           isFavourite: Bool,
+                           completion: @escaping (Recipe) -> Void)
+    
+    func observeMyRecipes(_ update: @escaping ([Recipe]) -> Void)
 }
 
 final class LocalStorageService: LocalStorageServiceProtocol {
     
-    static var favourite: [Food] = []
+    private var realm: Realm!
     
-    private var context: NSManagedObjectContext {
-        persistentContainer.viewContext
-    }
+    private var favouritesObserveToken: NotificationToken?
     
-    private var persistentContainer: NSPersistentContainer = {
+    private var myRecipesObserveToken: NotificationToken?
+    
+    private var favouritesResult: Results<Recipe>?
+    
+    private var myRecipesResult: Results<Recipe>?
+    
+    init() {
+        var config = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {}
+            })
+        config.deleteRealmIfMigrationNeeded = true
         
-        let container = NSPersistentContainer(name: "FoodModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
+        Realm.Configuration.defaultConfiguration = config
+        
+        realm = try! Realm()
+    }
     
-    private func saveContext () {
-        if context.hasChanges {
+    func save(recipe: Recipe) {
+        do {
+            try realm.write {
+                realm.add(recipe)
+            }
+        } catch { }
+    }
+    
+    func fetch(completion: @escaping ([Recipe]) -> Void) {
+        let results = realm.objects(Recipe.self)
+        var recipes: [Recipe] = []
+        for result in results {
+            recipes.append(result)
+        }
+        
+        completion(recipes)
+    }
+    
+    func fetch(_ id: String) -> Recipe? {
+        let recipe = realm.object(ofType: Recipe.self, forPrimaryKey: id)
+        return recipe
+    }
+    
+    func fetchFavourites(completion: @escaping ([Recipe]) -> Void) {
+        DispatchQueue.main.async {
+            self.favouritesResult = self.realm.objects(Recipe.self)
+            guard let results = self.favouritesResult else { return }
+            var recipes = self.filterMapToArrayFavourites(results: results)
+            
+            completion(recipes)
+        }
+    }
+    
+    func updateIsFavourite(recipe: Recipe,
+                           isFavourite: Bool,
+                           completion: @escaping (Recipe) -> Void) {
+        DispatchQueue.main.async { [unowned self] in
             do {
-                try context.save()
-            } catch {
-                let error = error as NSError
-                print("Unresolved error \(error), \(error.userInfo)")
+                let result = self.realm.object(ofType: Recipe.self, forPrimaryKey: recipe.id)
+                
+                if result == nil {
+                    recipe.isFavourite = isFavourite
+                    save(recipe: recipe)
+                    completion(recipe)
+                } else {
+                    try realm.write {
+                        result!.isFavourite = isFavourite
+                    }
+                    completion(recipe)
+                }
+            } catch {}
+        }
+    }
+    
+    func observeFavourites(_ update: @escaping ([Recipe]) -> Void) {
+        favouritesObserveToken = favouritesResult?.observe { changes in
+            switch changes {
+                case .initial(_): break
+                case .error(_): break
+                case .update(let recipes, deletions: _, insertions: _, modifications: _):
+                    let newRecipes = self.filterMapToArrayFavourites(results: recipes)
+                    update(newRecipes)
             }
         }
     }
     
-    func save<T: NSManagedObject>(_ entity: T.Type,
-                                  _ createEntityClosure: @escaping (NSManagedObjectContext) -> Void) {
-        context.perform { [self] in
-            createEntityClosure(context)
-            saveContext()
+    func fetchMyRecipes(completion: @escaping ([Recipe]) -> Void) {
+        DispatchQueue.main.async {
+            self.favouritesResult = self.realm.objects(Recipe.self)
+            guard let results = self.favouritesResult else { return }
+            var recipes = self.filterMapToArrayMyRecipes(results: results)
+            
+            completion(recipes)
         }
     }
     
-    func fetch<T: NSManagedObject>(_ type: T.Type) -> [T] {
-        let fetchRequest: NSFetchRequest<T> = T.fetchTypedRequest(type)
-        do {
-            let objects = try context.fetch(fetchRequest)
-            return objects
-        } catch {
-            let error = error as NSError
-            print("Fetch Error: \(error.userInfo)")
-            return []
+    func updateIsMyRecipes(recipe: Recipe,
+                           isFavourite: Bool,
+                           completion: @escaping (Recipe) -> Void) {
+        DispatchQueue.main.async { [unowned self] in
+            do {
+                let result = self.realm.object(ofType: Recipe.self, forPrimaryKey: recipe.id)
+                
+                if result == nil {
+                    recipe.isFavourite = isFavourite
+                    save(recipe: recipe)
+                    completion(recipe)
+                } else {
+                    try realm.write {
+                        result!.isFavourite = isFavourite
+                    }
+                    completion(recipe)
+                }
+            } catch {}
         }
     }
     
-    func remove<T: NSManagedObject>(_ object: T.Type,
-                                    _ deleteEntityClosure: @escaping (NSManagedObjectContext) -> Void) {
-        do {
-            deleteEntityClosure(context)
-            try context.save()
-        } catch {
-            print("Delete Error: \(error)")
-        }
-    }
-    
-    static func saveRecipe(_ recipe: Food) {
-        favourite.append(recipe)
-    }
-    
-    static func removeRecipe(_ recipe: Food) {
-        for food in favourite {
-            if food.id == recipe.id {
-                favourite.remove(at: 0)
-                break
+    func observeMyRecipes(_ update: @escaping ([Recipe]) -> Void) {
+        myRecipesObserveToken = myRecipesResult?.observe { changes in
+            switch changes {
+                case .initial(_): break
+                case .error(_): break
+                case .update(let recipes, deletions: _, insertions: _, modifications: _):
+                    let newRecipes = self.filterMapToArrayMyRecipes(results: recipes)
+                    update(newRecipes)
             }
         }
+    }
+    
+    private func filterMapToArrayFavourites(results: Results<Recipe>) -> [Recipe] {
+            var recipes: [Recipe] = []
+            let filtered = results.where { query in
+                query.isFavourite
+            }
+            for result in filtered {
+                recipes.append(result)
+            }
+        return recipes
+    }
+    
+    private func filterMapToArrayMyRecipes(results: Results<Recipe>) -> [Recipe] {
+            var recipes: [Recipe] = []
+            let filtered = results.where { query in
+                query.isMyRecipe
+            }
+            for result in filtered {
+                recipes.append(result)
+            }
+        return recipes
+    }
+    
+    deinit {
+        favouritesObserveToken?.invalidate()
     }
 }

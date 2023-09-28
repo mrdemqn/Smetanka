@@ -15,6 +15,10 @@
 		E53A1F382A8376380057E813 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A1F372A8376380057E813 /* MainTabBarViewController.swift */; };
 		E53A1F472A83BA3A0057E813 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53A1F462A83BA3A0057E813 /* RecipesViewController.swift */; };
 		E53A1F4F2A83E7A90057E813 /* MainTabBarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53A1F4E2A83E7A90057E813 /* MainTabBarStoryboard.storyboard */; };
+		E557BB9D2AC32FB200407267 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E557BB9C2AC32FB200407267 /* Realm */; };
+		E557BB9F2AC32FB200407267 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E557BB9E2AC32FB200407267 /* RealmSwift */; };
+		E557BBA12AC32FC300407267 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557BBA02AC32FC300407267 /* Recipe.swift */; };
+		E557BBA32AC3329D00407267 /* CreateRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E557BBA22AC3329D00407267 /* CreateRecipeViewModel.swift */; };
 		E56A70EC2A81036A0062D763 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A70EB2A81036A0062D763 /* RegistrationViewController.swift */; };
 		E56A70EE2A8103780062D763 /* RegistrationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E56A70ED2A8103780062D763 /* RegistrationStoryboard.storyboard */; };
 		E56A70F02A8103D50062D763 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A70EF2A8103D50062D763 /* LogInViewController.swift */; };
@@ -34,7 +38,6 @@
 		E58367BF2AAA336300E424A4 /* MyRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58367BE2AAA336300E424A4 /* MyRecipesViewController.swift */; };
 		E58367C42AAA3D1D00E424A4 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58367C32AAA3D1D00E424A4 /* FavouriteViewModel.swift */; };
 		E58367C62AAA3D6600E424A4 /* MyRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58367C52AAA3D6600E424A4 /* MyRecipeViewModel.swift */; };
-		E588C8042A8BC383003F4803 /* FoodModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E588C8022A8BC383003F4803 /* FoodModel.xcdatamodeld */; };
 		E588C80E2A8BD1AA003F4803 /* RecipesViewMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588C80D2A8BD1AA003F4803 /* RecipesViewMapper.swift */; };
 		E588C8202A8BE8AA003F4803 /* DetailsRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588C81F2A8BE8AA003F4803 /* DetailsRecipeViewModel.swift */; };
 		E58D2B412A88F67B003EF4BF /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D2B402A88F67B003EF4BF /* UIImageExtensions.swift */; };
@@ -44,7 +47,7 @@
 		E58E2C572A851CB90038262A /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58E2C562A851CB90038262A /* RecipeTableViewCell.xib */; };
 		E58E2C592A851CE70038262A /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C582A851CE70038262A /* RecipeTableViewCell.swift */; };
 		E58E2C602A854C850038262A /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C5F2A854C850038262A /* RecipesViewModel.swift */; };
-		E58E2C622A854D330038262A /* FoodService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C612A854D330038262A /* FoodService.swift */; };
+		E58E2C622A854D330038262A /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C612A854D330038262A /* RecipeService.swift */; };
 		E58E2C642A854EC60038262A /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C632A854EC60038262A /* ApiConstants.swift */; };
 		E58E2C6B2A85524E0038262A /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E2C6A2A85524E0038262A /* URLRequestExtensions.swift */; };
 		E58E2C6E2A8555140038262A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E58E2C6D2A8555140038262A /* Alamofire */; };
@@ -84,7 +87,7 @@
 		E590DC752A7ADE6B000F14A5 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590DC742A7ADE6B000F14A5 /* FirstPageViewController.swift */; };
 		E590DC772A7ADE80000F14A5 /* FirstPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E590DC762A7ADE80000F14A5 /* FirstPageStoryboard.storyboard */; };
 		E590DC792A7ADF3C000F14A5 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */; };
-		E5A700592A7C14B400B06A17 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A700582A7C14B400B06A17 /* Food.swift */; };
+		E5A700592A7C14B400B06A17 /* LocalRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A700582A7C14B400B06A17 /* LocalRecipe.swift */; };
 		E5AEE65E2AC1D22C005F5BE3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E593444A2AC15264007DE674 /* WidgetKit.framework */; };
 		E5AEE65F2AC1D22D005F5BE3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E593444C2AC15264007DE674 /* SwiftUI.framework */; };
 		E5AEE6622AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AEE6612AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift */; };
@@ -143,6 +146,8 @@
 		E53A1F372A8376380057E813 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		E53A1F462A83BA3A0057E813 /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		E53A1F4E2A83E7A90057E813 /* MainTabBarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarStoryboard.storyboard; sourceTree = "<group>"; };
+		E557BBA02AC32FC300407267 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		E557BBA22AC3329D00407267 /* CreateRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewModel.swift; sourceTree = "<group>"; };
 		E56A70EB2A81036A0062D763 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		E56A70ED2A8103780062D763 /* RegistrationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationStoryboard.storyboard; sourceTree = "<group>"; };
 		E56A70EF2A8103D50062D763 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +163,6 @@
 		E58367BE2AAA336300E424A4 /* MyRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesViewController.swift; sourceTree = "<group>"; };
 		E58367C32AAA3D1D00E424A4 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 		E58367C52AAA3D6600E424A4 /* MyRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeViewModel.swift; sourceTree = "<group>"; };
-		E588C8032A8BC383003F4803 /* FoodModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodModel.xcdatamodel; sourceTree = "<group>"; };
 		E588C80D2A8BD1AA003F4803 /* RecipesViewMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewMapper.swift; sourceTree = "<group>"; };
 		E588C81F2A8BE8AA003F4803 /* DetailsRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRecipeViewModel.swift; sourceTree = "<group>"; };
 		E58D2B402A88F67B003EF4BF /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
@@ -168,7 +172,7 @@
 		E58E2C562A851CB90038262A /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		E58E2C582A851CE70038262A /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		E58E2C5F2A854C850038262A /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
-		E58E2C612A854D330038262A /* FoodService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodService.swift; sourceTree = "<group>"; };
+		E58E2C612A854D330038262A /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		E58E2C632A854EC60038262A /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		E58E2C6A2A85524E0038262A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
 		E58E2C712A867AF40038262A /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
@@ -208,7 +212,7 @@
 		E590DC782A7ADF3C000F14A5 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		E593444A2AC15264007DE674 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E593444C2AC15264007DE674 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		E5A700582A7C14B400B06A17 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		E5A700582A7C14B400B06A17 /* LocalRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRecipe.swift; sourceTree = "<group>"; };
 		E5AEE65D2AC1D22C005F5BE3 /* SmetankaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SmetankaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AEE6612AC1D22D005F5BE3 /* SmetankaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmetankaWidgetBundle.swift; sourceTree = "<group>"; };
 		E5AEE6632AC1D22D005F5BE3 /* SmetankaWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmetankaWidgetLiveActivity.swift; sourceTree = "<group>"; };
@@ -243,9 +247,11 @@
 				E529D8D62AB1E2B700B286AC /* Hero in Frameworks */,
 				E58E2C6E2A8555140038262A /* Alamofire in Frameworks */,
 				E56A71092A821EC70062D763 /* FirebaseDatabase in Frameworks */,
+				E557BB9F2AC32FB200407267 /* RealmSwift in Frameworks */,
 				E590DC662A7A78BA000F14A5 /* RxRelay in Frameworks */,
 				E56A71072A821EC70062D763 /* FirebaseAuth in Frameworks */,
 				E590DC642A7A78BA000F14A5 /* RxCocoa in Frameworks */,
+				E557BB9D2AC32FB200407267 /* Realm in Frameworks */,
 				E590DC682A7A78BA000F14A5 /* RxSwift in Frameworks */,
 				E56A710D2A821EC70062D763 /* FirebaseStorage in Frameworks */,
 				E52F98112A8CB6390020D7BA /* AlamofireImage in Frameworks */,
@@ -321,6 +327,14 @@
 			path = ProfileTabBarView;
 			sourceTree = "<group>";
 		};
+		E557BB992AC32B8500407267 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				E557BBA02AC32FC300407267 /* Recipe.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		E56A70EA2A8103560062D763 /* LogInView */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				E58367C52AAA3D6600E424A4 /* MyRecipeViewModel.swift */,
+				E557BBA22AC3329D00407267 /* CreateRecipeViewModel.swift */,
 			);
 			path = MyRecipesViewModel;
 			sourceTree = "<group>";
@@ -441,7 +456,6 @@
 				E590DC122A7A5A63000F14A5 /* LaunchScreen.storyboard */,
 				E590DC152A7A5A63000F14A5 /* Info.plist */,
 				E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */,
-				E588C8022A8BC383003F4803 /* FoodModel.xcdatamodeld */,
 				E590DC1F2A7A5BE5000F14A5 /* Localizable.strings */,
 			);
 			path = Smetanka;
@@ -500,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				E590DC2E2A7A5EAF000F14A5 /* Local */,
-				E590DC2D2A7A5EA9000F14A5 /* CoreData */,
+				E557BB992AC32B8500407267 /* Realm */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -513,7 +527,7 @@
 				E590DC462A7A6B75000F14A5 /* UserDefaultsService.swift */,
 				E56A70FD2A821C570062D763 /* FirebaseService.swift */,
 				E56A70FF2A821CC10062D763 /* AuthenticationService.swift */,
-				E58E2C612A854D330038262A /* FoodService.swift */,
+				E58E2C612A854D330038262A /* RecipeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -533,17 +547,10 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		E590DC2D2A7A5EA9000F14A5 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		E590DC2E2A7A5EAF000F14A5 /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				E5A700582A7C14B400B06A17 /* Food.swift */,
+				E5A700582A7C14B400B06A17 /* LocalRecipe.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -797,6 +804,8 @@
 				E58E2C6D2A8555140038262A /* Alamofire */,
 				E52F98102A8CB6390020D7BA /* AlamofireImage */,
 				E529D8D52AB1E2B700B286AC /* Hero */,
+				E557BB9C2AC32FB200407267 /* Realm */,
+				E557BB9E2AC32FB200407267 /* RealmSwift */,
 			);
 			productName = Smetanka;
 			productReference = E590DC042A7A5A60000F14A5 /* Smetanka.app */;
@@ -854,6 +863,7 @@
 				E58E2C6C2A8555140038262A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E52F980F2A8CB6390020D7BA /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				E529D8D42AB1E2B700B286AC /* XCRemoteSwiftPackageReference "Hero" */,
+				E557BB9B2AC32FB200407267 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = E590DC052A7A5A60000F14A5 /* Products */;
 			projectDirPath = "";
@@ -904,13 +914,13 @@
 			files = (
 				E58367C62AAA3D6600E424A4 /* MyRecipeViewModel.swift in Sources */,
 				E58E2C642A854EC60038262A /* ApiConstants.swift in Sources */,
-				E588C8042A8BC383003F4803 /* FoodModel.xcdatamodeld in Sources */,
 				E590DC472A7A6B75000F14A5 /* UserDefaultsService.swift in Sources */,
 				E53A1F362A82B22C0057E813 /* ThemeManager.swift in Sources */,
 				E58D2B412A88F67B003EF4BF /* UIImageExtensions.swift in Sources */,
 				E590DC562A7A7056000F14A5 /* ProxyLaunchViewController.swift in Sources */,
 				E5BCCEC62A828B3300001EEE /* Font.swift in Sources */,
 				E590DC362A7A60B4000F14A5 /* NSManagedObjectExtensions.swift in Sources */,
+				E557BBA12AC32FC300407267 /* Recipe.swift in Sources */,
 				E53A1F382A8376380057E813 /* MainTabBarViewController.swift in Sources */,
 				E53A1F332A82A2E10057E813 /* LogInViewModel.swift in Sources */,
 				E56A70F42A8104E90062D763 /* ThirdPageViewController.swift in Sources */,
@@ -930,11 +940,11 @@
 				E590DC332A7A5FCC000F14A5 /* LocalStorageService.swift in Sources */,
 				E58367BF2AAA336300E424A4 /* MyRecipesViewController.swift in Sources */,
 				E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */,
-				E58E2C622A854D330038262A /* FoodService.swift in Sources */,
+				E58E2C622A854D330038262A /* RecipeService.swift in Sources */,
 				E58E2C532A851A340038262A /* DetailsRecipeViewController.swift in Sources */,
 				E5BA6A642ABC89B7000C304A /* ChangeThemeViewModel.swift in Sources */,
 				E58367BD2AAA307600E424A4 /* FavouriteViewController.swift in Sources */,
-				E5A700592A7C14B400B06A17 /* Food.swift in Sources */,
+				E5A700592A7C14B400B06A17 /* LocalRecipe.swift in Sources */,
 				E590DC4A2A7A6D23000F14A5 /* Injector.swift in Sources */,
 				E590DC6F2A7ADD63000F14A5 /* Navigation.swift in Sources */,
 				E5FB31CB2AA37BCA0077A28B /* UIButtonExtensions.swift in Sources */,
@@ -960,6 +970,7 @@
 				E5801FE72A7BB32800119F37 /* ContainerPageViewController.swift in Sources */,
 				E590DC792A7ADF3C000F14A5 /* UserDefaultKeys.swift in Sources */,
 				E590DC4E2A7A6EC2000F14A5 /* StringExtensions.swift in Sources */,
+				E557BBA32AC3329D00407267 /* CreateRecipeViewModel.swift in Sources */,
 				E5FB31C92AA371740077A28B /* UIFontExtensions.swift in Sources */,
 				E56A70FC2A818CE00062D763 /* OnboardingViewModel.swift in Sources */,
 				E590DC402A7A64CE000F14A5 /* LocalizationExtensions.swift in Sources */,
@@ -1151,7 +1162,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ProxyLaunchStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1181,7 +1192,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ProxyLaunchStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1295,8 +1306,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.6.2;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.6.2;
 			};
 		};
 		E52F980F2A8CB6390020D7BA /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
@@ -1305,6 +1316,14 @@
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 4.2.0;
+			};
+		};
+		E557BB9B2AC32FB200407267 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.42.4;
 			};
 		};
 		E56A71052A821EC70062D763 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1352,6 +1371,16 @@
 			package = E52F980F2A8CB6390020D7BA /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
 		};
+		E557BB9C2AC32FB200407267 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E557BB9B2AC32FB200407267 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		E557BB9E2AC32FB200407267 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E557BB9B2AC32FB200407267 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		E56A71062A821EC70062D763 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E56A71052A821EC70062D763 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1398,19 +1427,6 @@
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		E588C8022A8BC383003F4803 /* FoodModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E588C8032A8BC383003F4803 /* FoodModel.xcdatamodel */,
-			);
-			currentVersion = E588C8032A8BC383003F4803 /* FoodModel.xcdatamodel */;
-			path = FoodModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E590DBFC2A7A5A60000F14A5 /* Project object */;
 }

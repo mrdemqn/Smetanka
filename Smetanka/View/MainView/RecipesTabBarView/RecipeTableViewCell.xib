@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,8 +27,8 @@
                                     <constraint firstAttribute="height" constant="110" id="mma-ry-vZg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X31-VC-rcG">
-                                <rect key="frame" x="133" y="15.000000000000002" width="190" height="21.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X31-VC-rcG">
+                                <rect key="frame" x="133" y="15" width="230" height="22"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,22 +39,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nZ-KC-by0">
-                                <rect key="frame" x="328" y="5" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="PzK-sl-dL9"/>
-                                    <constraint firstAttribute="width" constant="40" id="RMF-K9-a68"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
-                                <connections>
-                                    <action selector="favouriteAction:" destination="l2S-NR-o5H" eventType="touchUpInside" id="TLA-Rn-QVK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundTableViewCell"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4nZ-KC-by0" secondAttribute="trailing" constant="5" id="KzG-5Z-INZ"/>
                             <constraint firstItem="xE7-Jv-kwr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X31-VC-rcG" secondAttribute="bottom" constant="5" id="N7X-HG-gUX"/>
                             <constraint firstAttribute="bottom" secondItem="xE7-Jv-kwr" secondAttribute="bottom" constant="19" id="OjH-c0-QvR"/>
                             <constraint firstItem="rU1-xF-hBg" firstAttribute="leading" secondItem="Fht-VD-sGm" secondAttribute="leading" constant="15" id="TVe-nd-7Uh"/>
@@ -63,10 +49,9 @@
                             <constraint firstAttribute="bottom" secondItem="rU1-xF-hBg" secondAttribute="bottom" constant="10" id="VKE-5x-Mi8"/>
                             <constraint firstItem="X31-VC-rcG" firstAttribute="leading" secondItem="rU1-xF-hBg" secondAttribute="trailing" constant="8" symbolic="YES" id="Yg6-rz-q8x"/>
                             <constraint firstItem="xE7-Jv-kwr" firstAttribute="leading" secondItem="rU1-xF-hBg" secondAttribute="trailing" constant="8" symbolic="YES" id="aCf-KJ-bBY"/>
-                            <constraint firstItem="4nZ-KC-by0" firstAttribute="leading" secondItem="X31-VC-rcG" secondAttribute="trailing" constant="5" id="eUp-0Y-gzl"/>
                             <constraint firstItem="X31-VC-rcG" firstAttribute="top" secondItem="Fht-VD-sGm" secondAttribute="top" constant="15" id="h0y-j1-itF"/>
                             <constraint firstAttribute="trailing" secondItem="xE7-Jv-kwr" secondAttribute="trailing" constant="10" id="oHP-rh-qbc"/>
-                            <constraint firstItem="4nZ-KC-by0" firstAttribute="top" secondItem="Fht-VD-sGm" secondAttribute="top" constant="5" id="yVb-nP-0Je"/>
+                            <constraint firstAttribute="trailing" secondItem="X31-VC-rcG" secondAttribute="trailing" constant="10" id="xeH-vX-wo2"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -89,7 +74,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="BackgroundTableViewCell">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -6,114 +6,60 @@
 //
 
 import RxSwift
+import RealmSwift
 import Foundation
 
 protocol RecipesViewModelProtocol {
     
-    var recipes: [Food] { get }
+    var recipes: [Recipe] { get }
     
     var loadingSubject: BehaviorSubject<Bool> { get }
     
     var recipesSubject: PublishSubject<Void> { get }
     
     func fetchRecipes() async
-    
-    func addFavourite(_ food: Food)
-    
-    func removeFavourite(_ food: Food)
-    
-    func translate() async
 }
 
 final class RecipesViewModel: RecipesViewModelProtocol {
     
-    private let foodService: FoodServiceProtocol
+    private let foodService: RecipeServiceProtocol
     
-    private let localStorage: LocalStorageServiceProtocol
-    
-//    private let mapper: RecipesViewMapperProtocol
+    private let storage: LocalStorageServiceProtocol
     
     private let networkService: NetworkServiceProtocol
     
-    var recipes: [Food] = [] {
+    private let mapper: RecipesViewMapperProtocol
+    
+    var recipes: [Recipe] = [] {
         didSet {
             recipesSubject.on(.completed)
         }
     }
-    
-//    var recipesCore: Set<FoodCore> = []
     
     var loadingSubject: BehaviorSubject<Bool> = BehaviorSubject(value: true)
     
     var recipesSubject: PublishSubject<Void> = PublishSubject()
     
     init() {
-        foodService = FoodService()
-        localStorage = LocalStorageService()
-//        mapper = RecipesViewMapper()
+        foodService = RecipeService()
+        storage = LocalStorageService()
         networkService = NetworkService()
+        mapper = RecipesViewMapper()
     }
     
     func fetchRecipes() async {
         loadingSubject.onNext(true)
-//        let hasLocalData = fetchRecipesLocal()
         
-//        if !hasLocalData {
-            await fetchRecipesNetwork()
-//        }
-        loadingSubject.onNext(false)
+        await self.fetchRecipesNetwork()
     }
     
     private func fetchRecipesNetwork() async {
         do {
-            let foods = try await foodService.fetchAllRecipes()
-            recipes = foods
-//            DispatchQueue.global(qos: .background).async { [weak self] in
-//                self?.localStorage.save(FoodCore.self) { context in
-//                    guard let self = self else { return }
-//                    self.mapper.mapFoodToFoodCore(self.recipes,
-//                                             context: context,
-//                                             foodCore: &self.recipesCore)
-//                    let foodsCore = FoodsCore(context: context)
-//                    foodsCore.foods = NSSet(object: self.recipesCore)
-//                }
-//                self?.localStorage.save(FoodsCore.self) { context in
-//                    guard let self = self else { return }
-//                    let foodsCore = FoodsCore(context: context)
-//                    foodsCore.foods = NSSet(object: self.recipesCore)
-//                }
-//            }
+            let recipes = try await foodService.fetchAllRecipes()
+            print("RecipesLength: \(recipes.count)")
+            mapper.mapRealm(realmRecipes: &self.recipes, recipes: recipes)
         } catch {
             print("Has Error: \(error)")
         }
-    }
-    
-//    private func fetchRecipesLocal() -> Bool {
-//        let foodsCore = localStorage.fetch(FoodsCore.self)
-//
-//        if foodsCore.isEmpty { return false }
-//
-//        guard let foodsCoreLocal = foodsCore.first!.foods else { return false }
-//
-//        mapper.mapFoodCoreToFood(foodsCoreLocal,
-//                                 recipes: &recipes)
-//        recipes.forEach { recipe in
-//            print("Recipes: \(recipe.title)")
-//        }
-//        return true
-//    }
-    
-    func translate() async {
-        
-        let text = await networkService.translate(text: "Could you lie down?")
-        print("TranslatedText: \(text)")
-    }
-    
-    func addFavourite(_ food: Food) {
-        
-    }
-    
-    func removeFavourite(_ food: Food) {
-        
     }
 }

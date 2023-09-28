@@ -56,3 +56,4 @@
 "time_recipe_placeholder" = "Время приготовления";
 "description_recipe_placeholder" = "Описание рецепта";
 "step_recipe_placeholder" = "Шаг";
+"add_image_placeholder" = "Нажмите здесь, чтобы добавить изображение";

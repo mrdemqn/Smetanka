@@ -10,11 +10,9 @@ import Alamofire
 
 protocol NetworkServiceProtocol {
     
-    func get<T: Codable>(_ type: T.Type,
+    func get<T: Decodable>(_ type: T.Type,
                          link: String,
                          headers: HTTPHeaders?) async throws -> T
-    
-    func translate(text translationText: String) async -> String
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -42,7 +40,7 @@ final class NetworkService: NetworkServiceProtocol {
     }()
     
     
-    func get<T: Codable>(_ type: T.Type,
+    func get<T: Decodable>(_ type: T.Type,
                          link: String,
                          headers: HTTPHeaders? = nil) async throws -> T {
         
@@ -57,20 +55,5 @@ final class NetworkService: NetworkServiceProtocol {
         guard let foods = response.value else { throw CustomError.somethingWrong }
 
         return foods
-    }
-    
-    func translate(text translationText: String) async -> String {
-        
-        let response = await session
-            .request("https://api.modernmt.com/translate",
-                     parameters: ["source": "en",
-                                  "target": "ru",
-                                  "q": translationText])
-            .serializingDecodable(Translation.self)
-            .response
-        
-        guard let translatedText = response.value?.data.translation else { return "" }
-        
-        return translatedText
     }
 }

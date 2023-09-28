@@ -26,14 +26,21 @@ final class FavouriteViewController: UIViewController {
         
         configureLayout()
         
-        Task {
-            await viewModel.fetchRecipes()
+        viewModel.fetchRecipes()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+            viewModel.observeFavourites()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         prepareLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 }
 
@@ -123,6 +130,7 @@ extension FavouriteViewController: UITableViewDelegate {
         let controller = DetailsRecipeViewController()
         let recipe = viewModel.recipes[indexPath.item]
         controller.recipeId = recipe.id
+        controller.favourites = true
         push(of: controller, hideBar: true)
     }
 }

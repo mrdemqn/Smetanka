@@ -32,6 +32,8 @@ final class DetailsRecipeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     var recipeId: String?
+    var favourites: Bool = false
+    var fromMyRecipe: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +45,14 @@ final class DetailsRecipeViewController: UIViewController {
         
         bindViewModel()
         
+        guard let id = recipeId else { return }
+        
         Task {
-            guard let id = recipeId else { return }
-            await viewModel.fetchRecipe(id)
+            if favourites {
+                await viewModel.fetchLocalRecipe(id)
+            } else {
+                await viewModel.fetchLocalIfExists(id)
+            }
         }
     }
     
@@ -53,11 +60,48 @@ final class DetailsRecipeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = localized(of: .recipe)
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(changeFavourite))
     }
     
     deinit {
         viewModel.recipePublish.dispose()
         viewModel.loadingSubject.dispose()
+    }
+}
+
+private extension DetailsRecipeViewController {
+    
+    func bindViewModel() {
+        
+        viewModel.loadingSubject.subscribe(
+            onNext: setLoadingUI
+        ).disposed(by: disposeBag)
+        
+        viewModel.recipePublish.subscribe(
+            onNext: setRecipeUI
+        ).disposed(by: disposeBag)
+        
+        viewModel.favouriteButtonSubject.subscribe(
+            onNext: { [unowned self] isFavourite in
+                print("isFavourite: \(isFavourite)")
+                changeBarButton(isFavourite: isFavourite)
+            }
+        ).disposed(by: disposeBag)
+    }
+    
+    func changeBarButton(isFavourite: Bool) {
+        DispatchQueue.main.async {
+            let image = UIImage(systemName: isFavourite ? "star.fill" : "star")
+            print("Fetch Local Recipe Success 2: \(isFavourite)")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: image,
+                                                                     style: .plain,
+                                                                     target: self,
+                                                                     action: #selector(self.changeFavourite))
+        }
+    }
+    
+    @objc func changeFavourite() {
+        viewModel.changeFavourite()
     }
 }
 
@@ -113,6 +157,8 @@ private extension DetailsRecipeViewController {
     
     func configureImageView() {
         programRecipeImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        programRecipeImageView.contentMode = .scaleToFill
     }
     
     func prepareImageView() {
@@ -121,7 +167,8 @@ private extension DetailsRecipeViewController {
         NSLayoutConstraint.activate([
             programRecipeImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
             programRecipeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            programRecipeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            programRecipeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            programRecipeImageView.heightAnchor.constraint(equalToConstant: 200),
         ])
     }
     
@@ -216,20 +263,15 @@ private extension DetailsRecipeViewController {
         ])
     }
     
-    func bindViewModel() {
-        
-        viewModel.loadingSubject.subscribe(
-            onNext: setLoadingUI
-        ).disposed(by: disposeBag)
-        
-        viewModel.recipePublish.subscribe(
-            onNext: setRecipeUI
-        ).disposed(by: disposeBag)
-    }
-    
-    func setRecipeUI(_ recipe: Food) {
+    func setRecipeUI(_ recipe: LocalRecipe) {
         DispatchQueue.main.async { [unowned self] in
-            programRecipeImageView.load(from: recipe.image)
+            print("Recipe: \(recipe.image)")
+            if fromMyRecipe {
+                guard let data = recipe.uiImage else { return }
+                programRecipeImageView.image = UIImage(data: data)
+            } else {
+                programRecipeImageView.load(from: recipe.image)
+            }
             programRecipeTitleLabel.text = recipe.title
             programRecipeDifficultyLabel.text = String(describing: localized(of: .difficulty) + ": \(recipe.difficulty)")
             programRecipePortionLabel.text = String(describing: localized(of: .portion) + ": \(recipe.portion ?? "0")")

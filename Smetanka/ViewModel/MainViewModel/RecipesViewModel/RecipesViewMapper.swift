@@ -6,55 +6,80 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
 
-//protocol RecipesViewMapperProtocol {
-//    
-//    func mapFoodToFoodCore(_ foods: [Food],
-//                           context: NSManagedObjectContext,
-//                           foodCore: inout Set<FoodCore>)
-//    
-//    func mapFoodCoreToFood(_ foodCore: NSSet,
-//                           recipes: inout [Food])
-//}
-//
-//final class RecipesViewMapper: RecipesViewMapperProtocol {
-//    
-//    func mapFoodToFoodCore(_ foods: [Food],
-//                           context: NSManagedObjectContext,
-//                           foodCore: inout Set<FoodCore>) {
-//        let foodsCore = foods.map { food in
-//            let foodCore = FoodCore(context: context)
-//            foodCore.id = food.id
-//            foodCore.title = food.title
-//            foodCore.difficulty = food.difficulty
-//            foodCore.image = food.image
-//            foodCore.portion = food.portion
-//            foodCore.time = food.time
-//            foodCore.recipeDescription = food.description
-//            foodCore.ingredients = food.ingredients
-//            foodCore.method = food.method
-//            return foodCore
-//        }
-//        foodCore = Set(foodsCore)
-//    }
-//    
-//    func mapFoodCoreToFood(_ foodCore: NSSet,
-//                           recipes: inout [Food]) {
-//        let foods: Set<FoodCore> = Set(_immutableCocoaSet: foodCore)
-//        
-//        let mappedRecipes = foods.map { foodCore in
-//            return Food(id: foodCore.id!,
-//                        title: foodCore.title!,
-//                        difficulty: foodCore.difficulty!,
-//                        image: foodCore.image!,
-//                        portion: foodCore.portion!,
-//                        time: foodCore.time!,
-//                        description: foodCore.recipeDescription!,
-//                        ingredients: foodCore.ingredients!,
-//                        method: foodCore.method!)
-//        }
-//        
-//        recipes = mappedRecipes
-//    }
-//}
+protocol RecipesViewMapperProtocol {
+    
+    func mapRealm(realmRecipes: inout [Recipe],
+                  recipes: [LocalRecipe])
+    
+    func mapRealm(recipe: inout Recipe,
+                  localRecipe: LocalRecipe)
+    
+    func mapLocal(recipe: Recipe) -> LocalRecipe
+}
+
+final class RecipesViewMapper: RecipesViewMapperProtocol {
+    
+    
+    func mapRealm(realmRecipes: inout [Recipe],
+                  recipes: [LocalRecipe]) {
+        var mapped: [Recipe] = []
+        for recipe in recipes {
+            let realmRecipe = Recipe(id: recipe.id,
+                                     title: recipe.title,
+                                     difficulty: recipe.difficulty,
+                                     image: recipe.image,
+                                     portion: recipe.portion,
+                                     time: recipe.time,
+                                     descriptionRecipe: recipe.description,
+                                     ingredients: List<String>(),
+                                     method: List<String>(),
+                                     isFavourite: false,
+                                     isMyRecipe: false,
+                                     uiImage: recipe.uiImage)
+            realmRecipe.ingredients.append(objectsIn: recipe.ingredients ?? [])
+            realmRecipe.method.append(objectsIn: recipe.foodMethods)
+            mapped.append(realmRecipe)
+        }
+        realmRecipes = mapped
+    }
+    
+    func mapRealm(recipe: inout Recipe,
+                  localRecipe: LocalRecipe) {
+        let realmRecipe = Recipe(id: localRecipe.id,
+                                 title: localRecipe.title,
+                                 difficulty: localRecipe.difficulty,
+                                 image: localRecipe.image,
+                                 portion: localRecipe.portion,
+                                 time: localRecipe.time,
+                                 descriptionRecipe: localRecipe.description,
+                                 ingredients: List<String>(),
+                                 method: List<String>(),
+                                 isFavourite: localRecipe.isFavourite ?? false,
+                                 isMyRecipe: localRecipe.isMyRecipe ?? false,
+                                 uiImage: localRecipe.uiImage)
+        realmRecipe.ingredients.append(objectsIn: recipe.ingredients)
+        realmRecipe.method.append(objectsIn: recipe.method)
+        recipe = realmRecipe
+    }
+    
+    func mapLocal(recipe: Recipe) -> LocalRecipe {
+        var methods: [[String: String]] = []
+        for (index, method) in recipe.method.enumerated() {
+            methods.append(["\(index)": method])
+        }
+        return LocalRecipe(id: recipe.id,
+                           title: recipe.title,
+                           difficulty: recipe.difficulty,
+                           image: recipe.image,
+                           portion: recipe.portion,
+                           time: recipe.time,
+                           description: recipe.descriptionRecipe,
+                           ingredients: Array(recipe.ingredients),
+                           method: methods,
+                           isFavourite: recipe.isFavourite,
+                           isMyRecipe: recipe.isMyRecipe,
+                           uiImage: recipe.uiImage)
+    }
+}

@@ -7,13 +7,15 @@
 
 import UIKit
 import Hero
+import RealmSwift
+import RxSwift
 
-final class CreateRecipeViewController: UIViewController {
+final class CreateRecipeViewController: UIViewController, UINavigationControllerDelegate {
+    
+    private var viewModel: CreateRecipeViewModelProtocol!
     
     private var textViewStepsList: [UITextView] = []
     private var stepNumberLabelsList: [UILabel] = []
-    
-    private var stepsCount = 1
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -21,6 +23,7 @@ final class CreateRecipeViewController: UIViewController {
     private let addStepButton = UIImageView()
     
     private let imageView = UIImageView()
+    private var imagePath: Data?
     
     private let titleLabel = UILabel()
     private let difficultyLabel = UILabel()
@@ -28,6 +31,7 @@ final class CreateRecipeViewController: UIViewController {
     private let timeLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let stepsLabel = UILabel()
+    private let imageLabel = UILabel()
     
     private let titleTextField = AppField()
     private let difficultyTextField = AppField()
@@ -44,8 +48,17 @@ final class CreateRecipeViewController: UIViewController {
         createStep()
     }
     
+    private let picker = UIImagePickerController()
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.delegate = self
+        viewModel = CreateRecipeViewModel()
+        
+        bindViewModel()
+        
         isHeroEnabled = true
         textViewStepsList.append(textView)
         textViewStepsList.append(textView)
@@ -78,6 +91,7 @@ private extension CreateRecipeViewController {
         configureLabels()
         configureTextFields()
         configureAddStepButton()
+        configureImageLabel()
     }
     
     func prepareLayout() {
@@ -85,6 +99,7 @@ private extension CreateRecipeViewController {
         prepareImageView()
         prepareLabelsAndTextFields()
         prepareStepsTextView()
+        prepareImageLabel()
     }
     
     func configureSuperView() {
@@ -106,10 +121,13 @@ private extension CreateRecipeViewController {
     func configureImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .black.withAlphaComponent(0.1)
-        let image = UIImage(systemName: "camera.on.rectangle")
-        imageView.frame = CGRect(x: 0, y: 0, width: 0, height: 200)
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        imageView.layer.masksToBounds = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(pickImage))
+        imageView.addGestureRecognizer(gesture)
     }
     
     func configureLabels() {
@@ -166,6 +184,12 @@ private extension CreateRecipeViewController {
         addStepButton.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(addNewStep))
         addStepButton.addGestureRecognizer(gesture)
+    }
+    
+    func configureImageLabel() {
+        imageLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageLabel.text = localized(of: .addImagePlaceholder)
+        imageLabel.font = .helveticaNeueFont(18, weight: .bold)
     }
     
     func prepareScrollView() {
@@ -389,15 +413,95 @@ private extension CreateRecipeViewController {
             addStepButton.widthAnchor.constraint(equalToConstant: 30),
         ])
     }
+    
+    func prepareImageLabel() {
+        imageView.addSubview(imageLabel)
+        
+        NSLayoutConstraint.activate([
+            imageLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            imageLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
+        ])
+    }
 }
 
 private extension CreateRecipeViewController {
+    
+    func bindViewModel() {
+        var loader = UIAlertController()
+        viewModel.loadingSubject.subscribe(onNext: { [unowned self] isLoading in
+            if isLoading {
+                loader = showLoader(localized(of: .pleaseWait))
+            } else {
+                stopLoader(loader: loader)
+            }
+        }).disposed(by: disposeBag)
+        viewModel.saveSuccessSubject.subscribe(onNext: { _ in
+            self.pop()
+        }).disposed(by: disposeBag)
+    }
     
     @objc func addNewStep() {
         reloadStepViews()
     }
     
     @objc func saveRecipe() {
+        guard let title = titleTextField.text, title.isNotEmpty,
+              let difficulty = difficultyTextField.text, difficulty.isNotEmpty,
+            let imagePath = imagePath,
+            let portion = portionTextField.text, portion.isNotEmpty,
+            let times = timeTextField.text, times.isNotEmpty,
+            let descriptionRecipe = descriptionTextField.text, descriptionRecipe.isNotEmpty else { return }
         
+        var method: [String] = []
+        
+        for textView in textViewStepsList {
+            if textView.text.isNotEmpty {
+                method.append(textView.text)
+            }
+        }
+        
+        let recipe = Recipe(id: UUID().uuidString,
+                            title: title,
+                            difficulty: difficulty,
+                            image: "",
+                            portion: portion,
+                            time: times,
+                            descriptionRecipe: descriptionRecipe,
+                            ingredients: List<String>(),
+                            method: List<String>(),
+                            isFavourite: false,
+                            isMyRecipe: true,
+                            uiImage: imagePath)
+        recipe.method.append(objectsIn: method)
+        viewModel.createRecipe(recipe: recipe)
+    }
+    
+    @objc func pickImage() {
+        if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            return
+        }
+        
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        
+        present(to: picker)
+    }
+}
+
+extension CreateRecipeViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        
+        imageView.image = pickedImage
+        
+        imagePath = pickedImage.pngData()
+        
+        DispatchQueue.main.async {
+            self.imageLabel.removeFromSuperview()
+        }
+        
+        dismiss(animated: true)
     }
 }

@@ -9,41 +9,50 @@ import RxSwift
 
 protocol FavouriteViewModelProtocol {
     
-    var recipes: [Food] { get }
+    var recipes: [Recipe] { get }
     
     var loadingSubject: BehaviorSubject<Bool> { get }
     
     var recipesSubject: PublishSubject<Void> { get }
     
-    func fetchRecipes() async
+    func fetchRecipes()
+    
+    func observeFavourites()
 }
 
 final class FavouriteViewModel: FavouriteViewModelProtocol {
     
-    private let foodService: FoodServiceProtocol
+    private let storage: LocalStorageServiceProtocol
     
     var loadingSubject: BehaviorSubject<Bool> = BehaviorSubject(value: true)
     
     var recipesSubject: PublishSubject<Void> = PublishSubject()
     
     init() {
-        foodService = FoodService()
+        storage = LocalStorageService()
     }
     
-    var recipes: [Food] = [] {
+    var recipes: [Recipe] = [] {
         didSet {
+            print("Recipes: \(recipes.count)")
             recipesSubject.on(.completed)
         }
     }
     
-    func fetchRecipes() async {
+    func fetchRecipes() {
         loadingSubject.onNext(true)
-        do {
-            let foods = try await foodService.fetchAllRecipes()
-            recipes = foods
-        } catch {
-            print("Has Error: \(error)")
+
+        storage.fetchFavourites { recipes in
+            print("fetchFavourites \(recipes.count)")
+            self.recipes = recipes
+            self.loadingSubject.onNext(false)
         }
-        loadingSubject.onNext(false)
+    }
+    
+    func observeFavourites() {
+        storage.observeFavourites { result in
+            print("ObserveRecipes: \(result.count)")
+            self.recipes = result
+        }
     }
 }
