@@ -62,7 +62,7 @@ final class AuthenticationService: AuthenticationServiceProtocol {
         do {
             try firebaseService.signOut()
         } catch {
-            print(error)
+            throw error
         }
     }
 }

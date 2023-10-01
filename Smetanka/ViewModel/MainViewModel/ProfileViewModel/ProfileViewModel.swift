@@ -5,7 +5,11 @@
 //  Created by Димон on 2.09.23.
 //
 
+import RxSwift
+
 protocol ProfileViewModelProtocol {
+    
+    var failureSubject: PublishSubject<Void> { get }
     
     func logOut()
 }
@@ -13,6 +17,8 @@ protocol ProfileViewModelProtocol {
 final class ProfileViewModel: ProfileViewModelProtocol {
     
     private var authService: AuthenticationServiceProtocol!
+    
+    var failureSubject: PublishSubject<Void> = PublishSubject<Void>()
     
     init() {
         authService = AuthenticationService()
@@ -22,7 +28,7 @@ final class ProfileViewModel: ProfileViewModelProtocol {
         do {
             try authService.logOut()
         } catch {
-            print(error)
+            failureSubject.on(.error(error))
         }
     }
 }

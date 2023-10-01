@@ -111,10 +111,6 @@ private extension LogInViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        print(emailTextField.clipsToBounds)
-        print(emailTextField.layer.masksToBounds)
-        print(emailTextField.layer.maskedCorners)
-        
         emailTextField.setupPlaceholder(localized(of: .emailPlaceholder))
         passwordTextField.setupPlaceholder(localized(of: .passwordPlaceholder))
         

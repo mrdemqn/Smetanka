@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import RxSwift
 
 final class ProfileViewController: UIViewController {
 
@@ -20,6 +21,8 @@ final class ProfileViewController: UIViewController {
     
     private let logOutButton = UIButton()
     
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ProfileViewModel()
@@ -28,9 +31,7 @@ final class ProfileViewController: UIViewController {
         prepareViews()
         
         Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                print("Not Nil: \(user?.isEmailVerified)")
-            } else {
+            if user == nil {
                 self.tabBarController?.tabBar.isHidden = true
                 self.setViewController(Navigation.onboardingLaunch)
             }
@@ -160,6 +161,12 @@ private extension ProfileViewController {
 
 private extension ProfileViewController {
     
+    func bindViewModel() {
+        viewModel.failureSubject.subscribe(onNext: { [unowned self] in
+            showErrorAlert()
+        }).disposed(by: disposeBag)
+    }
+    
     func prepareNavigateChangeThemeAction() {
         changeThemeButton.addTarget(self,
                                     action: #selector(navigateChangeThemeAction),
@@ -183,7 +190,6 @@ private extension ProfileViewController {
     }
     
     @objc func logOutUser() {
-        print(#function)
         viewModel.logOut()
     }
 }

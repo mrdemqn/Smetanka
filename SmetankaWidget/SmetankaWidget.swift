@@ -44,9 +44,6 @@ struct SmetankaWidgetEntryView: View {
     var body: some View {
         SmetankaWidgetView(displaySize: entry.displaySize)
             .containerBackground(.fill.tertiary, for: .widget)
-            .onAppear {
-                print(entry.displaySize)
-            }
     }
 }
 

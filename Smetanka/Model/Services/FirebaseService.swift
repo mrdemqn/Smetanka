@@ -84,6 +84,7 @@ final class FirebaseService: FirebaseServiceProtocol {
             try auth.signOut()
         } catch let signOutError {
             print("Error signing out: %@", signOutError)
+            throw signOutError
         }
     }
     

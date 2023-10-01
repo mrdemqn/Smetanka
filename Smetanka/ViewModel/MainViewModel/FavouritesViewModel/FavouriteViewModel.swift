@@ -34,7 +34,6 @@ final class FavouriteViewModel: FavouriteViewModelProtocol {
     
     var recipes: [Recipe] = [] {
         didSet {
-            print("Recipes: \(recipes.count)")
             recipesSubject.on(.completed)
         }
     }
@@ -43,7 +42,6 @@ final class FavouriteViewModel: FavouriteViewModelProtocol {
         loadingSubject.onNext(true)
 
         storage.fetchFavourites { recipes in
-            print("fetchFavourites \(recipes.count)")
             self.recipes = recipes
             self.loadingSubject.onNext(false)
         }
@@ -51,7 +49,6 @@ final class FavouriteViewModel: FavouriteViewModelProtocol {
     
     func observeFavourites() {
         storage.observeFavourites { result in
-            print("ObserveRecipes: \(result.count)")
             self.recipes = result
         }
     }

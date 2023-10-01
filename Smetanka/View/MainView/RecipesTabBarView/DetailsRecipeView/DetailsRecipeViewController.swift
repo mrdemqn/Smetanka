@@ -95,7 +95,6 @@ private extension DetailsRecipeViewController {
     func changeBarButton(isFavourite: Bool) {
         DispatchQueue.main.async {
             let image = UIImage(systemName: isFavourite ? "star.fill" : "star")
-            print("Fetch Local Recipe Success 2: \(isFavourite)")
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: image,
                                                                      style: .plain,
                                                                      target: self,
@@ -268,7 +267,6 @@ private extension DetailsRecipeViewController {
     
     func setRecipeUI(_ recipe: LocalRecipe) {
         DispatchQueue.main.async { [unowned self] in
-            print("Recipe: \(recipe.image)")
             if fromMyRecipe {
                 guard let data = recipe.uiImage else { return }
                 programRecipeImageView.image = UIImage(data: data)
