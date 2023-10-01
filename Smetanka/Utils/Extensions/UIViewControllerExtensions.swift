@@ -96,9 +96,9 @@ extension UIViewController {
         navigationController?.setViewControllers([viewController], animated: animated)
     }
     
-    func showErrorAlert(_ title: String?, _ message: String?) {
-        let alertTitle = title ?? localized(of: .errorAlertTitle)
-        let alertMessage = message ?? localized(of: .somethingWrong)
+    func showErrorAlert(_ title: String = "", _ message: String = "") {
+        let alertTitle = title.isNotEmpty ? title : localized(of: .errorAlertTitle)
+        let alertMessage = message.isNotEmpty ? message : localized(of: .somethingWrong)
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: localized(of: .errorAlertCancelActionTitle), style: .destructive)

@@ -14,6 +14,8 @@ final class FavouriteViewController: UIViewController {
     
     private let tableView = UITableView()
     
+    private let recipesNotFoundLabel = UILabel()
+    
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -33,14 +35,15 @@ final class FavouriteViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        prepareLayout()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        recipesNotFoundLabel.isHidden = !viewModel.recipes.isEmpty
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        prepareLayout()
     }
 }
 
@@ -50,10 +53,12 @@ private extension FavouriteViewController {
     func configureLayout() {
         configureSuperView()
         configureTableView()
+        configureRecipesNotFoundLabel()
     }
     
     func prepareLayout() {
         prepareTableView()
+        prepareRecipesNotFoundLabel()
     }
     
     func configureSuperView() {
@@ -73,6 +78,15 @@ private extension FavouriteViewController {
         tableView.backgroundColor = .background
     }
     
+    func configureRecipesNotFoundLabel() {
+        recipesNotFoundLabel.translatesAutoresizingMaskIntoConstraints = false
+        recipesNotFoundLabel.text = localized(of: .favouritesNotFound)
+        recipesNotFoundLabel.font = .helveticaNeueFont(20, weight: .bold)
+        recipesNotFoundLabel.numberOfLines = 0
+        recipesNotFoundLabel.textAlignment = .center
+        recipesNotFoundLabel.isHidden = !viewModel.recipes.isEmpty
+    }
+    
     func prepareTableView() {
         view.addSubview(tableView)
         
@@ -81,6 +95,17 @@ private extension FavouriteViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+    
+    func prepareRecipesNotFoundLabel() {
+        view.addSubview(recipesNotFoundLabel)
+        
+        NSLayoutConstraint.activate([
+            recipesNotFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            recipesNotFoundLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            recipesNotFoundLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            recipesNotFoundLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
         ])
     }
     

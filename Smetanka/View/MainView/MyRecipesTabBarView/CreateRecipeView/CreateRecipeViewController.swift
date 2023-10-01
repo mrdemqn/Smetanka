@@ -429,6 +429,7 @@ private extension CreateRecipeViewController {
     func bindViewModel() {
         var loader = UIAlertController()
         viewModel.loadingSubject.subscribe(onNext: { [unowned self] isLoading in
+            print("LoadingSubject: \(isLoading)")
             if isLoading {
                 loader = showLoader(localized(of: .pleaseWait))
             } else {
@@ -436,6 +437,7 @@ private extension CreateRecipeViewController {
             }
         }).disposed(by: disposeBag)
         viewModel.saveSuccessSubject.subscribe(onNext: { _ in
+            print("SuccessSubject:")
             self.pop()
         }).disposed(by: disposeBag)
     }

@@ -12,9 +12,20 @@ import RealmSwift
 
 final class RecipesViewController: UIViewController {
     
+    private var viewModel: RecipesViewModelProtocol!
+    
     @IBOutlet var tableView: UITableView!
     
-    private var viewModel: RecipesViewModelProtocol!
+    private let recipesNotFoundLabel = UILabel()
+    
+    private lazy var loadingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        
+        view.hidesWhenStopped = true
+        view.style = UIActivityIndicatorView.Style.large
+        view.startAnimating()
+        return view
+    }()
     
     private let vertical: CGFloat = 8
     private let horizontal: CGFloat = 25
@@ -36,15 +47,18 @@ final class RecipesViewController: UIViewController {
         
         setupTabBar()
         setupTableView()
-        
         Task {
             await viewModel.fetchRecipes()
         }
+        
+        configureRecipesNotFoundLabel()
+        prepareRecipesNotFoundLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar()
+        recipesNotFoundLabel.isHidden = !viewModel.recipes.isEmpty
     }
 }
 
@@ -53,6 +67,26 @@ extension RecipesViewController {
     private func setupNavigationBar() {
         navigationItem.title = localized(of: .recipes)
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func configureRecipesNotFoundLabel() {
+        recipesNotFoundLabel.translatesAutoresizingMaskIntoConstraints = false
+        recipesNotFoundLabel.text = localized(of: .favouritesNotFound)
+        recipesNotFoundLabel.font = .helveticaNeueFont(20, weight: .bold)
+        recipesNotFoundLabel.numberOfLines = 0
+        recipesNotFoundLabel.textAlignment = .center
+        recipesNotFoundLabel.isHidden = !viewModel.recipes.isEmpty
+    }
+    
+    func prepareRecipesNotFoundLabel() {
+        view.addSubview(recipesNotFoundLabel)
+        
+        NSLayoutConstraint.activate([
+            recipesNotFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            recipesNotFoundLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            recipesNotFoundLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            recipesNotFoundLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
+        ])
     }
     
     private func setupTabBar() {
@@ -76,15 +110,35 @@ extension RecipesViewController {
         tableView.separatorStyle = .none
     }
     
+    private func showLoadingView() {
+        view.addSubview(loadingView)
+        
+        NSLayoutConstraint.activate([
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+    
     private func bindViewModel() {
         viewModel.loadingSubject.subscribe { isLoading in
-            
+            DispatchQueue.main.async { [unowned self] in
+                if isLoading {
+                    showLoadingView()
+                } else {
+                    loadingView.stopAnimating()
+                }
+            }
         }.disposed(by: disposeBag)
         
-        viewModel.recipesSubject.subscribe { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        viewModel.recipesSubject.subscribe { _ in
+            DispatchQueue.main.async { [unowned self] in
+                tableView.reloadData()
             }
+        }.disposed(by: disposeBag)
+        
+        viewModel.failureSubject.subscribe { [unowned self] _ in
+            showErrorAlert()
         }.disposed(by: disposeBag)
     }
 }

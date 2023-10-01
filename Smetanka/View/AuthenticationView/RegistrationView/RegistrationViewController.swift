@@ -119,7 +119,8 @@ extension RegistrationViewController {
         viewModel.failureSubject.subscribe { error in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [unowned self] in
                 let message = ErrorMessages.describeFBCode(error.code)
-                showErrorAlert(message?.title, message?.message)
+                guard let message = message else { return }
+                showErrorAlert(message.title, message.message)
             }
         }.disposed(by: disposeBag)
     }

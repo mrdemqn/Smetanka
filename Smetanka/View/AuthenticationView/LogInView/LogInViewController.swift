@@ -243,7 +243,8 @@ private extension LogInViewController {
         viewModel.failureSubject.subscribe(onNext: { [unowned self] error in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let message = ErrorMessages.describeFBCode(error.code)
-                self.showErrorAlert(message?.title, message?.message)
+                guard let message = message else { return }
+                self.showErrorAlert(message.title, message.message)
             }
         }).disposed(by: disposeBag)
     }

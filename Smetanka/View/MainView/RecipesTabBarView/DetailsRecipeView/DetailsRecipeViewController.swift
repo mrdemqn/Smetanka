@@ -83,10 +83,13 @@ private extension DetailsRecipeViewController {
         
         viewModel.favouriteButtonSubject.subscribe(
             onNext: { [unowned self] isFavourite in
-                print("isFavourite: \(isFavourite)")
                 changeBarButton(isFavourite: isFavourite)
             }
         ).disposed(by: disposeBag)
+        
+        viewModel.failureSubject.subscribe { [unowned self] _ in
+            showErrorAlert()
+        }.disposed(by: disposeBag)
     }
     
     func changeBarButton(isFavourite: Bool) {

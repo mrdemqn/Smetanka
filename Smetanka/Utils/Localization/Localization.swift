@@ -47,6 +47,9 @@ enum Localization: String {
     case pleaseWait = "please_wait"
     case registrationSuccessTitle = "registration_success_title"
     case registrationSuccessMessage = "registration_success_message"
+    case recipesNotFound = "recipes_not_found"
+    case favouritesNotFound = "favourites_not_found"
+    case myRecipesNotFound = "my_recipes_not_found"
     
     /// MARK - Firebase Error Messages
     case unverifiedEmailTitle = "unverified_email_title"

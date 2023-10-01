@@ -57,3 +57,6 @@
 "description_recipe_placeholder" = "Описание рецепта";
 "step_recipe_placeholder" = "Шаг";
 "add_image_placeholder" = "Нажмите здесь, чтобы добавить изображение";
+"recipes_not_found" = "Рецептов не найдено";
+"favourites_not_found" = "Вы пока не добавили рецепты в избранное";
+"my_recipes_not_found" = "Вы пока не создали ни одного рецепта";

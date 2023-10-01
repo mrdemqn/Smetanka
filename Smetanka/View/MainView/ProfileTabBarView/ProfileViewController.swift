@@ -148,6 +148,7 @@ private extension ProfileViewController {
             logOutButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             logOutButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             logOutButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            logOutButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
     

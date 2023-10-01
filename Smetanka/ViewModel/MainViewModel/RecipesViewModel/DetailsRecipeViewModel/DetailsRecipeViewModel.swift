@@ -16,6 +16,8 @@ protocol DetailsRecipeViewModelProtocol {
     
     var favouriteButtonSubject: PublishSubject<Bool> { get }
     
+    var failureSubject: PublishSubject<Void> { get }
+    
     func fetchLocalRecipe(_ id: String) async
     
     func fetchLocalIfExists(_ id: String) async
@@ -47,15 +49,15 @@ final class DetailsRecipeViewModel: DetailsRecipeViewModelProtocol {
     
     var favouriteButtonSubject = PublishSubject<Bool>()
     
+    var failureSubject: PublishSubject<Void> = PublishSubject()
+    
     func fetchLocalRecipe(_ id: String) async {
         DispatchQueue.main.async { [unowned self] in
             let recipe = storage.fetch(id)
             
             guard let recipe = recipe else {
-                print("Fetch Local Recipe Failed")
                 return favouriteButtonSubject.onNext(false)
             }
-            print("Fetch Local Recipe Success: \(recipe.isFavourite)")
             let local = mapper.mapLocal(recipe: recipe)
             recipePublish.onNext(local)
             currentRecipe = local
@@ -111,7 +113,7 @@ final class DetailsRecipeViewModel: DetailsRecipeViewModelProtocol {
             recipePublish.onNext(recipe)
             currentRecipe = recipe
         } catch {
-            print(error)
+            failureSubject.on(.error(error))
         }
         loadingSubject.onNext(false)
     }

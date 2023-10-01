@@ -57,3 +57,6 @@
 "description_recipe_placeholder" = "Recipe description";
 "step_recipe_placeholder" = "Step";
 "add_image_placeholder" = "Click here to add an image";
+"recipes_not_found" = "Recipes not found";
+"favourites_not_found" = "You haven't added recipes to your favorites yet";
+"my_recipes_not_found" = "You haven't created any recipes yet";

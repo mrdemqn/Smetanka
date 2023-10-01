@@ -17,6 +17,8 @@ protocol RecipesViewModelProtocol {
     
     var recipesSubject: PublishSubject<Void> { get }
     
+    var failureSubject: PublishSubject<Void> { get }
+    
     func fetchRecipes() async
 }
 
@@ -40,6 +42,8 @@ final class RecipesViewModel: RecipesViewModelProtocol {
     
     var recipesSubject: PublishSubject<Void> = PublishSubject()
     
+    var failureSubject: PublishSubject<Void> = PublishSubject()
+    
     init() {
         foodService = RecipeService()
         storage = LocalStorageService()
@@ -51,15 +55,16 @@ final class RecipesViewModel: RecipesViewModelProtocol {
         loadingSubject.onNext(true)
         
         await self.fetchRecipesNetwork()
+        
+        loadingSubject.onNext(false)
     }
     
     private func fetchRecipesNetwork() async {
         do {
             let recipes = try await foodService.fetchAllRecipes()
-            print("RecipesLength: \(recipes.count)")
             mapper.mapRealm(realmRecipes: &self.recipes, recipes: recipes)
         } catch {
-            print("Has Error: \(error)")
+            failureSubject.on(.error(error))
         }
     }
 }
