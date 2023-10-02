@@ -102,6 +102,7 @@
 		E5BCCEC02A82392F00001EEE /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */; };
 		E5BCCEC22A823ED300001EEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */; };
 		E5BCCEC62A828B3300001EEE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BCCEC52A828B3300001EEE /* Font.swift */; };
+		E5CA1A8B2ACB20CC0023E554 /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA1A8A2ACB20CC0023E554 /* Documents.swift */; };
 		E5D43E022AA0F416004618CD /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E012AA0F416004618CD /* UIColorExtensions.swift */; };
 		E5D43E052AA0F625004618CD /* AppField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E042AA0F625004618CD /* AppField.swift */; };
 		E5D43E072AA0F7D2004618CD /* Xibs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D43E062AA0F7D2004618CD /* Xibs.swift */; };
@@ -226,6 +227,7 @@
 		E5BCCEBF2A82392F00001EEE /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E5BCCEC12A823ED300001EEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5BCCEC52A828B3300001EEE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		E5CA1A8A2ACB20CC0023E554 /* Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
 		E5D43E012AA0F416004618CD /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		E5D43E042AA0F625004618CD /* AppField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppField.swift; sourceTree = "<group>"; };
 		E5D43E062AA0F7D2004618CD /* Xibs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xibs.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				E590DC342A7A6095000F14A5 /* Extensions */,
 				E590DC422A7A67E1000F14A5 /* AppResult.swift */,
 				E590DC442A7A6934000F14A5 /* HTTPMethod.swift */,
+				E5CA1A8A2ACB20CC0023E554 /* Documents.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 				E590DC6A2A7ADBA6000F14A5 /* OnboardingPageViewController.swift in Sources */,
 				E56A71002A821CC10062D763 /* AuthenticationService.swift in Sources */,
 				E5D43E022AA0F416004618CD /* UIColorExtensions.swift in Sources */,
+				E5CA1A8B2ACB20CC0023E554 /* Documents.swift in Sources */,
 				E58E2C742A867FC30038262A /* NetworkLogger.swift in Sources */,
 				E58367C42AAA3D1D00E424A4 /* FavouriteViewModel.swift in Sources */,
 				E58E2C602A854C850038262A /* RecipesViewModel.swift in Sources */,

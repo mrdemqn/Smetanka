@@ -101,9 +101,10 @@ final class DetailsRecipeViewModel: DetailsRecipeViewModelProtocol {
         mapper.mapRealm(recipe: &recipe, localRecipe: localRecipe)
         storage.updateIsFavourite(recipe: recipe,
                                   isFavourite: isFavourite) { recipe in
-            let local = self.mapper.mapLocal(recipe: recipe)
+            var local = self.mapper.mapLocal(recipe: recipe)
+            local.isFavourite = isFavourite
             self.currentRecipe = local
-            self.favouriteButtonSubject.onNext(recipe.isFavourite)
+            self.favouriteButtonSubject.onNext(isFavourite)
         }
     }
     

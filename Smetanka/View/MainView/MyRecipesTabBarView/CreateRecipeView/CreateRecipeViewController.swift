@@ -23,7 +23,7 @@ final class CreateRecipeViewController: UIViewController, UINavigationController
     private let addStepButton = UIImageView()
     
     private let imageView = UIImageView()
-    private var imagePath: Data?
+    private var imagePath: String?
     
     private let titleLabel = UILabel()
     private let difficultyLabel = UILabel()
@@ -435,9 +435,10 @@ private extension CreateRecipeViewController {
                 stopLoader(loader: loader)
             }
         }).disposed(by: disposeBag)
-        viewModel.saveSuccessSubject.subscribe(onNext: { _ in
+        
+        viewModel.saveSuccessSubject.subscribe { _ in
             self.pop()
-        }).disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
     }
     
     @objc func addNewStep() {
@@ -463,15 +464,14 @@ private extension CreateRecipeViewController {
         let recipe = Recipe(id: UUID().uuidString,
                             title: title,
                             difficulty: difficulty,
-                            image: "",
+                            image: imagePath,
                             portion: portion,
                             time: times,
                             descriptionRecipe: descriptionRecipe,
                             ingredients: List<String>(),
                             method: List<String>(),
                             isFavourite: false,
-                            isMyRecipe: true,
-                            uiImage: imagePath)
+                            isMyRecipe: true)
         recipe.method.append(objectsIn: method)
         viewModel.createRecipe(recipe: recipe)
     }
@@ -493,10 +493,16 @@ extension CreateRecipeViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        guard let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL else { return }
+        
+        let documents = Documents.documentDirectoryPath()
+        let path = "\(imageURL.lastPathComponent).png"
+        guard let url = documents?.appendingPathComponent(path) else { return }
+        guard let data = pickedImage.pngData() else { return }
+        try? data.write(to: url)
         
         imageView.image = pickedImage
-        
-        imagePath = pickedImage.pngData()
+        imagePath = path
         
         DispatchQueue.main.async {
             self.imageLabel.removeFromSuperview()

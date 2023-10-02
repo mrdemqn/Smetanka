@@ -27,10 +27,10 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
     
     func configureContent(title: String,
                           difficulty: String,
-                          data: Data?) {
+                          imageUrl: String) {
         titleLabel.text = title
         difficultyLabel.text = "\(localized(of: .difficulty)): \(difficulty)"
-        guard let data = data else { return }
+        guard let data =  Documents.readImage(imagePath: imageUrl) else { return }
         imageView.image = UIImage(data: data)
     }
 }

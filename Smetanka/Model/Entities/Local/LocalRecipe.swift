@@ -17,9 +17,8 @@ struct LocalRecipe: Decodable {
     let description: String?
     let ingredients: [String]?
     let method: [[String: String]]?
-    let isFavourite: Bool?
+    var isFavourite: Bool?
     let isMyRecipe: Bool?
-    let uiImage: Data?
 }
 
 extension LocalRecipe {

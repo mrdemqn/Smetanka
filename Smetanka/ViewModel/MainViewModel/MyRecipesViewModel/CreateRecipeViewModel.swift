@@ -35,10 +35,10 @@ final class CreateRecipeViewModel: CreateRecipeViewModelProtocol {
         loadingSubject.onNext(true)
         storage.save(recipe: recipe)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
-            loadingSubject.onNext(true)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [unowned self] in
-            saveSuccessSubject.on(.completed)
+            loadingSubject.onNext(false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [unowned self] in
+                saveSuccessSubject.on(.completed)
+            }
         }
     }
 }

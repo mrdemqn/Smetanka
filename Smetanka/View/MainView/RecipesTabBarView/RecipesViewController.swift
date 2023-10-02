@@ -134,6 +134,7 @@ extension RecipesViewController {
         viewModel.recipesSubject.subscribe { _ in
             DispatchQueue.main.async { [unowned self] in
                 tableView.reloadData()
+                recipesNotFoundLabel.isHidden = !viewModel.recipes.isEmpty
             }
         }.disposed(by: disposeBag)
         

@@ -36,8 +36,7 @@ final class RecipesViewMapper: RecipesViewMapperProtocol {
                                      ingredients: List<String>(),
                                      method: List<String>(),
                                      isFavourite: false,
-                                     isMyRecipe: false,
-                                     uiImage: recipe.uiImage)
+                                     isMyRecipe: false)
             realmRecipe.ingredients.append(objectsIn: recipe.ingredients ?? [])
             realmRecipe.method.append(objectsIn: recipe.foodMethods)
             mapped.append(realmRecipe)
@@ -57,8 +56,7 @@ final class RecipesViewMapper: RecipesViewMapperProtocol {
                                  ingredients: List<String>(),
                                  method: List<String>(),
                                  isFavourite: localRecipe.isFavourite ?? false,
-                                 isMyRecipe: localRecipe.isMyRecipe ?? false,
-                                 uiImage: localRecipe.uiImage)
+                                 isMyRecipe: localRecipe.isMyRecipe ?? false)
         realmRecipe.ingredients.append(objectsIn: recipe.ingredients)
         realmRecipe.method.append(objectsIn: recipe.method)
         recipe = realmRecipe
@@ -79,7 +77,6 @@ final class RecipesViewMapper: RecipesViewMapperProtocol {
                            ingredients: Array(recipe.ingredients),
                            method: methods,
                            isFavourite: recipe.isFavourite,
-                           isMyRecipe: recipe.isMyRecipe,
-                           uiImage: recipe.uiImage)
+                           isMyRecipe: recipe.isMyRecipe)
     }
 }

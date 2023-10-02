@@ -31,6 +31,8 @@ protocol LocalStorageServiceProtocol {
                            completion: @escaping (Recipe) -> Void)
     
     func observeMyRecipes(_ update: @escaping ([Recipe]) -> Void)
+    
+    func deleteObjects(recipes: [Recipe])
 }
 
 final class LocalStorageService: LocalStorageServiceProtocol {
@@ -79,6 +81,14 @@ final class LocalStorageService: LocalStorageServiceProtocol {
     func fetch(_ id: String) -> Recipe? {
         let recipe = realm.object(ofType: Recipe.self, forPrimaryKey: id)
         return recipe
+    }
+    
+    func deleteObjects(recipes: [Recipe]) {
+        recipes.forEach { recipe in
+            try! realm.write {
+                realm.delete(recipe)
+            }
+        }
     }
     
     func fetchFavourites(completion: @escaping ([Recipe]) -> Void) {

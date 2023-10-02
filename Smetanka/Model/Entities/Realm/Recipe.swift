@@ -21,7 +21,6 @@ final class Recipe: Object {
     
     @Persisted var isFavourite: Bool = false
     @Persisted var isMyRecipe: Bool = false
-    @Persisted var uiImage: Data?
     
     convenience init(id: String,
                      title: String,
@@ -33,8 +32,7 @@ final class Recipe: Object {
                      ingredients: List<String>,
                      method: List<String>,
                      isFavourite: Bool,
-                     isMyRecipe: Bool,
-                     uiImage: Data?) {
+                     isMyRecipe: Bool) {
         self.init()
         self.id = id
         self.title = title
@@ -47,6 +45,5 @@ final class Recipe: Object {
         self.method = method
         self.isFavourite = isFavourite
         self.isMyRecipe = isMyRecipe
-        self.uiImage = uiImage
     }
 }

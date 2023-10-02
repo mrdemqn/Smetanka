@@ -25,7 +25,8 @@ final class MyRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isHeroEnabled = true
-        navigationController?.heroNavigationAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+        navigationController?.heroNavigationAnimationType = .selectBy(presenting: .zoom,
+                                                                      dismissing: .zoomOut)
         
         viewModel = MyRecipeViewModel()
         bindViewModel()
@@ -136,6 +137,7 @@ private extension MyRecipesViewController {
         viewModel.recipesSubject.subscribe { _ in
             DispatchQueue.main.async { [unowned self] in
                 collectionView.reloadData()
+                recipesNotFoundLabel.isHidden = !viewModel.recipes.isEmpty
             }
         }.disposed(by: disposeBag)
     }
@@ -171,7 +173,7 @@ extension MyRecipesViewController: UICollectionViewDelegateFlowLayout {
         
         cell.configureContent(title: recipe.title,
                               difficulty: recipe.difficulty,
-                              data: recipe.uiImage)
+                              imageUrl: recipe.image)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

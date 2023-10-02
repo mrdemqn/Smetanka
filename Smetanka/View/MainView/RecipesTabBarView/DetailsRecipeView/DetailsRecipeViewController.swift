@@ -19,6 +19,7 @@ final class DetailsRecipeViewController: UIViewController {
     private var loadingActivityIndicator = UIActivityIndicatorView()
     
     private var programRecipeImageView = UIImageView()
+    private var favouriteButton = UIImageView()
     
     private var programRecipeTitleLabel = UILabel()
     private var programRecipeDifficultyLabel = UILabel()
@@ -39,7 +40,7 @@ final class DetailsRecipeViewController: UIViewController {
         super.viewDidLoad()
         isHeroEnabled = true
         programRecipeImageView.heroID = "ImageID"
-        setupLoadingLayout()
+        configureLayout()
         
         viewModel = DetailsRecipeViewModel()
         
@@ -60,7 +61,6 @@ final class DetailsRecipeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = localized(of: .recipe)
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(changeFavourite))
     }
     
     deinit {
@@ -83,7 +83,7 @@ private extension DetailsRecipeViewController {
         
         viewModel.favouriteButtonSubject.subscribe(
             onNext: { [unowned self] isFavourite in
-                changeBarButton(isFavourite: isFavourite)
+                changeFavouriteButton(isFavourite: isFavourite)
             }
         ).disposed(by: disposeBag)
         
@@ -92,35 +92,42 @@ private extension DetailsRecipeViewController {
         }.disposed(by: disposeBag)
     }
     
-    func changeBarButton(isFavourite: Bool) {
-        DispatchQueue.main.async {
+    func changeFavouriteButton(isFavourite: Bool) {
+        DispatchQueue.main.async { [unowned self] in
             let image = UIImage(systemName: isFavourite ? "star.fill" : "star")
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: image,
-                                                                     style: .plain,
-                                                                     target: self,
-                                                                     action: #selector(self.changeFavourite))
+            if #available(iOS 17.0, *) {
+                favouriteButton.setSymbolImage(image!, contentTransition: .replace.downUp)
+            } else {
+                favouriteButton.image = image
+            }
         }
     }
     
     @objc func changeFavourite() {
+        print(#function)
         viewModel.changeFavourite()
     }
 }
 
 private extension DetailsRecipeViewController {
     
-    func setupLoadingLayout() {
+    func configureLayout() {
         configureSuperView()
         configureScrollView()
         prepareScrollView()
         configureContentView()
         configureImageView()
         configureLabels()
+        configureFavouriteButton()
     }
     
-    func setupLayout() {
+    func prepareLayout() {
         prepareImageView()
         prepareLabels()
+        prepareFavouriteButton()
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(changeFavourite))
+        favouriteButton.addGestureRecognizer(gesture)
     }
     
     func configureSuperView() {
@@ -163,15 +170,11 @@ private extension DetailsRecipeViewController {
         programRecipeImageView.contentMode = .scaleToFill
     }
     
-    func prepareImageView() {
-        contentView.addSubview(programRecipeImageView)
-        
-        NSLayoutConstraint.activate([
-            programRecipeImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
-            programRecipeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            programRecipeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            programRecipeImageView.heightAnchor.constraint(equalToConstant: 200),
-        ])
+    func configureFavouriteButton() {
+        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favouriteButton.backgroundColor = .gray.withAlphaComponent(0.3)
+        favouriteButton.layer.cornerRadius = 15
+        favouriteButton.isUserInteractionEnabled = true
     }
     
     func configureLabels() {
@@ -198,6 +201,17 @@ private extension DetailsRecipeViewController {
         
         programRecipeStepsLabel.translatesAutoresizingMaskIntoConstraints = false
         programRecipeStepsLabel.numberOfLines = 0
+    }
+    
+    func prepareImageView() {
+        contentView.addSubview(programRecipeImageView)
+        
+        NSLayoutConstraint.activate([
+            programRecipeImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            programRecipeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            programRecipeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            programRecipeImageView.heightAnchor.constraint(equalToConstant: 200),
+        ])
     }
     
     func prepareLabels() {
@@ -265,10 +279,23 @@ private extension DetailsRecipeViewController {
         ])
     }
     
+    func prepareFavouriteButton() {
+        if !fromMyRecipe {
+            contentView.addSubview(favouriteButton)
+            
+            NSLayoutConstraint.activate([
+                favouriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+                favouriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+                favouriteButton.heightAnchor.constraint(equalToConstant: 30),
+                favouriteButton.widthAnchor.constraint(equalToConstant: 30),
+            ])
+        }
+    }
+    
     func setRecipeUI(_ recipe: LocalRecipe) {
         DispatchQueue.main.async { [unowned self] in
             if fromMyRecipe {
-                guard let data = recipe.uiImage else { return }
+                guard let data =  Documents.readImage(imagePath: recipe.image) else { return }
                 programRecipeImageView.image = UIImage(data: data)
             } else {
                 programRecipeImageView.load(from: recipe.image)
@@ -313,7 +340,7 @@ private extension DetailsRecipeViewController {
             } else {
                 loadingActivityIndicator.stopAnimating()
                 loadingActivityIndicator.removeFromSuperview()
-                setupLayout()
+                prepareLayout()
             }
         }
     }
