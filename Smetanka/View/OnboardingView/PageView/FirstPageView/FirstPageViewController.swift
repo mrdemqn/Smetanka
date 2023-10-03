@@ -9,8 +9,11 @@ import UIKit
 
 final class FirstPageViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.text = localized(of: .firstOnboardingTitle)
     }
 }

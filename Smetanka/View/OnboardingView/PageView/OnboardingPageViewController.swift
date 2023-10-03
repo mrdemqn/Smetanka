@@ -26,10 +26,6 @@ final class OnboardingPageViewController: UIPageViewController {
                               Navigation.firstPage),
             getViewController(SecondPageViewController.self,
                               Navigation.secondPage),
-            getViewController(SecondPageViewController.self,
-                              Navigation.secondPage),
-            getViewController(SecondPageViewController.self,
-                              Navigation.secondPage),
             getViewController(ThirdPageViewController.self,
                               Navigation.thirdPage)
         ]

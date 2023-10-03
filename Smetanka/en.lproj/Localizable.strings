@@ -60,3 +60,5 @@
 "recipes_not_found" = "Recipes not found";
 "favourites_not_found" = "You haven't added recipes to your favorites yet";
 "my_recipes_not_found" = "You haven't created any recipes yet";
+"first_onboarding_title" = "See recipes for your favorite dishes. Cook with pleasure with detailed descriptions.";
+"second_onboarding_title" = "Create your own recipes. Add other recipes to your favorites so as not to lose";

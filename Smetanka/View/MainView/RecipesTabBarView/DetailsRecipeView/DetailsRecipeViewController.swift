@@ -167,7 +167,8 @@ private extension DetailsRecipeViewController {
     func configureImageView() {
         programRecipeImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        programRecipeImageView.contentMode = .scaleToFill
+        programRecipeImageView.contentMode = .scaleAspectFill
+        programRecipeImageView.clipsToBounds = true
     }
     
     func configureFavouriteButton() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,31 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ir6-sg-B7l">
-                                <rect key="frame" x="0.0" y="0.33333333333331439" width="393" height="851.66666666666674"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" name="Main"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rr-23-upz">
+                                <rect key="frame" x="25" y="438.66666666666669" width="343" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Ir6-sg-B7l" secondAttribute="bottom" id="Eg7-nT-YQV"/>
-                            <constraint firstItem="Ir6-sg-B7l" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="PPt-az-pLb"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ir6-sg-B7l" secondAttribute="trailing" id="hKM-nj-5l5"/>
-                            <constraint firstItem="Ir6-sg-B7l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qcs-ON-Mbb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6Rr-23-upz" secondAttribute="trailing" constant="25" id="1uL-7I-l0D"/>
+                            <constraint firstItem="6Rr-23-upz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="F2H-XJ-4Wh"/>
+                            <constraint firstItem="6Rr-23-upz" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="sZF-70-Qwm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="6Rr-23-upz" id="8bq-eg-okg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-27"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="rectangle.portrait.and.arrow.forward" catalog="system" width="128" height="109"/>
-        <namedColor name="Main">
-            <color red="0.20000000298023224" green="0.88200002908706665" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

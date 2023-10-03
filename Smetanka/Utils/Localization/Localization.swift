@@ -63,4 +63,8 @@ enum Localization: String {
     case descriptionRecipePlaceholder = "description_recipe_placeholder"
     case stepRecipePlaceholder = "step_recipe_placeholder"
     case addImagePlaceholder = "add_image_placeholder"
+    
+    /// MARK - Онбординг
+    case firstOnboardingTitle = "first_onboarding_title"
+    case secondOnboardingTitle = "second_onboarding_title"
 }

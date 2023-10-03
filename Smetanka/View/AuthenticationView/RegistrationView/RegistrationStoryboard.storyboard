@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -50,12 +51,12 @@
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Подтвердите пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyy-2V-xeI" userLabel="Подтвердить Пароль" customClass="AppField" customModule="Smetanka" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="429" width="343" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xnf-Pq-QGE" customClass="AppField" customModule="Smetanka" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="351" width="343" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите почту" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Dcu-Al-t3M" customClass="AppField" customModule="Smetanka" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="273" width="343" height="34"/>
@@ -107,7 +108,6 @@
                                             <constraint firstAttribute="trailing" secondItem="dgR-DB-Hac" secondAttribute="trailing" constant="25" id="dQb-4V-z6E"/>
                                             <constraint firstItem="BBg-dH-jJI" firstAttribute="leading" secondItem="Dcu-Al-t3M" secondAttribute="leading" id="eMh-hv-SJJ"/>
                                             <constraint firstItem="Dcu-Al-t3M" firstAttribute="trailing" secondItem="yy8-LX-AJJ" secondAttribute="trailing" id="etk-VZ-LIT"/>
-                                            <constraint firstItem="oDz-a7-wCR" firstAttribute="top" relation="lessThanOrEqual" secondItem="dyy-2V-xeI" secondAttribute="bottom" constant="260" id="n9G-vC-XQc"/>
                                             <constraint firstItem="dyy-2V-xeI" firstAttribute="leading" secondItem="cyZ-SV-N7C" secondAttribute="leading" id="p2V-yz-BI4"/>
                                             <constraint firstItem="xnf-Pq-QGE" firstAttribute="leading" secondItem="BBg-dH-jJI" secondAttribute="leading" id="s9E-1E-2mL"/>
                                             <constraint firstItem="dgR-DB-Hac" firstAttribute="leading" secondItem="sIl-6p-LUC" secondAttribute="leading" constant="25" id="sCY-Bl-hbP"/>
